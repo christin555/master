@@ -127,7 +127,7 @@ function getModules() {
     additionalModulePaths: additionalModulePaths,
     webpackAliases: getWebpackAliases(options),
     jestAliases: getJestAliases(options),
-    hasTsConfig,
+    hasTsConfig
   };
 }
 

@@ -1,0 +1,252 @@
+@import '../../shared/style';
+
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+.level {
+  padding: 0 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  color: #8e8e8e;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-weight: 300;
+
+  .icon {
+    font-size: 10px;
+    margin: 0 5px;
+  }
+
+  .last {
+    color: #bababa;
+  }
+}
+
+.door {
+  background: url(../../shared/img/wall.jpg) no-repeat top;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.content {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    padding: 0 80px;
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: minmax(100px, 0.8fr) minmax(100px, 1fr);
+  }
+
+  .slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carousel {
+    width: 40vw;
+
+    .axis-vertical {
+      margin: 0 !important;
+    }
+
+
+    ul {
+      padding-inline-start: 0
+    }
+
+    img {
+      max-height: 500px;
+      //width: initial !important;
+    }
+  }
+
+  .product {
+    background: #ffffffd1;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+
+    .additional {
+      margin-top: 20px;
+      font-weight: 400;
+      font-size: 18px;
+      display: flex;
+      flex-wrap: wrap;
+
+      & > * {
+        background: #f3f3f5;
+        margin-top: 5px;
+        margin-right: 10px;
+      }
+    }
+
+    .price {
+      margin: 20px 0;
+      box-shadow: 0 4px 24px rgba(186, 181, 181, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+      width: 100%;
+      background: #f9f9fd;
+      max-width: 300px;
+
+      .value {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 600;
+
+        .icon {
+          margin-right: 8px;
+        }
+      }
+
+      .unit {
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 16px;
+        color: #7f7f7f;
+      }
+    }
+
+    .brand {
+      font-weight: 400;
+      margin-top: 10px;
+    }
+
+    .name {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 24px;
+      margin: 5px 0 20px;
+    }
+
+    .id{
+      font-weight: 400;
+      font-size: 14px;
+      color: #a8a6a6;
+    }
+
+    .desc {
+      text-align: justify;
+      margin-top: 10px;
+      font-weight: 300;
+      font-size: 16px;
+    }
+  }
+}
+
+.titleCharacteristic {
+  margin-top: 20px;
+  background: #e5e5e5;
+  padding: 0 80px;
+  font-weight: 400;
+  font-size: 16px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.characteristic {
+  @include paddingStandard;
+
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+}
+
+.chars {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 50px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  margin: 5px -5px;
+
+  &::after {
+    content: "";
+    margin-top: -5px;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dotted #a5a9af;
+    z-index: 0;
+  }
+
+  & > * {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: white;
+
+    span {
+      padding: 0 5px;
+      z-index: 1;
+      background: white;
+    }
+  }
+}
+
+.iconChip {
+  font-size: 20px;
+}
+
+.materials {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 16px;
+
+  .items {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 50px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    margin-top: 10px;
+
+    & > * {
+      font-weight: 600;
+      font-size: 14px;
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.thumbs img {
+  width: auto !important;
+  height: 75px;
+}
+
+.call{
+  border-color: black;
+  border-radius: 0;
+  margin-top: 15px;
+}

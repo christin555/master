@@ -1,0 +1,37 @@
+
+.filter {
+  width: 20vw;
+
+  .title {
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .heading {
+    font-weight: 300 !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .active {
+      width: 6px;
+      height: 6px;
+      background: #c13535;
+      border-radius: 100%;
+      display: block;
+    }
+  }
+
+  .details {
+    padding: 0px 16px;
+    display: flex;
+    flex-direction: column;
+
+    .checkboxControl{
+
+
+    }
+  }
+}

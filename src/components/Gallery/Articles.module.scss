@@ -1,0 +1,69 @@
+@import '../../shared/style';
+
+.content {
+  @include paddingStandard;
+
+  display: flex;
+  flex-direction: column;
+
+
+  .title{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+
+    &::after {
+      content: "";
+      display: block;
+      margin-top: 8px;
+      height: 2px;
+      width: 40px;
+      background: #c41414;
+    }
+  }
+
+  .article{
+    font-family: museo-sans,sans-serif;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    .articleContent{
+      span {
+        margin: 6px 0;
+        display: block;
+      }
+    }
+
+    .imgBlock{
+      order: 1;
+      max-width: 400px;
+      grid-column-start: none;
+
+      img{
+        width: 100%;
+      }
+    }
+  }
+}
+
+.divider{
+  margin: 10px 0;
+}
+
+.header {
+  background: rgb(246, 246, 246);
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 20px 80px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.line {
+  margin-top: 8px;
+  display: block;
+  height: 2px;
+  width: 40px;
+  background: #c41414;
+}

@@ -1,7 +1,7 @@
-import {observable, get, action, reaction, when, toJS, computed, makeObservable} from 'mobx';
+import {observable, makeObservable} from 'mobx';
 import {status as statusEnum} from '../../enums';
 
-class HomeStore  {
+class HomeStore {
     RouterStore
 
     @observable promos = [];
@@ -9,9 +9,9 @@ class HomeStore  {
     @observable status = statusEnum.LOADING;
 
     constructor({RouterStore}) {
-        this.RouterStore = RouterStore;
+      this.RouterStore = RouterStore;
+      makeObservable(this);
     }
-
 }
 
 export default HomeStore;

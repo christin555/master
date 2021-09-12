@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100;200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&display=swap');
+
+@mixin paddingStandard {
+  padding: 0 80px;
+}
+
 $gray-100: #9299a7;
 
 $gray-100-10: rgba(146, 153, 167, 0.1);

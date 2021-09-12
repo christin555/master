@@ -1,4 +1,155 @@
 @import '../style';
 
 .footer {
+  text-align: center;
+  background: #34373d;
+  color: #f9f9fd;
+  bottom: 0;
+  margin-top: 40px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .content {
+    padding: 60px 100px;
+    flex-direction: row;
+    display: flex;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: #9299a7;
+
+      &>* {
+        margin-bottom: 10px;
+
+        &:hover {
+          cursor: pointer;
+          color: white;
+        }
+      }
+    }
+
+    .info {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #f9f9fd;
+      text-align: center;
+      justify-content: space-between;
+
+      .header {
+        line-height: 24px;
+        font-weight: 100;
+        display: block;
+      }
+
+      .time {
+        color: #d2d2d4;
+        font-weight: 100 !important;
+        line-height: 12px;
+        margin-top: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .address {
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:visited {
+          color: white;
+        }
+        .iconContact {
+          font-size: 20px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .contacts {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      text-decoration: none;
+      color: #f9f9fd;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 0.5px !important;
+    }
+
+    p {
+      margin: 0;
+      color: #b8b8b8;
+      font-size: 12px;
+    }
+
+    span {
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+
+    }
+  }
+}
+
+.button {
+  border-color: #ffffff !important;
+  border-radius: 0px !important;
+  color: white !important;
+  margin: 40px 0 20px !important;
+
+  &:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+}
+
+.messangers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & > * + * {
+    margin-left: 20px;
+  }
+
+  .icon {
+    font-size: 22px;
+    color: white;
+  }
+}
+
+.copy {
+  font-size: 14px;
+  width: 100%;
+  display: flex;
+  color: #616060;
+  text-align: center;
+
+  .divider {
+    position: absolute;
+    width: inherit;
+    height: 1px;
+    background: rgba(82, 82, 82, 0.51);
+  }
+
+  .underText {
+    width: 100%;
+    text-align: center;
+    display: block;
+    padding: 5px;
+  }
 }

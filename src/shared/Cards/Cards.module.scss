@@ -1,0 +1,93 @@
+.root {
+
+  .area{
+    display: flex !important;
+  }
+  & > * {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+}
+
+.media {
+  height: 180px;
+
+  .img {
+    display: none;
+    top: 50px;
+    width: 100%;
+    object-fit: cover;
+    object-position: 0 90%;
+    height: 100%;
+  }
+
+  .isShow {
+    display: block;
+  }
+
+  .isDoor {
+    object-position: 50% 90% !important;
+    object-fit: contain !important;
+  }
+}
+
+.actions {
+  height: 20px;
+}
+
+.content {
+  place-self: flex-start;
+  padding: 10px 10px 0;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.56);
+  min-height: 30px;
+
+  .id {
+    font-size: 12px;
+    color: #7f7f7f;
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .collection {
+    font-size: 16px;
+    font-weight: 300;
+    color: #7f7f7f;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .price {
+    display: flex;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    justify-content: space-between;
+
+    .unit {
+      padding: 5px;
+      font-size: 14px;
+      font-weight: 300;
+      color: #7f7f7f;
+    }
+  }
+}
+
+.call {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  .icon {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+}
