@@ -95,9 +95,12 @@ class CatalogStore {
     }
 
     getCountProducts = async() => {
+       const {category, urlParams, filter} = this;
+
       try {
-        const searchParams = {...this.category, ...this.urlParams, filter: this.filter};
-        const count = await api.post('catalog/countProducts ', {searchParams});
+        const body = {searchParams: {category, ...urlParams, filter}};
+
+        const count = await api.post('catalog/countProducts ', body);
 
         this.setCount(count);
       } catch(_) {
@@ -106,7 +109,6 @@ class CatalogStore {
     }
 
     getCatalog = async() => {
-      console.log('huawk');
       const {category, limit, offset, urlParams, filter} = this;
 
       this.setStatus(statusEnum.LOADING);

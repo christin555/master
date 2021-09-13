@@ -15,8 +15,8 @@ class Works extends React.Component {
   get imgs() {
 
     return [
-      {original: 'http://localhost:8000/public/works1.jpg', thumbnail: 'http://localhost:8000/public/works1.jpg'},
-      {original: 'http://localhost:8000/public/works2.jpg', thumbnail: 'http://localhost:8000/public/works2.jpg'}
+      {original: 'http://45.147.179.124:8000/public/works1.jpg', thumbnail: 'http://45.147.179.124:8000/public/works1.jpg'},
+      {original: 'http://45.147.179.124:8000/public/works2.jpg', thumbnail: 'http://45.147.179.124:8000/public/works2.jpg'}
     ];
 
   }

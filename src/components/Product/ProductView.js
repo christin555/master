@@ -1,6 +1,4 @@
 import React from 'react';
-// import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
-// import {Carousel} from 'react-responsive-carousel';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import Chip from '@material-ui/core/Chip';
 import Icons from 'shared/Icons';
@@ -13,11 +11,11 @@ import {Divider} from '@material-ui/core';
 import classNames from 'classnames';
 import s from './Product.module.scss';
 import Callme from '../../shared/Callme';
-import AddShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import {toJS} from 'mobx';
 
 @inject(({ProductStore}) => {
   return {
-    values: ProductStore.values || {},
+    values: toJS(ProductStore.values || {}),
     fields: ProductStore.fields || [],
     hierarchy: ProductStore.hierarchy || []
   };

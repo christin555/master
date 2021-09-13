@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8000/",
   "dependencies": {
     "2gis-maps": "^3.6.6",
     "2gis-maps-react": "0.0.4",
@@ -33,6 +34,7 @@
     "dayjs": "^1.9.6",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
+    "express": "^4.17.1",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-jest": "^24.1.0",
@@ -61,6 +63,7 @@
     "postcss-normalize": "8.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "5.0.2",
+    "pm2": "^5.1.0",
     "react": "17.0.1",
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.0",
@@ -90,6 +93,7 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
+    "prodstart": "pm2 start server.js",
     "lint": "eslint src --ext .js",
     "lint:fix": "npm run lint -- --fix",
     "start": "node scripts/start.js",

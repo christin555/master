@@ -1,8 +1,5 @@
 import React from 'react';
 import s from './Filter.module.scss';
-import {Accordion, AccordionSummary, FormControlLabel, AccordionDetails, Typography} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Checkbox from '@material-ui/core/Checkbox';
 import {inject} from 'mobx-react';
 import {renderFilterFields} from './renderFilterFields.js';
 import {toJS} from 'mobx';
@@ -30,7 +27,7 @@ class Filter extends React.Component {
       return null;
     }
 
-    return filterFields.lenght && (
+    return filterFields.length && (
       <div className={s.filter}>
         <div className={s.title}>Фильтр</div>
         {renderFilterFields({filterFields, filterValues, setFilterValues})}
