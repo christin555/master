@@ -36,6 +36,10 @@ const Index = () => {
     {
       name: 'О нас',
       alias: 'doors'
+    },
+    {
+      name: 'Блог',
+      alias: 'gallery'
     }
   ];
 

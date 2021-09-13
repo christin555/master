@@ -44,7 +44,7 @@
       text-align: center;
     }
 
-    .helperText{
+    .helperText {
       font-weight: 200;
       font-size: 12px;
     }
@@ -75,7 +75,21 @@
     margin-right: 10px;
   }
 }
-.buttonMain{
-  border-radius: 0;
+
+.buttonMain {
+  border-radius: 0 !important;
   border-color: black;
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .wrapper {
+    width: unset;
+  }
+  .buttonMain {
+    padding: 4px !important;
+  }
 }

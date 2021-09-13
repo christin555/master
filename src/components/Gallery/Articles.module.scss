@@ -26,6 +26,7 @@
     font-family: museo-sans,sans-serif;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 20px;
 
     .articleContent{
       span {
@@ -66,4 +67,24 @@
   height: 2px;
   width: 40px;
   background: #c41414;
+}
+
+.iframe {
+  width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+  .header, .content {
+    padding: 0 10px;
+
+    .article{
+      .imgBlock {
+        grid-column-start: unset;
+      }
+    }
+  }
+  .iframe {
+    width: 100%;
+    height: auto;
+  }
 }

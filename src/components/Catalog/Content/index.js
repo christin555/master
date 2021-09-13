@@ -38,6 +38,7 @@ class Content extends React.Component {
           </div>
           {
             <TablePagination
+              className={s.pagnt}
               labelRowsPerPage={'Выводить по'}
               rowsPerPageOptions={[10, 20, 50]}
               component='div'

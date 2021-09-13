@@ -7,6 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import PlaceIcon from '@material-ui/icons/Place';
 import {inject} from 'mobx-react';
 import {Tooltip} from '@material-ui/core';
+import TemporaryDrawer from './Burger';
 
 @inject(({RouterStore, HeaderStore}) => {
   return {
@@ -32,7 +33,7 @@ class Header extends React.Component {
       }
     }
 
-    listenScrollEvent = (e) => {
+    listenScrollEvent = () => {
       if (window.scrollY > 20) {
         this.setState({isScrolled: true});
       } else {
@@ -75,9 +76,15 @@ class Header extends React.Component {
                 </div>
                 <div className={s.nameSmall}> салон напольных покрытий и дверей</div>
               </div>
+              <TemporaryDrawer toPage={this.toPage} menu={this.menu} />
               <div className={s.left}>
                 <div className={s.search}>
-                  <TextField placeholder={'Поиск'} value={search} onChange={setSearch} onKeyPress={this.onKeyPressHandler} />
+                  <TextField
+                    placeholder={'Поиск'}
+                    value={search}
+                    onChange={setSearch}
+                    onKeyPress={this.onKeyPressHandler}
+                  />
                   <SearchIcon onClick={setParams} />
                 </div>
                 <div className={s.phone}>

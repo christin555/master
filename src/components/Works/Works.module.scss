@@ -28,6 +28,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 
   .text {
     max-width: 50vw;
@@ -40,9 +41,10 @@
   margin: 10px 0;
 }
 
-.carousel{
+.carousel {
   max-width: 400px;
 }
+
 .header {
   background: rgb(246, 246, 246);
   font-size: 24px;
@@ -59,4 +61,19 @@
   height: 2px;
   width: 40px;
   background: #c41414;
+}
+
+@media only screen and (max-width: 480px) {
+  .header, .content {
+    padding: 0 10px;
+  }
+
+  .preview {
+    .text {
+      max-width: unset;
+      .title {
+        margin-top: 10px;
+      }
+    }
+  }
 }

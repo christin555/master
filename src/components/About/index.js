@@ -39,18 +39,6 @@ class About extends React.Component {
           <YouTube
             className={s.video}
             videoId={'bAmdyypn8OI'}
-            opts={{
-              playerVars: {
-                rel: 0,
-                showinfo: 0,
-                'iv_load_policy': 3,
-                modestbranding: 1,
-                fs: 0,
-                loop: 1,
-
-                controls: 0
-              }
-            }}
           />
         </div>
         <div className={s.content}>

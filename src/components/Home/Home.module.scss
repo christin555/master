@@ -66,10 +66,30 @@
   }
 }
 
-
 .footer{
   height: 20px;
   text-align: center;
   background: #34373d;
   color: #f9f9fd;
+}
+
+//phones
+
+@media only screen and (max-width: 480px) {
+  .wrapper {
+    height: 50vh;
+
+    .mediaBlock {
+      @include paddingStandard320
+      .text {
+        letter-spacing: 1px;
+        font-size: 24px;
+
+        .slogan {
+          letter-spacing: 0.8px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
 }

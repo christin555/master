@@ -166,8 +166,51 @@
   &:visited {
     color: white;
   }
+
   .iconContact {
     font-size: 20px;
     margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header {
+    height: 50px;
+
+    .logoBlock {
+      width: auto;
+      margin-right: 0;
+
+      .logo {
+        margin: 8px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .container {
+      height: inherit;
+      padding: 0;
+
+      .left {
+        display: none;
+      }
+
+      .right {
+        .name {
+          font-size: 16px;
+        }
+
+        .nameSmall {
+          letter-spacing: 0.8px;
+          font-size: 10px;
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+
+  .menuContainer {
+    display: none;
   }
 }

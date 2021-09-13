@@ -57,7 +57,6 @@ class ArticlesView extends React.Component {
                       {title}
                     </div>
                     <div className={s.articleContent}>
-
                       {(content || '')
                         .split('\n')
                         .map((item, index) =>

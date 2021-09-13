@@ -1,5 +1,6 @@
+@import '../../shared/style';
+
 .header {
-  height: 350px;
   background: rgb(246, 246, 246);
   font-size: 24px;
   display: flex;
@@ -67,6 +68,7 @@
 
   .text {
     margin-left: 50px;
+
     h3::after {
       content: "";
       display: block;
@@ -84,4 +86,35 @@
   height: 2px;
   width: 40px;
   background: #c41414;
+}
+
+@media only screen and (max-width: 480px) {
+  .header {
+    flex-direction: column;
+
+    .title {
+      padding: 20px 10px;
+      font-size: 14px;
+
+      .preview {
+        .text {
+          margin-right: 0;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .video {
+      width: auto;
+      padding: 5px 25px;
+    }
+  }
+
+  .content{
+    padding: 0;
+    flex-direction: column;
+    .text {
+      margin: 5px 10px;
+    }
+  }
 }

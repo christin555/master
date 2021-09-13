@@ -25,7 +25,7 @@
       align-items: flex-start;
       color: #9299a7;
 
-      &>* {
+      & > * {
         margin-bottom: 10px;
 
         &:hover {
@@ -70,6 +70,7 @@
         &:visited {
           color: white;
         }
+
         .iconContact {
           font-size: 20px;
           margin-right: 10px;
@@ -151,5 +152,41 @@
     text-align: center;
     display: block;
     padding: 5px;
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+  .footer {
+    .content {
+      flex-direction: column;
+      padding: 10px 20px;
+      align-items: center;
+
+      .menu {
+        flex-flow: wrap;
+
+        & > * {
+          margin-right: 10px;
+        }
+      }
+
+      .info {
+        height: min-content;
+
+        .address {
+          margin: 20px 0;
+          font-size: 12px;
+
+          .iconContact {
+            font-size: 14px;
+          }
+        }
+
+        & > * + * {
+          margin: 10px 0;
+        }
+      }
+    }
   }
 }

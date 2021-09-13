@@ -5,7 +5,7 @@ li, p {
 }
 
 h4 {
-  font-family: Montserrat,sans-serif;
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   margin: 5px 0;
 }
@@ -28,7 +28,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
   background-color: #f9f9fd;
 }
 
@@ -55,6 +55,15 @@ body {
   flex-grow: 1;
 }
 
-.isNotHome{
-margin-top: 140px;
+.isNotHome {
+  margin-top: 140px;
+}
+
+@media only screen and (max-width: 480px) {
+  .wrapper {
+    width: auto;
+  }
+  .isNotHome {
+    margin-top: 70px;
+  }
 }

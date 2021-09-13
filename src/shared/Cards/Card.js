@@ -5,13 +5,11 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import PhoneIcon from '@material-ui/icons/Phone';
 import classNames from 'classnames';
 import {inject} from 'mobx-react';
 import Callme from '../Callme';
 const plural = require('plural-ru');
 
-import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import AddShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 @inject(({RouterStore}) => {
