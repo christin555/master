@@ -14,7 +14,7 @@ class Home extends React.Component {
                                     РЕАЛИЗУЙТЕ МЕЧТЫ ВМЕСТЕ С НАМИ
                 <div className={s.slogan}>
                   <span>проффесионализм</span>
-                  <span>ответсвенность</span>
+                  <span>ответственность</span>
                   <span>надежность</span>
                 </div>
               </div>
