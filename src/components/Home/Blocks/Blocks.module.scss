@@ -48,7 +48,7 @@
   font-family: museo-sans, sans-serif;
 
   .content {
-    padding: 0px 20px;
+    padding: 0 20px;
     text-align: center;
     margin: auto 0;
 
@@ -75,7 +75,7 @@
 
 .button {
   border-color: black;
-  border-radius: 0px;
+  border-radius: 0;
 
   &:hover {
     background: #34373d;
@@ -103,6 +103,10 @@
     font-size: 14px;
     display: flex;
     flex-direction: row;
+
+    svg {
+      margin-right: 5px;
+    }
   }
 
   span {
@@ -115,12 +119,10 @@
 }
 
 .catalog {
-  margin: 40px 0;
+  margin: 40px 50px;
   display: flex;
-  width: 100%;
 
   .cards {
-    margin-left: 50px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 2fr));
     grid-column-gap: 20px;
@@ -137,11 +139,10 @@
   }
 
   .content {
-    margin-left: 50px;
     background: #34373d;
     color: #f9f9fd;
     width: 700px;
-    padding: 10px 40px;
+    padding: 25px 40px;
     font-size: 16px;
     display: flex;
     flex-direction: column;
