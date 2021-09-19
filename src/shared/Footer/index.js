@@ -22,24 +22,24 @@ const Index = () => {
   const items = [
     {
       name: 'Каталог',
-      alias: 'laminate'
+      alias: '/catalog'
     },
 
     {
-      name: 'Монтаж',
-      alias: 'quartzvinyl'
+      name: 'Услуги',
+      alias: '/works'
     },
     {
       name: 'Оплата и доставка',
-      alias: 'doors'
+      alias: '/delivery'
     },
     {
       name: 'О нас',
-      alias: 'doors'
+      alias: '/about'
     },
     {
       name: 'Блог',
-      alias: 'gallery'
+      alias: '/gallery'
     }
   ];
 
@@ -57,8 +57,7 @@ const Index = () => {
             <span className={s.header}> САЛОН НАПОЛЬНЫХ ПОКРЫТИЙ И ДВЕРЕЙ </span>
             <span className={s.header}> МАСТЕР ПОЛА </span>
             <span className={s.time}> Часы работы </span>
-            <span className={s.time}> ПН–ПТ: 10:00–18:00 </span>
-            <span className={s.time}> СБ-ВС: 10:00–17:00 </span>
+            <span className={s.time}> Ежедневно: 10:00–19:00 </span>
           </div>
           <a
             target={'_blank'}
