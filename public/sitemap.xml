@@ -21,10 +21,41 @@
     <loc>https://master-pola.com/works</loc>
     <lastmod>2021-09-19T18:04:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://master-pola.com/gallery</loc>
     <lastmod>2021-09-19T18:04:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://master-pola.com/catalog</loc>
+    <lastmod>2021-09-19T18:04:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://master-pola.com/product/214</loc>
+    <lastmod>2021-09-19T18:04:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://master-pola.com/product/229</loc>
+    <lastmod>2021-09-19T18:04:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://master-pola.com/product/176</loc>
+    <lastmod>2021-09-19T18:04:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://master-pola.com/delivery</loc>
+    <lastmod>2021-09-19T18:04:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
 </urlset>
