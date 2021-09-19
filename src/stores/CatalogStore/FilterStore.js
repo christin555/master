@@ -56,7 +56,6 @@ class FilterStore {
         const body = {category, ...urlParams};
         const filterFields = await api.post('catalog/getFilterFields', body);
 
-        console.log(filterFields);
         this.setFilterFields(filterFields);
         this.setStatus(statusEnum.SUCCESS);
       } catch(_) {

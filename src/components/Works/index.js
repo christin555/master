@@ -25,7 +25,7 @@ class Works extends React.Component {
     return (
       <React.Fragment>
           <Helmet>
-                <title> Услуги </title>
+                <title> {'Услуги'} </title>
                 <link rel="canonical" href="https://master-pola.com" />
                 <meta 
                 name="description" 

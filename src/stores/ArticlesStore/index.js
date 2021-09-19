@@ -32,8 +32,6 @@ class ArticlesStore {
       try {
         const articles = await api.get('articles/getArticles');
 
-        console.log(articles);
-
         this.setArticles(articles);
         this.setStatus(statusEnum.SUCCESS);
       } catch(_) {

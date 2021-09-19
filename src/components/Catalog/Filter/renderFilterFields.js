@@ -46,8 +46,6 @@ const getTypeField = ({name, type, isMulti = true, values, setFilterValues, filt
 };
 
 const renderFilterFields = ({filterFields, setFilterValues, filterValues}) => {
-  console.log('hule', filterValues);
-
   return filterFields.map(({id, name, type, title, values}) => (
     <Accordion key={id}>
       <AccordionSummary className={s.summary} expandIcon={<ExpandMoreIcon />}>

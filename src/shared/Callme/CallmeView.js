@@ -53,8 +53,6 @@ class Callme extends React.Component {
       } = this.props;
       const headerTitle = product && 'Оставить заявку на товар' || 'Заказать звонок';
 
-      console.log(product);
-
       return (
         <React.Fragment>
           <Button

@@ -12,7 +12,7 @@ import classNames from 'classnames';
 import s from './Product.module.scss';
 import Callme from '../../shared/Callme';
 import {toJS} from 'mobx';
-import {Helmet} from "react-helmet";
+import {Helmet} from 'react-helmet';
 
 @inject(({ProductStore}) => {
   return {
@@ -132,12 +132,13 @@ class Product extends React.Component {
     return (
       <React.Fragment>
         <Helmet>
-                <title> {values.name} </title>
-                <link rel="canonical" href="https://master-pola.com" />
-                <meta 
-                name="description" 
-                content={`${values.name} ${values.collection} ${values?.description.slice(0, 50)}`} />
-            </Helmet>
+          <title> {`Мастер Пола - коллекция ${values.collection}`} </title>
+          <link rel='canonical' href='https://master-pola.com' />
+          <meta
+            name='description'
+            content={`${values.name} ${values.collection} ${values?.description}`}
+          />
+        </Helmet>
         <Hierarchy hierarchy={hierarchy} />
         <div className={s.content}>
           <div className={classNames(s.card, {[s.door]: !!values.finishingMaterial})}>
