@@ -1,14 +1,7 @@
 import React from 'react';
-import Chip from '@material-ui/core/Chip';
-import Icons from 'shared/Icons';
-import {inject} from 'mobx-react';
 import Carousel from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import {Divider} from '@material-ui/core';
-import classNames from 'classnames';
 import s from './Delivery.module.scss';
-import YouTube from 'react-youtube';
-import Nophoto from '../../shared/img/nophoto.png';
 
 class Delivery extends React.Component {
   get imgs() {

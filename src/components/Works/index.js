@@ -3,7 +3,6 @@ import Carousel from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Works.module.scss';
 import Callme from '../../shared/Callme';
-import {Helmet} from 'react-helmet';
 
 class Works extends React.Component {
   get imgs() {
@@ -18,15 +17,6 @@ class Works extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Helmet>
-          <title> {'Услуги'} </title>
-          <link rel='canonical' href='https://master-pola.com' />
-          <meta
-            name='description'
-            content={`Монтаж ПВХ/LVT/кварцвиниловой плитки, Укладка керамогранита и керамической плитки, Демонтаж/монтаж напольного покрытия/стяжки, ремонт под ключ`}
-          />
-        </Helmet>
-
         <div className={s.header}>
           {'Услуги'}
           <div className={s.line} />

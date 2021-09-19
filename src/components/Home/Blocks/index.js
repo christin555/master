@@ -8,13 +8,7 @@ import Img5 from '../../../shared/img/img5.jpg';
 import Img6 from '../../../shared/img/img6.jpg';
 import Img7 from '../../../shared/img/img7.jpg';
 import Img8 from '../../../shared/img/img8.jpg';
-import Img9 from '../../../shared/img/img9.jpg';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import CheckIcon from '@material-ui/icons/Check';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
@@ -23,20 +17,7 @@ import Callme from '../../../shared/Callme';
 import Cards from '../../../shared/Cards';
 import {useHistory} from 'react-router-dom';
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 250
-  },
-  content: {
-    padding: '10px 10px 0'
-  },
-  media: {
-    height: 140
-  }
-});
-
 const Blocks = () => {
-  const classes = useStyles();
   const items = [
     {
       name: 'Ламинат',

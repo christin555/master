@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Filter.module.scss';
-import {Accordion, AccordionSummary, FormControlLabel, AccordionDetails, Typography} from '@material-ui/core';
+import {Accordion, AccordionSummary, FormControlLabel, AccordionDetails} from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Checkbox from '@material-ui/core/Checkbox';
 
@@ -21,12 +21,12 @@ const _setValue = ({name, value, setFilterValues, filterValues, type}) => {
   }
 };
 
-const getTypeField = ({name, type, isMulti = true, values, setFilterValues, filterValues}) => {
+const getTypeField = ({name, type, values, setFilterValues, filterValues}) => {
 
   switch (type) {
     case 'checkbox':
 
-      return values.map(({title, name: nameValue, id}) => (
+      return values.map(({name: nameValue, id}) => (
         <FormControlLabel
           className={s.checkboxControl}
           key={id}

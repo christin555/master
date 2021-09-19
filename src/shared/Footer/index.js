@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Footer.module.scss';
-import Button from '@material-ui/core/Button';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import ViberIcon from '../../shared/Icons/ViberIcon';
@@ -8,9 +7,6 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import RoomIcon from '@material-ui/icons/Room';
 import Callme from '../Callme';
 import {useHistory} from 'react-router-dom';
-import Img7 from '../img/img7.jpg';
-import Img8 from '../img/img8.jpg';
-import Img2 from '../img/img2.jpg';
 
 const Index = () => {
   const history = useHistory();

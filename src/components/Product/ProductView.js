@@ -132,12 +132,8 @@ class Product extends React.Component {
     return (
       <React.Fragment>
         <Helmet>
-          <title> {`Мастер Пола - коллекция ${values.collection}`} </title>
-          <link rel='canonical' href='https://master-pola.com' />
-          <meta
-            name='description'
-            content={`${values.name} ${values.collection} ${values?.description}`}
-          />
+          <title>{`Мастер Пола - ${values.name}`}</title>
+          <meta name='description' content={`Тюмень, коллекция ${values.collection} - ${values.name}`} />
         </Helmet>
         <Hierarchy hierarchy={hierarchy} />
         <div className={s.content}>

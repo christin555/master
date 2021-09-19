@@ -1,11 +1,7 @@
 import React from 'react';
-import Chip from '@material-ui/core/Chip';
-import Icons from 'shared/Icons';
 import {inject} from 'mobx-react';
-import Carousel from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import {Divider} from '@material-ui/core';
-import classNames from 'classnames';
 import s from './Articles.module.scss';
 import YouTube from 'react-youtube';
 
@@ -16,7 +12,7 @@ import YouTube from 'react-youtube';
 })
 class ArticlesView extends React.Component {
 
-    getMedia = ({src, title, content, id, type}) => {
+    getMedia = ({src, type}) => {
       switch (type) {
         case 'youtube':
           return (

@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-Agent: *
 Allow: /
+Sitemap: https://master-pola.com/sitemap.xml

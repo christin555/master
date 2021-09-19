@@ -13,10 +13,6 @@ import classNames from 'classnames';
   };
 })
 class Body extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {alerts: []};
-  }
 
   render() {
     const {children, pathname} = this.props;

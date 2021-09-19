@@ -1,6 +1,5 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import classNames from 'classnames';
 import s from './Burger.module.scss';
 import CloseIcon from '@material-ui/icons/Close';
