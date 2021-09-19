@@ -16,12 +16,16 @@ const StyledTextField = withStylesUi(() => createStyles({
     '& [class*="MuiInputBase-input"]': {
       'padding': '2px 5px',
       'minHeight': '20px',
+      'color': 'white',
       '&:disabled': {
         opacity: 0.5
       },
       '&::placeholder': {
         color: 'rgb(213,213,213)',
         opacity: 1
+      },
+      '&:focus::placeholder': {
+        opacity: 0.7
       },
       '&:hover:not(:focus):not(:disabled)': {
         borderColor: 'rgba(201,15,15,0.99)'

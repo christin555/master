@@ -9,7 +9,6 @@ import Img6 from '../../../shared/img/img6.jpg';
 import Img7 from '../../../shared/img/img7.jpg';
 import Img8 from '../../../shared/img/img8.jpg';
 import Button from '@material-ui/core/Button';
-import {makeStyles} from '@material-ui/core/styles';
 import CheckIcon from '@material-ui/icons/Check';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
@@ -24,7 +23,6 @@ const Blocks = () => {
       img: Img7,
       alias: 'laminate'
     },
-
     {
       name: 'Кварцвинил',
       img: Img8,
@@ -68,10 +66,10 @@ const Blocks = () => {
         </div>
       </div>
       <div className={s.why}>
-        <span className={s.header}>
-                    Почему стоит обратиться
-                    именно к нам?
-        </span>
+        <h2>
+          Почему стоит обратиться
+          именно к нам?
+        </h2>
         <div className={s.list}>
           <span> <CheckIcon /> Лучший материал и качество </span>
           <span>  <CheckIcon /> Гарантия на монтаж до 3-х лет </span>
@@ -109,9 +107,9 @@ const Blocks = () => {
       </div>
       <div className={s.block}>
         <div className={s.textBlock}>
-          <div className={s.header}>
-                        Команда, которой можно доверить ремонт
-          </div>
+          <h2>
+            Команда, которой можно доверить ремонт
+          </h2>
           <div className={s.text}>
             <span>
     «Мастер Пола» работает в г. Тюмень , поставляя ремонтные и строительный материалы, а также
@@ -135,14 +133,14 @@ const Blocks = () => {
           <img src={Img1} />
         </div>
       </div>
-      <div className={s.mediaBlockFull}>
+      <div className={s.block}>
         <div className={s.mediaBlock}>
           <img src={Img3} />
         </div>
         <div className={s.textBlock}>
-          <div className={s.header}>
-                        Товары высокого качества
-          </div>
+          <h2>
+            Товары высокого качества
+          </h2>
           <div className={s.text}>
             <span>
 В нашем салоне вы можете подобрать для своего помещения напольное покрытие на любой вкус и цвет.

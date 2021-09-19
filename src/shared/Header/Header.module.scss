@@ -5,8 +5,13 @@
   & > * {
     color: #f9f9fd;
   }
-  a{
-    color: #f9f9fd !important;
+
+  a {
+    color: #f9f9fd;
+
+    &:hover {
+      color: #b3b3b3;
+    }
   }
 }
 
@@ -19,11 +24,43 @@
 .header {
   width: 100%;
   position: fixed;
-  z-index: 2;
-  color: #34373d;
+    z-index: 2;
+    color: #34373d;
   box-shadow: 0 4px 20px rgba(217, 216, 216, 0.56);
   top: 0;
   display: flex;
+
+  &:not(.isHome) a {
+    color: #34373d;
+
+    &:hover {
+      color: #949494;
+    }
+  }
+
+  &.isScrolled,
+  &:not(.isHome) {
+    input[class*="MuiInputBase-input"],
+    input[class*="MuiInputBase-input"]::placeholder {
+      color: #34373d;
+    }
+  }
+
+  .headerBackground {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: white;
+    transition: opacity .3s;
+    opacity: 0;
+  }
+
+  &:not(.isHome) .headerBackground {
+    opacity: 1;
+  }
 
   .logoBlock {
     margin-right: 8px;
@@ -100,6 +137,11 @@
         line-height: 24px;
         font-size: 16px;
         font-weight: 300;
+        text-decoration: none;
+
+        &:hover {
+          color: #b3b3b3;
+        }
       }
 
       .place {
@@ -123,10 +165,14 @@
   height: 40px;
 
   a {
-    color: #34373d;
     text-decoration: none;
-    &:visited {
-      color: #34373d;
+  }
+
+  &:not(.isHome) a {
+    color: #34373d;
+
+    &:hover {
+      color: #949494;
     }
   }
   .isActive {
@@ -155,13 +201,29 @@
 }
 
 .isScrolled {
-  background: white;
-  // background: #34373d;
   color: #000000;
 
   box-shadow: 0 4px 20px rgba(217, 216, 216, 0.56) !important;
 
+  .headerBackground {
+    opacity: 1;
+  }
+
   & > * {
+    color: #000000;
+  }
+
+  .address {
+    svg {
+      fill: #000000;
+    }
+
+    &:hover svg {
+      fill: #b3b3b3;
+    }
+  }
+
+  .phone {
     color: #000000;
   }
 }
@@ -172,6 +234,7 @@
   font-weight: 400;
   cursor: pointer;
   text-decoration: none;
+  transition: unset;
 
   &:visited {
     color: white;
@@ -180,6 +243,10 @@
   .iconContact {
     font-size: 20px;
     margin-left: 10px;
+  }
+
+  svg {
+    transition: unset;
   }
 }
 
@@ -214,7 +281,7 @@
         .nameSmall {
           letter-spacing: 0.8px;
           font-size: 10px;
-          margin-top: 0px;
+          margin-top: 0;
         }
       }
     }

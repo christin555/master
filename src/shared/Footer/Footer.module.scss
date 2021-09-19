@@ -5,7 +5,7 @@
   background: #34373d;
   color: #f9f9fd;
   bottom: 0;
-  margin-top: 40px;
+  margin-top: 60px;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -23,14 +23,16 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      color: #9299a7;
+      color: white;
 
       & > * {
+        color: white;
+        text-decoration: none;
         margin-bottom: 10px;
 
         &:hover {
           cursor: pointer;
-          color: white;
+          color: #9299a7;
         }
       }
     }
@@ -66,9 +68,10 @@
         font-weight: 400;
         cursor: pointer;
         text-decoration: none;
+        color: white;
 
-        &:visited {
-          color: white;
+        &:hover {
+          color: #b3b3b3;
         }
 
         .iconContact {
@@ -108,7 +111,7 @@
 
 .button {
   border-color: #ffffff !important;
-  border-radius: 0px !important;
+  border-radius: 0 !important;
   color: white !important;
   margin: 40px 0 20px !important;
 
@@ -160,11 +163,12 @@
   .footer {
     .content {
       flex-direction: column;
-      padding: 10px 20px;
       align-items: center;
+      padding: 30px 20px;
 
       .menu {
         flex-flow: wrap;
+        justify-content: center;
 
         & > * {
           margin-right: 10px;

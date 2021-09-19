@@ -44,7 +44,8 @@ const Index = () => {
       <div className={s.content}>
         <div className={s.menu}>
           {
-            items.map(({name, alias}) => <span key={alias} onClick={() => handleClick(alias)}>{name}</span>)
+            items.map(({name, alias}) =>
+              <a href={alias} key={alias} onClick={() => handleClick(alias)}>{name}</a>)
           }
           {/*<span>Контакты</span>*/}
         </div>

@@ -61,6 +61,7 @@ class Header extends React.Component {
       return (
         <div className={s.containerHeader}>
           <div className={classNames(s.header, {[s.isScrolled]: isScrolled, [s.isHome]: isHome})}>
+            <div className={s.headerBackground} />
             <div className={s.logoBlock}>
               <div className={s.logo}>
                 <img src={logo} />
@@ -87,9 +88,9 @@ class Header extends React.Component {
                   />
                   <SearchIcon onClick={setParams} />
                 </div>
-                <div className={s.phone}>
-                                +7 (982) 988-15-22
-                </div>
+                <a href={'tel:+79829881522'} className={s.phone}>
+                  +7 (982) 988-15-22
+                </a>
                 <Tooltip title={'г. Тюмень, ул. Федюнинского д. 62 к. 1'}>
                   <a
                     target={'_blank'}
