@@ -3,7 +3,10 @@
   box-shadow: none !important;
 
   & > * {
-    color: #f9f9fd;
+    color: #f9f9fd !important;
+  }
+  a{
+    color: #f9f9fd !important;
   }
 }
 
