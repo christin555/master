@@ -54,7 +54,8 @@ class CardView extends React.Component {
 
     render() {
       const {isHover} = this.state;
-      const {imgForHover, isDoor, img, name, collection, id, price, withPhone} = this.props;
+      const {alias, imgForHover, isDoor, img, name, collection, id, price, withPhone} = this.props;
+      const pathname = alias && `/catalog/${alias}` || `/product/${id}`;
 
       return (
         <Card className={s.root}>
@@ -63,44 +64,45 @@ class CardView extends React.Component {
             onMouseEnter={() => this.setHover(true)}
             onMouseLeave={() => this.setHover(false)}
           >
-            <CardMedia
-              onClick={this.routeChange}
-              className={s.media}
-            >
-              <React.Fragment>
-                {
-                  imgForHover &&
+            <a href={pathname}>
+              <CardMedia
+                className={s.media}
+              >
+                <React.Fragment>
+                  {
+                    imgForHover &&
                   <img className={classNames(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: isHover})} src={imgForHover} />
-                }
-                <img className={classNames(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: !(imgForHover && isHover)})} src={img} />
-              </React.Fragment>
-            </CardMedia>
-            <CardContent
-              onClick={this.routeChange}
-              className={s.content}
-            >
-              {id && <span className={s.id}> код {id} </span> || null}
-              {
-                collection && (
-                  <span className={s.collection}>
-                    {collection}
-                    {this.colors}
-                  </span>
-                )
-              }
-              <span className={s.name}>
-                {name}
-              </span>
-              {
-                price && (
-                  <span className={s.price}> {price.price} ₽
-                    <span className={s.unit}>
-                    за 1 м2
+                  }
+                  <img className={classNames(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: !(imgForHover && isHover)})} src={img} />
+                </React.Fragment>
+              </CardMedia>
+              <CardContent
+                onClick={this.routeChange}
+                className={s.content}
+              >
+                {id && <span className={s.id}> код {id} </span> || null}
+                {
+                  collection && (
+                    <span className={s.collection}>
+                      {collection}
+                      {this.colors}
                     </span>
-                  </span>
-                ) || null
-              }
-            </CardContent>
+                  )
+                }
+                <span className={s.name}>
+                  {name}
+                </span>
+                {
+                  price && (
+                    <span className={s.price}> {price.price} ₽
+                      <span className={s.unit}>
+                    за 1 м2
+                      </span>
+                    </span>
+                  ) || null
+                }
+              </CardContent>
+            </a>
             {
               withPhone && (
                 <CardActions

@@ -119,6 +119,13 @@
   font-weight: 300;
   height: 40px;
 
+  a {
+    color: #34373d;
+    text-decoration: none;
+    &:visited {
+      color: #34373d;
+    }
+  }
   .isActive {
     font-weight: 500;
     color: #c41414;

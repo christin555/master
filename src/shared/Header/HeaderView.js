@@ -108,16 +108,16 @@ class Header extends React.Component {
 
               {
                 this.menu.map(({name, important, link}, index) => (
-                  <div
+                  <a
                     key={`${link}${index}`}
                     className={classNames({
                       [s.important]: important,
                       [s.isActive]: link === pathname
                     })}
-                    onClick={() => this.toPage(link)}
+                    href={link}
                   >
                     {name}
-                  </div>
+                  </a>
                 ))
               }
             </div>
