@@ -95,7 +95,7 @@ class CatalogStore {
     }
 
     getCountProducts = async() => {
-       const {category, urlParams, filter} = this;
+      const {category, urlParams, filter} = this;
 
       try {
         const body = {searchParams: {category, ...urlParams, filter}};

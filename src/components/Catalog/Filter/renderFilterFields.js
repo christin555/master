@@ -45,22 +45,20 @@ const getTypeField = ({name, type, isMulti = true, values, setFilterValues, filt
 
 };
 
-const renderFilterFields = ({filterFields, setFilterValues, filterValues}) => {
-  return filterFields.map(({id, name, type, title, values}) => (
-    <Accordion key={id}>
-      <AccordionSummary className={s.summary} expandIcon={<ExpandMoreIcon />}>
-        <h4 className={s.heading}> {title}
-          {
-            filterValues[name] && <span className={s.active} /> || null
-          }
-        </h4>
-      </AccordionSummary>
-      <AccordionDetails className={s.details}>
-        {getTypeField({name, type, values, setFilterValues, filterValues})}
-      </AccordionDetails>
-    </Accordion>
-  ));
-};
+const renderFilterFields = ({filterFields, setFilterValues, filterValues}) => filterFields.map(({id, name, type, title, values}) => (
+  <Accordion key={id}>
+    <AccordionSummary className={s.summary} expandIcon={<ExpandMoreIcon />}>
+      <h4 className={s.heading}> {title}
+        {
+          filterValues[name] && <span className={s.active} /> || null
+        }
+      </h4>
+    </AccordionSummary>
+    <AccordionDetails className={s.details}>
+      {getTypeField({name, type, values, setFilterValues, filterValues})}
+    </AccordionDetails>
+  </Accordion>
+));
 
 export {
   renderFilterFields
