@@ -1,15 +1,9 @@
 import React from 'react';
-import Chip from '@material-ui/core/Chip';
-import Icons from 'shared/Icons';
-import {inject} from 'mobx-react';
 import Carousel from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import {Divider} from '@material-ui/core';
-import classNames from 'classnames';
 import s from './Works.module.scss';
-import YouTube from 'react-youtube';
-import Nophoto from '../../shared/img/nophoto.png';
 import Callme from '../../shared/Callme';
+import {Helmet} from 'react-helmet';
 
 class Works extends React.Component {
   get imgs() {
@@ -24,13 +18,14 @@ class Works extends React.Component {
   render() {
     return (
       <React.Fragment>
-          <Helmet>
-                <title> {'Услуги'} </title>
-                <link rel="canonical" href="https://master-pola.com" />
-                <meta 
-                name="description" 
-                content={`Монтаж ПВХ/LVT/кварцвиниловой плитки, Укладка керамогранита и керамической плитки, Демонтаж/монтаж напольного покрытия/стяжки, ремонт под ключ`} />
-            </Helmet>
+        <Helmet>
+          <title> {'Услуги'} </title>
+          <link rel='canonical' href='https://master-pola.com' />
+          <meta
+            name='description'
+            content={`Монтаж ПВХ/LVT/кварцвиниловой плитки, Укладка керамогранита и керамической плитки, Демонтаж/монтаж напольного покрытия/стяжки, ремонт под ключ`}
+          />
+        </Helmet>
 
         <div className={s.header}>
           {'Услуги'}
@@ -64,25 +59,25 @@ class Works extends React.Component {
                     товары и услуги. Специалисты, которые работают у нас, обладают высокой профессиональной
                     компетенцией и всегда готовы помочь советом и делом.
               </p>
-                <ul>
-              <li>Подготовка основания</li>
-              <li>Финишное выравнивание основания</li>
-              <li>Укладка ламината</li>
-              <li> {'Монтаж паркетной доски "плавающим способом" и с приклеиванием'}</li>
-              <li> Монтаж ПВХ/LVT/кварцвиниловой плитки</li>
-              <li> Монтаж настенной и напольной пробки</li>
-              <li> Укладка массивной/инженерной доски</li>
-              <li> Укладка керамогранита и керамической плитки</li>
-              <li> Устройство спортивных покрытий</li>
-              <li> Монтаж коврового покрытия</li>
-              <li> Обустройство лестниц ковролином</li>
-              <li>Укладка коммерческих напольных покрытий</li>
-              <li> Демонтаж/монтаж напольного покрытия/стяжки</li>
-              <li> Нанесение декоративной штукатурки</li>
-              <li> Изготовление художественных композиций из ковролина, кварцвиниловой плитки и рулонных
+              <ul>
+                <li>Подготовка основания</li>
+                <li>Финишное выравнивание основания</li>
+                <li>Укладка ламината</li>
+                <li> {'Монтаж паркетной доски "плавающим способом" и с приклеиванием'}</li>
+                <li> Монтаж ПВХ/LVT/кварцвиниловой плитки</li>
+                <li> Монтаж настенной и напольной пробки</li>
+                <li> Укладка массивной/инженерной доски</li>
+                <li> Укладка керамогранита и керамической плитки</li>
+                <li> Устройство спортивных покрытий</li>
+                <li> Монтаж коврового покрытия</li>
+                <li> Обустройство лестниц ковролином</li>
+                <li>Укладка коммерческих напольных покрытий</li>
+                <li> Демонтаж/монтаж напольного покрытия/стяжки</li>
+                <li> Нанесение декоративной штукатурки</li>
+                <li> Изготовление художественных композиций из ковролина, кварцвиниловой плитки и рулонных
                         ПВХ-покрытий
-              </li>
-            </ul>
+                </li>
+              </ul>
               <p> Свяжитесь с нами и узнайте, чем мы сможем быть полезными.
               </p>
                          ⠀
