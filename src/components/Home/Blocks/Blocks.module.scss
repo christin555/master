@@ -282,7 +282,7 @@
     padding: 10px;
     margin-top: 10px;
 
-    .header{
+    .header {
       text-align: center;
     }
 
@@ -309,10 +309,11 @@
       width: unset;
       font-weight: 500;
 
-      .header{
+      .header {
         font-weight: 500;
       }
-      .list{
+
+      .list {
         font-weight: 200;
       }
     }
@@ -338,14 +339,14 @@
     margin-top: 10px;
     padding: 10px;
 
-    .textBlock{
+    .textBlock {
       padding: 20px 10px;
 
-      .header{
+      .header {
         margin-bottom: 20px;
       }
 
-      span{
+      span {
         margin: 0;
       }
     }
@@ -370,3 +371,28 @@
   }
 }
 
+@media only screen and (min-width: 480px) {
+  .other {
+    & > * {
+      max-height: min-content;
+    }
+
+    .block {
+      & > * {
+        max-height: 500px;
+      }
+    }
+
+    .blockContact {
+      & > * {
+        max-height: 300px;
+      }
+    }
+
+    .mediaBlockFull {
+      & > * {
+        max-height: 350px;
+      }
+    }
+  }
+}
