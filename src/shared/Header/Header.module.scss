@@ -1,16 +1,18 @@
+@import '../style';
+
 .isHome {
   background: none;
   box-shadow: none !important;
 
   & > * {
-    color: #f9f9fd;
+    color: $gray-10;
   }
 
   a {
-    color: #f9f9fd;
+    color: $gray-10;
 
     &:hover {
-      color: #b3b3b3;
+      color: $white;
     }
   }
 }
@@ -24,14 +26,14 @@
 .header {
   width: 100%;
   position: fixed;
-    z-index: 2;
-    color: #34373d;
+  z-index: 2;
+  color: $gray-400;
   box-shadow: 0 4px 20px rgba(217, 216, 216, 0.56);
   top: 0;
   display: flex;
 
   &:not(.isHome) a {
-    color: #34373d;
+    color: $gray-400;
 
     &:hover {
       color: #949494;
@@ -42,7 +44,7 @@
   &:not(.isHome) {
     input[class*="MuiInputBase-input"],
     input[class*="MuiInputBase-input"]::placeholder {
-      color: #34373d;
+      color: $gray-400;
     }
   }
 
@@ -94,7 +96,6 @@
     .right {
       display: flex;
       flex-direction: column;
-      //color: white;
       align-items: flex-start;
       cursor: pointer;
 
@@ -138,10 +139,6 @@
         font-size: 16px;
         font-weight: 300;
         text-decoration: none;
-
-        &:hover {
-          color: #b3b3b3;
-        }
       }
 
       .place {
@@ -169,7 +166,7 @@
   }
 
   &:not(.isHome) a {
-    color: #34373d;
+    color: $gray-400;
 
     &:hover {
       color: #949494;
@@ -181,10 +178,10 @@
   }
 
   .important {
-    border-bottom: 2px solid #b8b8b8;
+    border-bottom: 2px solid $gray-10;
 
     &:hover {
-      border-bottom: 3px solid #e2e2e2;
+      border-bottom: 2px solid $white;
     }
   }
 
@@ -194,14 +191,14 @@
     height: 25px;
 
     &:hover {
-      color: #e2e2e2;
+      color: $white;
       cursor: pointer;
     }
   }
 }
 
 .isScrolled {
-  color: #000000;
+  color: $gray-400;
 
   box-shadow: 0 4px 20px rgba(217, 216, 216, 0.56) !important;
 
@@ -210,21 +207,29 @@
   }
 
   & > * {
-    color: #000000;
+    color: $gray-300;
+
+    &:hover {
+      color: $gray-500;
+    }
   }
 
   .address {
     svg {
-      fill: #000000;
+      fill: $gray-300;
     }
 
     &:hover svg {
-      fill: #b3b3b3;
+      fill: $gray-500;
     }
   }
 
   .phone {
-    color: #000000;
+    color: $gray-300;
+
+    &:hover {
+      color: $gray-500;
+    }
   }
 }
 
