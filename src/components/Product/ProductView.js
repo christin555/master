@@ -5,7 +5,7 @@ import Icons from 'shared/Icons';
 import {inject} from 'mobx-react';
 import Hierarchy from '../../shared/Hierarchy';
 import Nophoto from 'shared/img/nophoto.png';
-import Carousel from 'react-image-gallery';
+import Carousel from '../../shared/Carousel';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import {Divider} from '@material-ui/core';
 import classNames from 'classnames';
@@ -58,18 +58,11 @@ class Product extends React.Component {
     return rows;
   }
 
-  get imgs() {
+  get images() {
     const {values} = this.props;
 
     if (!values.imgs) {
-      return [{
-        original: Nophoto
-      }];
-      //   <div>
-      //     <img src={Nophoto} alt={'nophoto'} />
-      //   </div>
-      // );
-
+      return [{original: Nophoto}];
     }
 
     return values.imgs.map(({src}) => {
@@ -139,12 +132,10 @@ class Product extends React.Component {
         <div className={s.content}>
           <div className={classNames(s.card, {[s.door]: !!values.finishingMaterial})}>
             <Carousel
-              autoPlay={true}
-              items={this.imgs}
+              images={this.images}
               className={s.carousel}
               width={'40vw'}
             />
-
             <div className={s.product}>
               <span className={s.brand}> Коллекция {values.collection} </span>
               <span className={s.name}>
@@ -162,11 +153,6 @@ class Product extends React.Component {
                 ) || null
               }
               <div className={s.chars}>
-                {/*<div className={s.row}>*/}
-                {/*  <div>*/}
-                {/*    <span>Код товара</span> <span> {values.id}</span>*/}
-                {/*  </div>*/}
-                {/*</div>*/}
                 {this.mainFields}
               </div>
               <div>

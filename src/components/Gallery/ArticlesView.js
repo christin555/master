@@ -17,17 +17,15 @@ class ArticlesView extends React.Component {
         return (
           <div>
             <YouTube
-              className={s.iframe}
               videoId={src}
+              opts={{width: '100%'}}
             />
           </div>
         );
       case 'img':
         return (
           <div className={s.imgBlock}>
-            <img
-              src={src}
-            />
+            <img src={src} />
           </div>
         );
     }
