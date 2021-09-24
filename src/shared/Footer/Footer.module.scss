@@ -110,15 +110,7 @@
 }
 
 .button {
-  border-color: #ffffff !important;
-  border-radius: 0 !important;
-  color: white !important;
   margin: 40px 0 20px !important;
-
-  &:hover {
-    background: #ffffff;
-    color: #000000;
-  }
 }
 
 .messangers {
@@ -132,7 +124,15 @@
 
   .icon {
     font-size: 22px;
-    color: white;
+    color: $white;
+
+    &:hover {
+      color: $gray-10;
+    }
+  }
+
+  .messenger {
+    cursor: pointer;
   }
 }
 
