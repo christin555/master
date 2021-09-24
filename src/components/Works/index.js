@@ -6,7 +6,6 @@ import Callme from '../../shared/Callme';
 
 class Works extends React.Component {
   get imgs() {
-
     return [
       {original: 'http://45.147.179.124:8000/public/works1.jpg', thumbnail: 'http://45.147.179.124:8000/public/works1.jpg'},
       {original: 'http://45.147.179.124:8000/public/works2.jpg', thumbnail: 'http://45.147.179.124:8000/public/works2.jpg'}

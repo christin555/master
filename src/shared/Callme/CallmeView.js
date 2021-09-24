@@ -6,7 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import MaskedInput from 'react-text-mask';
 import Card from '../Cards/Card';
 import {inject} from 'mobx-react';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 @inject(({CallmeStore}) => {
   return {
@@ -59,7 +59,7 @@ class Callme extends React.Component {
         <Button
           variant={'outlined'}
           onClick={toggleShow}
-          className={classNames(s.buttonMain, className)}
+          className={cn(s.buttonMain, className)}
           {...buttonProps}
         >
           {isShowButText && (buttonText || 'Оставить заявку')}
@@ -90,18 +90,18 @@ class Callme extends React.Component {
               <div className={s.inputs}>
                 <TextField
                   onChange={setName}
-                  label='Имя'
+                  label={'Имя'}
                   InputLabelProps={{
                     shrink: true
                   }}
-                  variant='outlined'
+                  variant={'outlined'}
                   value={name}
                 />
                 <TextField
                   onChange={setPhone}
-                  variant='outlined'
+                  variant={'outlined'}
                   value={phone}
-                  label='Номер'
+                  label={'Номер'}
                   InputProps={{inputComponent: this.textMaskCustom}}
                 />
               </div>
@@ -111,7 +111,7 @@ class Callme extends React.Component {
               <div>
                 <Button
                   size={'small'}
-                  color='primary'
+                  color={'primary'}
                   className={s.call}
                   onClick={apply}
                 >

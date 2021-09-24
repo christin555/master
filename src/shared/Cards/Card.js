@@ -5,18 +5,17 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import classNames from 'classnames';
+import cn from 'classnames';
 import {inject} from 'mobx-react';
 import Callme from '../Callme';
-const plural = require('plural-ru');
-
 import AddShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {Link} from 'react-router-dom';
+
+const plural = require('plural-ru');
 
 @inject(({RouterStore}) => {
   return {RouterStore};
 })
-
 class CardView extends React.Component {
   constructor() {
     super();
@@ -26,9 +25,9 @@ class CardView extends React.Component {
   }
 
   get colors() {
-    const {finishingMaterial} = this.props;
+    const {finishingMaterial = []} = this.props;
 
-    if (!finishingMaterial) {
+    if (!finishingMaterial.length) {
       return null;
     }
 
@@ -65,9 +64,9 @@ class CardView extends React.Component {
               <React.Fragment>
                 {
                   imgForHover &&
-                <img className={classNames(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: isHover})} src={imgForHover} />
+                <img className={cn(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: isHover})} src={imgForHover} />
                 }
-                <img className={classNames(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: !(imgForHover && isHover)})} src={img} />
+                <img className={cn(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: !(imgForHover && isHover)})} src={img} />
               </React.Fragment>
             </CardMedia>
             <CardContent

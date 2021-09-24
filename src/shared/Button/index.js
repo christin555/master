@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonUi from '@material-ui/core/Button';
 import {createStyles, withStyles} from '@material-ui/core/styles';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 const StyledButton = withStyles((theme) =>
   createStyles({
@@ -50,11 +50,7 @@ const Button = (props) => {
     className,
     ...elementProps
   } = props;
-
-  const classes = classNames(
-    variant,
-    className
-  );
+  const classes = cn(variant, className);
 
   return (
     <StyledButton

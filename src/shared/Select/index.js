@@ -1,5 +1,4 @@
 import React from 'react';
-import s from './Select.module.scss';
 import ReactSelect from 'react-select';
 import AsyncSelect from 'react-select/async';
 
@@ -71,38 +70,37 @@ const customStyles = {
 };
 
 class Select extends React.Component {
-    defaultPlaceholder = 'Выберете значение'
+  defaultPlaceholder = 'Выберете значение'
 
-    render() {
-      const {placeholder, options, loadOptions, defaultOptions, value} = this.props;
-      let selected;
+  render() {
+    const {placeholder, options, loadOptions, defaultOptions, value} = this.props;
+    let selected;
 
-      if (typeof value === 'number') {
-        selected = options.find(({value: val}) => Number(val) === Number(value));
-      }
-
-      return (
-        !loadOptions && (
-          <ReactSelect
-            placeholder={placeholder || this.defaultPlaceholder}
-            {...this.props}
-            styles={customStyles}
-            options={options}
-            value={selected}
-          />
-        ) || (
-          <AsyncSelect
-            className={s.select}
-            placeholder={placeholder || this.defaultPlaceholder}
-            {...this.props}
-            styles={customStyles}
-            loadOptions={loadOptions}
-            cacheOptions={true}
-            defaultOptions={defaultOptions}
-          />
-        )
-      );
+    if (typeof value === 'number') {
+      selected = options.find(({value: val}) => Number(val) === Number(value));
     }
+
+    return (
+      !loadOptions && (
+        <ReactSelect
+          placeholder={placeholder || this.defaultPlaceholder}
+          {...this.props}
+          styles={customStyles}
+          options={options}
+          value={selected}
+        />
+      ) || (
+        <AsyncSelect
+          placeholder={placeholder || this.defaultPlaceholder}
+          {...this.props}
+          styles={customStyles}
+          loadOptions={loadOptions}
+          cacheOptions={true}
+          defaultOptions={defaultOptions}
+        />
+      )
+    );
+  }
 }
 
 export default Select;

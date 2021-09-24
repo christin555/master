@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 import Body from './bodyWrapper';
@@ -43,4 +43,4 @@ Wrapper.propTypes = {
   name: PropTypes.string
 };
 
-export default React.memo(Wrapper);
+export default memo(Wrapper);

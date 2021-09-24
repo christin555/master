@@ -12,36 +12,15 @@ export const alert = ({type, title = ' ', message = ' '}) => {
 
   switch (type) {
     case 'info':
-      store.addNotification({
-        title,
-        message,
-        type: 'info',
-        ...opt
-      });
+      store.addNotification({title, message, type, ...opt});
       break;
     case 'success':
-      store.addNotification({
-        title,
-        message,
-        type: 'success',
-        ...opt
-      });
+      store.addNotification({title, message, type, ...opt});
       break;
-
     case 'warning':
-      store.addNotification({
-        title,
-        message,
-        type: 'warning',
-        ...opt
-      });
+      store.addNotification({title, message, type, ...opt});
       break;
     case 'error':
-      store.addNotification({
-        title,
-        message,
-        type: 'danger',
-        ...opt
-      });
+      store.addNotification({title, message, type: 'danger', ...opt});
   }
 };

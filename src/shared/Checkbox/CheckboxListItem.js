@@ -44,33 +44,31 @@ export default function CheckboxList({id, name, price, tooltip, checked, onClick
           inputProps={{'aria-labelledby': 1}}
         />
       </ListItemIcon>
-
       <ListItemText>
         <div className={s.titleCheckbox}>
           <span> {name} </span>
           {
             !withPriceField && <span className={s.priceService}> {price} руб. </span> ||
-                        isChecked && withPriceField &&
-                        (
-                          <div className={s.textFieldBlock}>
-                            <span className={s.dopField}> Стоимость: </span>
-                            <TextField
-                              value={prices[id]}
-                              size={'small'}
-                              color={'secondary'}
-                              className={s.textField}
-                              onChange={({target}) => onPriceChange(target.value, id)}
-                            />
-                            <span className={s.dopField}> руб. </span>
-                          </div>
-                        )
+              isChecked && withPriceField &&
+              (
+                <div className={s.textFieldBlock}>
+                  <span className={s.dopField}> Стоимость: </span>
+                  <TextField
+                    value={prices[id]}
+                    size={'small'}
+                    color={'secondary'}
+                    className={s.textField}
+                    onChange={({target}) => onPriceChange(target.value, id)}
+                  />
+                  <span className={s.dopField}> руб. </span>
+                </div>
+              )
           }
         </div>
       </ListItemText>
-
       <ListItemSecondaryAction>
-        <LightTooltip placement='right' title={tooltip}>
-          <IconButton edge='end'>
+        <LightTooltip placement={'right'} title={tooltip}>
+          <IconButton edge={'end'}>
             <HelpIcon className={s.helpIcon} />
           </IconButton>
         </LightTooltip>

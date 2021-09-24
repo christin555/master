@@ -22,7 +22,6 @@ import {Helmet} from 'react-helmet';
   };
 })
 class Product extends React.Component {
-
   get mainFields() {
     const {values, fields} = this.props;
     const rows = [];
@@ -83,6 +82,7 @@ class Product extends React.Component {
   }
 
   //переделать на array2object по type
+  //Хорошо
   get allFields() {
     const {values, fields} = this.props;
     const rows = [];

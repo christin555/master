@@ -4,16 +4,14 @@ import s from './main.module.scss';
 import Header from '../shared/Header';
 import Footer from '../shared/Footer';
 import {inject} from 'mobx-react';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 @inject(({RouterStore}) => {
   return {
-    pathname: RouterStore.pathname,
-    RouterStore
+    pathname: RouterStore.pathname
   };
 })
 class Body extends Component {
-
   render() {
     const {children, pathname} = this.props;
     const isNotHome = pathname !== '/';
@@ -21,7 +19,7 @@ class Body extends Component {
     return (
       <div className={s.wrapper}>
         <Header />
-        <div className={classNames(s.content, {[s.isNotHome]: isNotHome})}>
+        <div className={cn(s.content, {[s.isNotHome]: isNotHome})}>
           {children}
         </div>
         <Footer />
@@ -31,7 +29,8 @@ class Body extends Component {
 }
 
 Body.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
+  pathname: PropTypes.string
 };
 
 export default Body;

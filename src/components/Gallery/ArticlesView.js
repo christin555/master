@@ -11,62 +11,61 @@ import YouTube from 'react-youtube';
   };
 })
 class ArticlesView extends React.Component {
-
-    getMedia = ({src, type}) => {
-      switch (type) {
-        case 'youtube':
-          return (
-            <div>
-              <YouTube
-                className={s.iframe}
-                videoId={src}
-              />
-            </div>
-          );
-        case 'img':
-          return (
-            <div className={s.imgBlock}>
-              <img
-                src={src}
-              />
-            </div>
-          );
-      }
-    }
-
-    render() {
-      const {articles} = this.props;
-
-      return (
-        <React.Fragment>
-          <div className={s.header}>
-            {'НАШ БЛОГ'}
-            <div className={s.line} />
+  getMedia = ({src, type}) => {
+    switch (type) {
+      case 'youtube':
+        return (
+          <div>
+            <YouTube
+              className={s.iframe}
+              videoId={src}
+            />
           </div>
-          <div className={s.content}>
-            {articles.map(({src, title, content, id, type}) => (
-              <React.Fragment key={id}>
-                <div className={s.article}>
-                  {this.getMedia({src, title, content, id, type})}
-                  <div>
-                    <div className={s.title}>
-                      {title}
-                    </div>
-                    <div className={s.articleContent}>
-                      {(content || '')
-                        .split('\n')
-                        .map((item, index) =>
-                          <span key={index}>{item.replace(/\\n/g, '')}</span>)}
-                    </div>
+        );
+      case 'img':
+        return (
+          <div className={s.imgBlock}>
+            <img
+              src={src}
+            />
+          </div>
+        );
+    }
+  }
+
+  render() {
+    const {articles} = this.props;
+
+    return (
+      <React.Fragment>
+        <div className={s.header}>
+          {'НАШ БЛОГ'}
+          <div className={s.line} />
+        </div>
+        <div className={s.content}>
+          {articles.map(({src, title, content, id, type}) => (
+            <React.Fragment key={id}>
+              <div className={s.article}>
+                {this.getMedia({src, title, content, id, type})}
+                <div>
+                  <div className={s.title}>
+                    {title}
+                  </div>
+                  <div className={s.articleContent}>
+                    {(content || '')
+                      .split('\n')
+                      .map((item, index) =>
+                        <span key={index}>{item.replace(/\\n/g, '')}</span>)}
                   </div>
                 </div>
-                <Divider className={s.divider} />
-              </React.Fragment>
-            ))}
-          </div>
-        </React.Fragment>
-      );
-    }
+              </div>
+              <Divider className={s.divider} />
+            </React.Fragment>
+          ))}
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
 export default ArticlesView;

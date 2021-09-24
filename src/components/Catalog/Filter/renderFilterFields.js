@@ -7,7 +7,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 const _setValue = ({name, value, setFilterValues, filterValues, type}) => {
   switch (type) {
     case 'checkbox':
-
       if (filterValues[name]) {
         if (filterValues[name].includes(value)) {
           setFilterValues(name, filterValues[name].filter((val) => val !== value));
@@ -22,10 +21,8 @@ const _setValue = ({name, value, setFilterValues, filterValues, type}) => {
 };
 
 const getTypeField = ({name, type, values, setFilterValues, filterValues}) => {
-
   switch (type) {
     case 'checkbox':
-
       return values.map(({name: nameValue, id}) => (
         <FormControlLabel
           className={s.checkboxControl}
@@ -60,6 +57,4 @@ const renderFilterFields = ({filterFields, setFilterValues, filterValues}) => fi
   </Accordion>
 ));
 
-export {
-  renderFilterFields
-};
+export {renderFilterFields};

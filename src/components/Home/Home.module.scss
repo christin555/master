@@ -81,6 +81,7 @@
 
     .mediaBlock {
       @include paddingStandard320
+
       .text {
         letter-spacing: 1px;
         font-size: 24px;

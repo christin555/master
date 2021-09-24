@@ -1,6 +1,6 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import classNames from 'classnames';
+import cn from 'classnames';
 import s from './Burger.module.scss';
 import CloseIcon from '@material-ui/icons/Close';
 import PlaceIcon from '@material-ui/icons/Place';
@@ -11,9 +11,7 @@ import TextField from '../TextField';
 import SearchIcon from '@material-ui/icons/Search';
 
 const Burger = ({pathname, menu, toPage, search, setParams, setSearch}) => {
-  const [state, setState] = React.useState({
-    isOpen: false
-  });
+  const [state, setState] = React.useState({isOpen: false});
 
   const setOpen = (isOpen) => {
     setState({isOpen});
@@ -50,7 +48,7 @@ const Burger = ({pathname, menu, toPage, search, setParams, setSearch}) => {
               menu.map(({name, important, link}, index) => (
                 <div
                   key={`${link}${index}`}
-                  className={classNames({
+                  className={cn({
                     [s.important]: important,
                     [s.isActive]: link === pathname
                   })}
@@ -61,7 +59,6 @@ const Burger = ({pathname, menu, toPage, search, setParams, setSearch}) => {
               ))
             }
           </div>
-
           <div className={s.footer}>
             <div className={s.phone}>
               <PhoneIcon className={s.iconContact} />

@@ -14,7 +14,6 @@ import {status as statusEnum} from '../../enums';
   };
 })
 class Catalog extends React.Component {
-
   render() {
     const {hierarchy, status} = this.props;
 
@@ -23,7 +22,6 @@ class Catalog extends React.Component {
         {
           status === statusEnum.LOADING && <Loader /> || null
         }
-
         <Hierarchy hierarchy={hierarchy} />
         <div className={s.header}>
           {hierarchy.length && hierarchy[hierarchy.length - 1].name || 'Каталог'}

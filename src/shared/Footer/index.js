@@ -9,14 +9,12 @@ import Callme from '../Callme';
 import {Link} from 'react-router-dom';
 import DefaultStyle from '../../themes/DefaultStyle';
 
-const Index = () => {
-
+const Footer = () => {
   const items = [
     {
       name: 'Каталог',
       alias: '/catalog'
     },
-
     {
       name: 'Услуги',
       alias: '/works'
@@ -118,4 +116,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Footer;
