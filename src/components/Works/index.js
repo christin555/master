@@ -7,10 +7,9 @@ import Callme from '../../shared/Callme';
 class Works extends React.Component {
   get images() {
     return [
-      {original: 'http://45.147.179.124:8000/public/works1.jpg', thumbnail: 'http://45.147.179.124:8000/public/works1.jpg'},
-      {original: 'http://45.147.179.124:8000/public/works2.jpg', thumbnail: 'http://45.147.179.124:8000/public/works2.jpg'}
+      {original: 'https://45.147.179.124:8000/public/works1.jpg', thumbnail: 'https://45.147.179.124:8000/public/works1.jpg'},
+      {original: 'https://45.147.179.124:8000/public/works2.jpg', thumbnail: 'https://45.147.179.124:8000/public/works2.jpg'}
     ];
-
   }
 
   render() {
@@ -69,7 +68,6 @@ class Works extends React.Component {
               </ul>
               <p> Свяжитесь с нами и узнайте, чем мы сможем быть полезными.
               </p>
-                         ⠀
               <Callme buttonText={'Рассчитайте стоимость монтажа в вашем доме'} />
             </div>
           </div>

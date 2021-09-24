@@ -27,7 +27,6 @@ const Carousel = ({images, width, className}) => {
         node.exitFullScreen();
         break;
     }
-
   };
 
   document.addEventListener('keydown', keyDownHandler);
