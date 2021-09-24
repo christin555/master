@@ -1,10 +1,21 @@
 import {store} from 'react-notifications-component';
 
+const alertQueue = {};
+const DELAY = 3000;
+
 export const alert = ({type, title = ' ', message = ' '}) => {
+  if (alertQueue[title] === type) {
+    return;
+  }
+
+  alertQueue[title] = type;
+
+  setTimeout(() => delete alertQueue[title], DELAY);
+
   const opt = {
     container: 'top-right',
     dismiss: {
-      duration: 3000,
+      duration: DELAY,
       onScreen: true
     },
     showIcon: true
