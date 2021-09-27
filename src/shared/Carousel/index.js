@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import CarouselView from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
@@ -29,7 +29,11 @@ const Carousel = ({images, width, className}) => {
     }
   };
 
-  document.addEventListener('keydown', keyDownHandler);
+  useEffect(() => {
+    document.addEventListener('keydown', keyDownHandler);
+
+    return () => document.removeEventListener('keydown', keyDownHandler);
+  }, []);
 
   return (
     <CarouselView
