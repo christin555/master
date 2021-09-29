@@ -27,9 +27,13 @@ class Header extends Component {
     window.addEventListener('scroll', this.listenScrollEvent);
   }
 
-  onKeyPressHandler(event) {
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.listenScrollEvent);
+  }
+
+  onKeyPressHandler = (event) => {
     if (event.charCode === 13) {
-      this.props.setSearch();
+      this.props.setParams();
     }
   }
 

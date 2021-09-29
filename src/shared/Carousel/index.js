@@ -4,6 +4,8 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 
 const Carousel = ({images, width, className}) => {
   const carouselRef = useRef(null);
+  const carouselBlockRef = useRef(null);
+
   const keyDownHandler = ({key}) => {
     const node = carouselRef.current;
 
@@ -30,21 +32,27 @@ const Carousel = ({images, width, className}) => {
   };
 
   useEffect(() => {
-    document.addEventListener('keydown', keyDownHandler);
+    const node = carouselBlockRef.current;
 
-    return () => document.removeEventListener('keydown', keyDownHandler);
+    if (node) {
+      node.addEventListener('keydown', keyDownHandler);
+    }
+
+    return () => node.removeEventListener('keydown', keyDownHandler);
   }, []);
 
   return (
-    <CarouselView
-      className={className}
-      ref={carouselRef}
-      autoPlay={true}
-      items={images}
-      width={width}
-      slideDuration={600}
-      slideInterval={5000}
-    />
+    <div ref={carouselBlockRef}>
+      <CarouselView
+        className={className}
+        ref={carouselRef}
+        autoPlay={true}
+        items={images}
+        width={width}
+        slideDuration={600}
+        slideInterval={5000}
+      />
+    </div>
   );
 };
 
