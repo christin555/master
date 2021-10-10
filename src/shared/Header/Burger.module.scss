@@ -11,11 +11,12 @@
     display: flex;
     justify-content: space-between;
     font-weight: 700;
-    font-size: 1.2em;
+    font-size: 1.4em;
   }
 
   & > * > * {
-    padding: 5px 10px;
+    font-size: 1.4em;
+    padding: 8px 10px;
 
     &:hover {
       color: #e2e2e2;
@@ -86,7 +87,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 20px 10px;
-  height: 15px;
+  height: 20px;
   align-items: center;
 
   & > * {
@@ -94,7 +95,7 @@
   }
 
   input {
-    font-size: 14px;
+    font-size: 1.2em;
   }
 }
 

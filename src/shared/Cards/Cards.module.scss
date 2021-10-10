@@ -1,8 +1,10 @@
 .root {
 
-  .area{
+  .area {
     display: flex !important;
+    justify-content: space-between;
   }
+
   & > * {
     display: flex;
     flex-direction: column;
@@ -11,7 +13,7 @@
     align-items: stretch;
   }
 
-  a{
+  a {
     width: 100%;
     text-decoration: none;
     display: block;
@@ -41,12 +43,13 @@
 }
 
 .actions {
-  height: 20px;
+  width: inherit;
+  padding: 0!important;
 }
 
 .content {
   place-self: flex-start;
-  padding: 10px 10px 0;
+  padding: 10px !important;
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.56);
@@ -92,6 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin: 0 10px 10px !important;
 
   .icon {
     font-size: 16px;
@@ -101,15 +105,15 @@
 
 @media only screen and (max-width: 480px) {
 
-  .content{
+  .content {
     padding: 8px 8px 0 8px !important;
     font-size: 12px;
 
-    .collection, .name{
+    .collection, .name {
       font-size: 14px;
     }
   }
-  .actions{
+  .actions {
     padding: 4px !important;
   }
 }

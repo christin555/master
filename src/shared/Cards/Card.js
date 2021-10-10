@@ -27,7 +27,7 @@ class CardView extends React.Component {
   get colors() {
     const {finishingMaterial = []} = this.props;
 
-    if (!finishingMaterial.length) {
+    if (!finishingMaterial || !finishingMaterial.length) {
       return null;
     }
 
@@ -47,7 +47,19 @@ class CardView extends React.Component {
 
   render() {
     const {isHover} = this.state;
-    const {alias, imgForHover, isDoor, img, name, collection, id, price, withPhone, straightLink} = this.props;
+    const {
+      alias,
+      imgForHover,
+      isDoor,
+      img,
+      name,
+      brand,
+      collection,
+      id,
+      price,
+      withPhone,
+      straightLink
+    } = this.props;
     const pathname = straightLink && alias || alias && `/catalog/${alias}` || `/product/${id}`;
 
     return (
@@ -63,20 +75,26 @@ class CardView extends React.Component {
             >
               <React.Fragment>
                 {
-                  imgForHover &&
-                <img className={cn(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: isHover})} src={imgForHover} />
+                  imgForHover && (
+                    <img
+                      className={cn(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: isHover})}
+                      src={imgForHover}
+                    />
+                  )
                 }
-                <img className={cn(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: !(imgForHover && isHover)})} src={img} />
+                <img
+                  className={cn(s.img, {[s.isDoor]: isDoor}, {[s.isShow]: !(imgForHover && isHover)})}
+                  src={img}
+                />
               </React.Fragment>
             </CardMedia>
             <CardContent
               className={s.content}
             >
-              {id && <span className={s.id}> код {id} </span> || null}
               {
-                collection && (
+                brand && (
                   <span className={s.collection}>
-                    {collection}
+                    {brand}
                     {this.colors}
                   </span>
                 )

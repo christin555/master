@@ -118,6 +118,8 @@ class CatalogStore {
       const body = {searchParams: {category, ...urlParams, filter}, limit, offset};
       const cards = await api.post('catalog/getCatalog', body);
 
+      console.log(cards);
+
       this.setCards(cards);
       this.setStatus(statusEnum.SUCCESS);
     } catch(_) {
