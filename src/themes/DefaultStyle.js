@@ -7,7 +7,7 @@ const DefaultStyle = (props) => {
   const {children, colors} = props;
 
   const defaultTheme = createTheme({
-    palette: defaultPalette(colors || {})
+    palette: defaultPalette(colors)
   });
 
   return (

@@ -10,6 +10,7 @@ const defaultPalette = () => {
     gray300: variables['gray-300'],
     gray400: variables['gray-400'],
     gray500: variables['gray-500'],
+    black: variables.black,
     mainblue40: variables['main-blue-40'],
     maingreen: variables['main-green'],
     green100: variables['green-100']

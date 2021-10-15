@@ -29,7 +29,6 @@
   height: inherit;
   display: none;
   align-items: center;
-  width: 40px;
 }
 
 .isActive {
@@ -39,19 +38,19 @@
 
 .important {
   font-weight: 600;
+
   &:hover {
     border-bottom: 3px solid #e2e2e2;
   }
 }
 
-.divider{
+.divider {
   padding: 0;
   margin: 5px 0;
   box-shadow: 0 5px 20px rgba(191, 191, 191, 0.56);
 }
+
 .footer {
-  font-size: 14px;
-  line-height: 14px;
   color: #3b3939;
 
   & > * {
@@ -59,22 +58,23 @@
     align-items: center;
   }
 
-  .address {
+  .icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .infoText {
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin: 10px 0;
+    line-height: 1;
+    font-size: 16px;
 
     &:visited {
       // TODO: почему некоторые цвета берутся не из стилей?
       color: #3b3939;
     }
   }
-}
-
-.iconContact {
-  margin-right: 5px;
-  font-size: 16px;
 }
 
 .burgerIcon {
@@ -100,7 +100,7 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .menuContainer{
+  .menuContainer {
     display: flex;
   }
 }

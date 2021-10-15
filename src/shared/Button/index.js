@@ -4,13 +4,13 @@ import ButtonUi from '@material-ui/core/Button';
 import {createStyles, withStyles} from '@material-ui/core/styles';
 import cn from 'classnames';
 
-const StyledButton = withStyles((theme) =>
+const StyledButton = withStyles(({palette}) =>
   createStyles({
     root: {
-      fontWeight: 500,
-      fontSize: '18px',
+      fontWeight: 400,
+      fontSize: '16px',
       height: '40px',
-      lineHeight: '20px',
+      lineHeight: '24px',
       letterSpacing: '.25px',
       textTransform: 'none',
       boxSizing: 'border-box',
@@ -26,18 +26,24 @@ const StyledButton = withStyles((theme) =>
         justifyContent: 'inherit',
         whiteSpace: 'nowrap'
       },
+      '&[class*="contained"]': {
+        padding: '8px 12px',
+        borderRadius: 0,
+        color: palette.white
+      },
       '&[class*="outlined"]': {
-        color: theme.palette.white,
-        borderColor: theme.palette.white,
+        color: 'black',
+        border: `black 1px solid`,
+        borderRadius: 0,
         backgroundColor: 'inherit',
-        padding: '8px 4px',
+        padding: '8px 12px',
         '&[class*="active"]': {
-          color: theme.palette.gray500,
-          backgroundColor: theme.palette.white
+          color: palette.gray500,
+          backgroundColor: palette.white
         },
         '&:hover': {
-          color: theme.palette.gray500,
-          backgroundColor: theme.palette.white
+          color: palette.black,
+          backgroundColor: palette.white
         }
       }
     }
@@ -71,7 +77,8 @@ Button.propTypes = {
    */
   variant: PropTypes.oneOf([
     'outlined',
-    'dark'
+    'dark',
+    'contained'
   ]),
   /**
    Обработчик события клика на кнопку

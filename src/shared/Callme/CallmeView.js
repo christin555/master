@@ -111,7 +111,6 @@ class Callme extends React.Component {
               <div>
                 <Button
                   size={'small'}
-                  color={'primary'}
                   className={s.call}
                   onClick={apply}
                 >

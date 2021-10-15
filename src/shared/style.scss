@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100;200;300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&family=Roboto:wght@300;400;500&display=swap');
 
 @mixin paddingStandard {
   padding: 0 80px;
@@ -10,9 +11,20 @@
   padding: 0 10px;
 }
 
-$white: #e2e2e2;
+a {
+  text-decoration: none;
 
-$gray-10: #f9f9fd;
+  &:visited {
+    color: inherit;
+  }
+}
+
+$white: #ffffff;
+$black: #131212;
+
+$white-10: rgba(255, 255, 255, 0.9);
+$gray-10: #c7c7c7;
+$gray-20: #E5E5E5;
 $gray-100: #9299a7;
 
 $gray-100-10: rgba(146, 153, 167, 0.1);
@@ -27,4 +39,4 @@ $main-blue-40: rgba(25, 118, 210, 0.4);
 $main-green: rgba(27, 194, 3, 0.96);
 $green-100: rgba(109, 170, 143, 0.96);
 
-$red: #ea0505;
+$red: #D93310;
