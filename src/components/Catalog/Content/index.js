@@ -5,6 +5,9 @@ import Cards from '../../../shared/Cards';
 import {inject} from 'mobx-react';
 import EmptyBlock from '../../../shared/EmptyBlock';
 import {status as statusEnum} from '../../../enums';
+import Chips from './Chips';
+
+const plural = require('plural-ru');
 
 @inject(({CatalogStore}) => {
   return {
@@ -20,6 +23,21 @@ import {status as statusEnum} from '../../../enums';
   };
 })
 class Content extends React.Component {
+  get label() {
+    const {
+      count
+    } = this.props;
+
+    const pluralLabel = plural(
+      count,
+      'товар',
+      'товара',
+      'товаров'
+    );
+
+    return `${count} ${pluralLabel}`;
+  }
+
   getPagination = (withCount) => {
     const {
       isLastLevel,
@@ -34,12 +52,13 @@ class Content extends React.Component {
     return (isLastLevel || isFastFilterEnabled) && (
       <div className={s.header}>
         <div className={s.count}>
-          {withCount && `${count} товаров` || null}
+          {this.label}
         </div>
         {
           <TablePagination
+            labelDisplayedRows={({from, to, count}) => `${from}-${to} из ${count !== -1 ? count : `больше ${to}`}`}
             className={s.pagnt}
-            labelRowsPerPage={'Выводить по'}
+            labelRowsPerPage={null}
             rowsPerPageOptions={[10, 20, 50]}
             component='div'
             count={count}
@@ -63,10 +82,10 @@ class Content extends React.Component {
     return (
       <div className={s.content}>
         {this.getPagination(true)}
+        <Chips />
         <div className={s.cards}>
           <Cards items={cards} withPhone={isLastLevel} />
         </div>
-        {this.getPagination(false)}
       </div>
     );
   }

@@ -1,5 +1,8 @@
+@import '../style';
+
 .level {
-  padding: 0 80px;
+  @include paddingStandard;
+
   display: flex;
   flex-direction: row;
   align-items: center;

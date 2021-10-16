@@ -21,8 +21,11 @@ const _setValue = ({name, value, setFilterValues, filterValues, type}) => {
 };
 
 const getTypeField = ({name, type, values, setFilterValues, filterValues}) => {
+  const _filterValues = filterValues[name];
+
   switch (type) {
     case 'checkbox':
+
       return values.map(({name: nameValue, id}) => (
         <FormControlLabel
           className={s.checkboxControl}
@@ -30,7 +33,7 @@ const getTypeField = ({name, type, values, setFilterValues, filterValues}) => {
           control={(
             <Checkbox
               size={'small'}
-              checked={filterValues[name] && filterValues[name].includes(id)}
+              checked={Array.isArray(_filterValues) && _filterValues.includes(id)}
               onChange={() => _setValue({name, value: id, setFilterValues, filterValues, type})}
               name='checkedA'
             />
@@ -42,14 +45,20 @@ const getTypeField = ({name, type, values, setFilterValues, filterValues}) => {
 
 };
 
-const renderFilterFields = ({filterFields, setFilterValues, filterValues}) => filterFields.map(({id, name, type, title, values}) => (
-  <Accordion key={id}>
+const renderFilterFields = ({filterFields, setFilterValues, filterValues}) => filterFields.map(({
+  id,
+  name,
+  type,
+  title,
+  values
+}) => (
+  <Accordion elevation={0} square={true} key={id} className={s.accordionItem}>
     <AccordionSummary className={s.summary} expandIcon={<ExpandMoreIcon />}>
-      <h4 className={s.heading}> {title}
+      <span className={s.heading}> {title}
         {
           filterValues[name] && <span className={s.active} /> || null
         }
-      </h4>
+      </span>
     </AccordionSummary>
     <AccordionDetails className={s.details}>
       {getTypeField({name, type, values, setFilterValues, filterValues})}

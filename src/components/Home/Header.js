@@ -37,9 +37,9 @@ const Header = () => (
         <h1 className={s.name}>
                     САЛОН НАПОЛЬНЫХ ПОКРЫТИЙ И ДВЕРЕЙ
         </h1>
-        <h4 className={s.slogan}>
+        <h2 className={s.slogan}>
                     РЕАЛИЗУЙТЕ МЕЧТЫ ВМЕСТЕ С НАМИ
-        </h4>
+        </h2>
         <div className={s.buttons}>
           <Callme
             className={s.buttonOutlined}

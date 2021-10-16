@@ -6,6 +6,7 @@ import Hierarchy from 'shared/Hierarchy';
 import {inject} from 'mobx-react';
 import Loader from 'shared/Loader';
 import {status as statusEnum} from '../../enums';
+import Title from '../../shared/Title';
 
 @inject(({CatalogStore}) => {
   return {
@@ -14,6 +15,12 @@ import {status as statusEnum} from '../../enums';
   };
 })
 class Catalog extends React.Component {
+  get headerTitle() {
+    const {hierarchy} = this.props;
+
+    return hierarchy.length && hierarchy[hierarchy.length - 1].name || 'Каталог';
+  }
+
   render() {
     const {hierarchy, status} = this.props;
 
@@ -24,8 +31,7 @@ class Catalog extends React.Component {
         }
         <Hierarchy hierarchy={hierarchy} />
         <div className={s.header}>
-          {hierarchy.length && hierarchy[hierarchy.length - 1].name || 'Каталог'}
-          <div className={s.line} />
+          <Title title={this.headerTitle} />
         </div>
         <div className={s.content}>
           <Filter />

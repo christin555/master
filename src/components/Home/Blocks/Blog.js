@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../Home.module.scss';
+import s from './Blocks.module.scss';
 import YouTube from 'react-youtube';
 import Title from '../../../shared/Title';
 import Button from '../../../shared/Button';

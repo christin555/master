@@ -5,9 +5,11 @@ import Links from './Links';
 import DefaultStyle from '../../themes/DefaultStyle';
 import Copy from './CopyBlock';
 import Contacts from './Contacts';
+import FooterAbout from './About';
 
 const Footer = () => (
   <DefaultStyle>
+    <FooterAbout />
     <div className={s.footer}>
       <div className={s.content}>
         <LogoBlock />

@@ -14,11 +14,6 @@ const items = [
     alias: 'laminate'
   },
   {
-    name: 'Напольные покрытия',
-    img: laminate,
-    alias: 'quartzvinyl'
-  },
-  {
     name: 'Ламинат',
     img: laminate,
     alias: 'doors'
