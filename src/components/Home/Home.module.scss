@@ -36,6 +36,7 @@
     margin-left: 10px;
     text-transform: uppercase;
     color: $white-10;
+    font-weight: 500;
   }
 
   .icon {
@@ -78,10 +79,50 @@
   }
 }
 
+.blog {
+  background: $white-20;
+  padding: 10px 150px;
+  display: grid;
+  grid-template-columns:  minmax(200px, 400px) auto;
+  grid-column-gap: 40px;
+
+  .desc {
+    display: flex;
+    flex-direction: column;
+
+    .buttonArt {
+      margin-top: 10px;
+      place-self: flex-end;
+    }
+  }
+
+  .blockArticles {
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-rows: minmax(300px, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 20px;
+
+    .article {
+      display: flex;
+      flex-direction: column;
+
+      .titleArticle {
+        min-height: 40px;
+        margin-top: 10px;
+      }
+
+      & > *:first-child {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
 .buttons {
   display: flex;
   margin-top: 50px;
-
 }
 
 .buttonOutlined {
@@ -122,9 +163,10 @@
     margin-left: 40px;
   }
 
-  .text{
+  .text {
     padding: 20px 0;
   }
+
   img {
     width: 100%;
     // border-radius: 100%;

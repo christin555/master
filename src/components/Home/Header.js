@@ -11,14 +11,26 @@ const Header = () => (
   <div className={s.wrapper}>
     <div className={s.subs}>
             ПОДПИСЫВАЙСЯ!
-      <div>
+
+      <a
+        target={'_blank'}
+        rel='noopener noreferrer'
+        href='https://www.instagram.com/masterpola72'
+        title='Перейти на канал в Instagram'
+      >
         <InstagramIcon className={s.icon} />
-                instagram
-      </div>
-      <div>
-        <YouTubeIcon className={s.icon} />
+              instagram
+      </a>
+
+      <a
+        target={'_blank'}
+        rel='noopener noreferrer'
+        href='https://www.youtube.com/channel/UC86lrjiQpHt0Fwzr0FoBxyA'
+        title='Перейти на канал в Instagram'
+      >  <YouTubeIcon className={s.icon} />
                 youtube
-      </div>
+      </a>
+
     </div>
     <div className={s.overlay}>
       <div className={s.txtblocks}>
