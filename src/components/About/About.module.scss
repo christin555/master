@@ -8,7 +8,6 @@
 
   .title {
     padding: 20px 0 20px 80px;
-    font-weight: 500;
   }
 
   .preview {
@@ -64,7 +63,7 @@
   .text {
     margin-left: 50px;
 
-    h3::after {
+    h2::after {
       content: "";
       display: block;
       margin-top: 8px;

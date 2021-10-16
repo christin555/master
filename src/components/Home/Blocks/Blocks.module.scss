@@ -105,11 +105,9 @@
 
   & > * {
     display: flex;
-  }
-
-  & > * + * {
     margin-left: 50px;
   }
+
 
   .border {
     position: absolute;

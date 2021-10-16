@@ -19,6 +19,32 @@
   }
 }
 
+.footerAbout {
+  margin-top: 50px;
+  padding: 0 150px;
+  background: $gray-20;
+  display: grid;
+  grid-template-columns:  minmax(auto, 25vw) auto;
+
+
+  .imgBlock {
+    display: flex;
+  }
+
+  & > * + * {
+    margin-left: 40px;
+  }
+
+  .text {
+    padding: 20px 0;
+  }
+
+  img {
+    width: 100%;
+    // border-radius: 100%;
+  }
+}
+
 .links {
   display: flex;
 

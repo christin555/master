@@ -120,6 +120,56 @@
   }
 }
 
+.aboutContainer {
+  padding: 0 300px;
+  line-height: 24px;
+
+  .divider {
+    display: block;
+    height: 2px;
+    width: 50px;
+    background: $red;
+    margin-bottom: 20px;
+  }
+
+  .aboutBock {
+    display: grid;
+    grid-template-columns: minmax(300px, 500px) minmax(300px, 1fr);
+    grid-column-gap: 60px;
+
+    .textAbout {
+      padding: 20px 0;
+      font-weight: 400;
+    }
+
+
+    .iconsblock {
+      padding: 40px;
+      display: flex;
+
+      .iconText{
+        color: $gray-200;
+      }
+
+      & > * {
+        max-width: 260px;
+        margin-right: 60px;
+      }
+    }
+
+    .iconAbout {
+      font-size: 40px;
+    }
+
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
 .buttons {
   display: flex;
   margin-top: 50px;
