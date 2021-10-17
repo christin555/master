@@ -1,10 +1,13 @@
+@import '../../shared/style';
+
 .header {
   background: rgb(246, 246, 246);
-  font-size: 24px;
   display: flex;
   flex-direction: column;
-  padding: 20px 0 20px 80px;
-  font-weight: 500;
+  font-weight: 400;
+  padding: 10px 0;
+
+  @include paddingStandard;
 }
 
 .line {
@@ -16,7 +19,9 @@
 }
 
 .content {
-  padding: 20px 80px;
+  margin: 20px 0;
+
+  @include paddingStandard;
   display: flex;
   flex-direction: row;
 

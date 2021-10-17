@@ -1,6 +1,6 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import classNames from 'classnames';
+import cn from 'classnames';
 import s from './Burger.module.scss';
 import CloseIcon from '@material-ui/icons/Close';
 import PlaceIcon from '@material-ui/icons/Place';
@@ -9,11 +9,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import {Divider, IconButton} from '@material-ui/core';
 import TextField from '../TextField';
 import SearchIcon from '@material-ui/icons/Search';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 const Burger = ({pathname, menu, toPage, search, setParams, setSearch}) => {
-  const [state, setState] = React.useState({
-    isOpen: false
-  });
+  const [state, setState] = React.useState({isOpen: false});
 
   const setOpen = (isOpen) => {
     setState({isOpen});
@@ -50,7 +49,7 @@ const Burger = ({pathname, menu, toPage, search, setParams, setSearch}) => {
               menu.map(({name, important, link}, index) => (
                 <div
                   key={`${link}${index}`}
-                  className={classNames({
+                  className={cn({
                     [s.important]: important,
                     [s.isActive]: link === pathname
                   })}
@@ -61,20 +60,23 @@ const Burger = ({pathname, menu, toPage, search, setParams, setSearch}) => {
               ))
             }
           </div>
-
           <div className={s.footer}>
-            <div className={s.phone}>
-              <PhoneIcon className={s.iconContact} />
-                            +7 (982) 988-15-22
+            <div className={s.infoText}>
+              <AccessTimeIcon className={s.icon} />
+              ежедневно с 10:00 до 19:00
+            </div>
+            <div className={s.infoText}>
+              <PhoneIcon className={s.icon} />
+                +7 (982) 988-15-22
             </div>
             <a
               target={'_blank'}
               rel='noopener noreferrer'
-              className={s.address}
+              className={s.infoText}
               href={'https://2gis.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
             >
-              <PlaceIcon className={s.iconContact} />
-                            г. Тюмень, ул. Федюнинского д. 62 к. 1
+              <PlaceIcon className={s.icon} />
+                Тюмень, ул. Федюнинского д. 62 к. 1
             </a>
           </div>
 

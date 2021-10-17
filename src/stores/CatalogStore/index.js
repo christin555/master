@@ -2,11 +2,12 @@ import {observable, get, reaction, action, autorun, computed, makeObservable} fr
 import {status as statusEnum} from '../../enums';
 import api from 'api';
 import {alert} from '../Notifications';
+import FilterStore from './FilterStore';
 
 class CatalogStore {
     RouterStore
+    FilterStore
 
-    @observable filter;
     @observable status = statusEnum.LOADING;
     @observable cards;
     @observable hierarchy;
@@ -16,7 +17,7 @@ class CatalogStore {
     @observable offset = 0;
     @observable limit = 20;
 
-    constructor({RouterStore}) {
+    constructor({RouterStore, CatalogStore}) {
       this.RouterStore = RouterStore;
       autorun(this.getHierarchy);
       makeObservable(this);
@@ -32,6 +33,8 @@ class CatalogStore {
         this.getCountProducts,
         {fireImmediately: true}
       );
+
+      this.FilterStore = new FilterStore({RouterStore, CatalogStore: this});
     }
 
     @computed get category() {
@@ -39,14 +42,23 @@ class CatalogStore {
     }
 
     @computed get isFastFilterEnabled() {
-      return !!this.urlParams.search;
+      return !!this.urlParams?.search;
     }
 
-    @computed get urlParams() {
-      const urlAddress = new URLSearchParams(this.RouterStore.params || {});
-      const search = urlAddress.get('search');
+    @computed get filter() {
+      const searchParams = new URLSearchParams(this.RouterStore.params || {});
+      const filter = {};
 
-      return {search};
+      for (const pair of searchParams.entries()) {
+        const items = pair[1]
+          .split(',')
+          .map((item) => Number(item.trim()))
+          .filter(Boolean);
+
+        filter[pair[0]] = items;
+      }
+
+      return filter;
     }
 
     @action setCards = (cards) => {
@@ -79,7 +91,17 @@ class CatalogStore {
     }
 
     @action setFilter = (filter) => {
-      this.filter = filter;
+      const urlParams = new URLSearchParams();
+
+      for (const [key, value] of Object.entries(filter)) {
+        if (!(!value || Array.isArray(value) && !value.length)) {
+          urlParams.append(key, value);
+        }
+      }
+
+      this.RouterStore.history.push({
+        search: urlParams.toString()
+      });
     }
 
     getHierarchy = async() => {
@@ -95,10 +117,10 @@ class CatalogStore {
     }
 
     getCountProducts = async() => {
-      const {category, urlParams, filter} = this;
+      const {category, filter} = this;
 
       try {
-        const body = {searchParams: {category, ...urlParams, filter}};
+        const body = {searchParams: {category, filter}};
 
         const count = await api.post('catalog/countProducts ', body);
 
@@ -109,13 +131,13 @@ class CatalogStore {
     }
 
     getCatalog = async() => {
-      const {category, limit, offset, urlParams, filter} = this;
+      const {category, limit, offset, filter} = this;
 
       this.setStatus(statusEnum.LOADING);
       this.setCards([]);
 
       try {
-        const body = {searchParams: {category, ...urlParams, filter}, limit, offset};
+        const body = {searchParams: {category, filter}, limit, offset};
         const cards = await api.post('catalog/getCatalog', body);
 
         this.setCards(cards);

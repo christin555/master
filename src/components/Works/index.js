@@ -1,17 +1,15 @@
 import React from 'react';
-import Carousel from 'react-image-gallery';
+import Carousel from '../../shared/Carousel';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Works.module.scss';
 import Callme from '../../shared/Callme';
 
 class Works extends React.Component {
-  get imgs() {
-
+  get images() {
     return [
-      {original: 'http://45.147.179.124:8000/public/works1.jpg', thumbnail: 'http://45.147.179.124:8000/public/works1.jpg'},
-      {original: 'http://45.147.179.124:8000/public/works2.jpg', thumbnail: 'http://45.147.179.124:8000/public/works2.jpg'}
+      {original: 'https://45.147.179.124:8000/public/works1.jpg', thumbnail: 'https://45.147.179.124:8000/public/works1.jpg'},
+      {original: 'https://45.147.179.124:8000/public/works2.jpg', thumbnail: 'https://45.147.179.124:8000/public/works2.jpg'}
     ];
-
   }
 
   render() {
@@ -24,8 +22,8 @@ class Works extends React.Component {
         <div className={s.content}>
           <div className={s.preview}>
             <Carousel
-              items={this.imgs}
-              additionalClass={s.carousel}
+              images={this.images}
+              className={s.carousel}
             />
             <div className={s.text}>
               <div className={s.title}>
@@ -70,7 +68,6 @@ class Works extends React.Component {
               </ul>
               <p> Свяжитесь с нами и узнайте, чем мы сможем быть полезными.
               </p>
-                         ⠀
               <Callme buttonText={'Рассчитайте стоимость монтажа в вашем доме'} />
             </div>
           </div>

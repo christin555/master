@@ -1,8 +1,12 @@
 .root {
+  border-radius: 0 !important;
 
-  .area{
+  .area {
     display: flex !important;
+    justify-content: flex-start;
+    align-items: stretch;
   }
+
   & > * {
     display: flex;
     flex-direction: column;
@@ -11,27 +15,29 @@
     align-items: stretch;
   }
 
-  a{
     width: 100%;
-    text-decoration: none;
-    display: block;
-  }
 }
 
 .media {
   height: 180px;
+  overflow: hidden;
+  position: relative;
 
   .img {
-    display: none;
-    top: 50px;
+    display: block;
     width: 100%;
     object-fit: cover;
     object-position: 0 90%;
     height: 100%;
-  }
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
 
-  .isShow {
-    display: block;
+    &:hover {
+      -webkit-transform: scale(1.1);
+      -moz-transform: scale(1.1);
+      -o-transform: scale(1.1);
+    }
   }
 
   .isDoor {
@@ -41,12 +47,18 @@
 }
 
 .actions {
-  height: 20px;
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  top: auto;
+  right: 0;
+  background: rgba(255, 255, 255, 0.64);
+  padding-left: 8px;
 }
 
 .content {
   place-self: flex-start;
-  padding: 10px 10px 0;
+  padding: 10px !important;
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.56);
@@ -60,6 +72,7 @@
   }
 
   .collection {
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 300;
     color: #7f7f7f;
@@ -67,8 +80,9 @@
   }
 
   .name {
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 300;
     color: #444141;
   }
 
@@ -89,27 +103,20 @@
 }
 
 .call {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  .icon {
-    font-size: 16px;
-    margin-right: 10px;
-  }
+  font-size: 16px;
 }
 
 @media only screen and (max-width: 480px) {
 
-  .content{
-    padding: 8px 8px 0 8px !important;
+  .content {
+    padding: 8px!important;
     font-size: 12px;
 
-    .collection, .name{
+    .collection, .name {
       font-size: 14px;
     }
   }
-  .actions{
+  .actions {
     padding: 4px !important;
   }
 }

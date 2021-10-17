@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   line-height: 24px;
-  font-weight: 400;
   width: 80vw;
   height: 100%;
   justify-content: space-between;
@@ -10,12 +9,13 @@
   .header {
     display: flex;
     justify-content: space-between;
-    font-weight: 700;
-    font-size: 1.2em;
+    font-weight: 400;
+    font-size: 1.4em;
   }
 
   & > * > * {
-    padding: 5px 10px;
+    font-size: 1.4em;
+    padding: 8px 10px;
 
     &:hover {
       color: #e2e2e2;
@@ -28,7 +28,6 @@
   height: inherit;
   display: none;
   align-items: center;
-  width: 40px;
 }
 
 .isActive {
@@ -36,21 +35,13 @@
   color: #c41414;
 }
 
-.important {
-  font-weight: 600;
-  &:hover {
-    border-bottom: 3px solid #e2e2e2;
-  }
-}
-
-.divider{
+.divider {
   padding: 0;
   margin: 5px 0;
   box-shadow: 0 5px 20px rgba(191, 191, 191, 0.56);
 }
+
 .footer {
-  font-size: 12px;
-  line-height: 14px;
   color: #3b3939;
 
   & > * {
@@ -58,21 +49,24 @@
     align-items: center;
   }
 
-  .address {
+  .icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .infoText {
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin: 10px 0;
+    line-height: 1;
+    font-size: 16px;
 
     &:visited {
+      // TODO: почему некоторые цвета берутся не из стилей?
+      // да хз
       color: #3b3939;
     }
   }
-}
-
-.iconContact {
-  margin-right: 5px;
-  font-size: 16px;
 }
 
 .burgerIcon {
@@ -85,7 +79,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 20px 10px;
-  height: 15px;
+  height: 20px;
   align-items: center;
 
   & > * {
@@ -93,12 +87,12 @@
   }
 
   input {
-    font-size: 14px;
+    font-size: 1.2em;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .menuContainer{
+  .menuContainer {
     display: flex;
   }
 }

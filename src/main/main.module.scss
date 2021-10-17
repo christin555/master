@@ -1,4 +1,7 @@
 @import '../shared/style';
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100;200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&family=Roboto:wght@300;400;500&display=swap');
 
 li, p {
   line-height: 1.5;
@@ -6,7 +9,11 @@ li, p {
 
 h2 {
   font-family: Montserrat, sans-serif;
-  margin-bottom: 30px;
+  margin: 8px 0;
+}
+
+h1 {
+  font-size: 2.8em;
 }
 
 h4 {
@@ -17,9 +24,9 @@ h4 {
 
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #34373d;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 ::-webkit-scrollbar {
@@ -61,17 +68,17 @@ body {
 }
 
 .isNotHome {
-  margin-top: 140px;
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 480px) {
   h2 {
     font-size: 1.3em;
   }
-  .wrapper {
-    width: auto;
+  h1 {
+    font-size: 1.6em;
   }
   .isNotHome {
-    margin-top: 70px;
+    margin-top: 10px;
   }
 }

@@ -7,7 +7,7 @@
     justify-content: space-between;
 
     .count {
-      font-weight: 300;
+      font-weight: 400;
       font-size: 20px;
     }
   }
@@ -18,6 +18,28 @@
     grid-row-gap: 15px;
     grid-column-gap: 20px;
     justify-content: space-between;
+  }
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+
+  & > * {
+    margin: 0 10px 10px 0;
+    max-width: 350px;
+  }
+}
+
+.pagnt {
+  font-size: 14px !important;
+  font-weight: 300 !important;
+  place-self: flex-end;
+
+  p {
+    font-size: inherit !important;
+    font-weight: inherit !important;
   }
 }
 

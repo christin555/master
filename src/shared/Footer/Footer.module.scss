@@ -2,129 +2,138 @@
 
 .footer {
   text-align: center;
-  background: #34373d;
-  color: #f9f9fd;
+  color: $gray-500;
   bottom: 0;
-  margin-top: 60px;
   justify-content: center;
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 40px 0;
+  @include paddingStandard;
 
   .content {
-    padding: 60px 100px;
     flex-direction: row;
     display: flex;
     width: -webkit-fill-available;
     justify-content: space-between;
     align-items: flex-start;
+  }
+}
 
-    .menu {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      color: white;
+.footerAbout {
+  margin-top: 50px;
+  @include paddingStandard;
+  background: $gray-20;
+  display: grid;
+  grid-template-columns:  minmax(200px, 25vw) auto;
+  grid-column-gap: 40px;
 
-      & > * {
-        color: white;
-        text-decoration: none;
-        margin-bottom: 10px;
 
-        &:hover {
-          cursor: pointer;
-          color: #9299a7;
-        }
-      }
-    }
-
-    .info {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #f9f9fd;
-      text-align: center;
-      justify-content: space-between;
-
-      .header {
-        line-height: 24px;
-        font-weight: 100;
-        display: block;
-      }
-
-      .time {
-        color: #d2d2d4;
-        font-weight: 100 !important;
-        line-height: 12px;
-        margin-top: 15px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      .address {
-        display: flex;
-        align-items: center;
-        font-weight: 400;
-        cursor: pointer;
-        text-decoration: none;
-        color: white;
-
-        &:hover {
-          color: #b3b3b3;
-        }
-
-        .iconContact {
-          font-size: 20px;
-          margin-right: 10px;
-        }
-      }
-    }
+  .imgBlock {
+    display: flex;
   }
 
-  .contacts {
+  .text {
+    padding: 20px 0;
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    object-position: 0 90%;
+  }
+}
+
+.links {
+  display: flex;
+
+  & > * {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    text-transform: uppercase;
+    margin-right: 40px;
 
-    a {
-      text-decoration: none;
-      color: #f9f9fd;
-      font-size: 24px;
-      font-weight: 500;
-      letter-spacing: 0.5px !important;
+    .categoryName {
+      color: $red;
+      margin-bottom: 30px;
     }
 
-    p {
-      margin: 0;
-      color: #b8b8b8;
-      font-size: 12px;
-    }
-
-    span {
+    .policy {
+      margin-top: 20px;
+      text-transform: none;
+      text-align: left;
       font-size: 16px;
-      display: flex;
-      align-items: center;
+    }
 
+    & > * {
+      color: $gray-500;
+      margin-bottom: 10px;
+      line-height: 24px;
+      text-align: left;
+
+      &:hover {
+        cursor: pointer;
+        color: $gray-100-40;
+      }
     }
   }
 }
 
-.button {
-  border-color: #ffffff !important;
-  border-radius: 0 !important;
-  color: white !important;
-  margin: 40px 0 20px !important;
 
-  &:hover {
-    background: #ffffff;
-    color: #000000;
+.contactsContainer {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0C4487 0%, #D23314 100%);
+  padding: 5px;
+  min-width: 400px;
+
+  .contacts {
+    padding: 20px;
+    background: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+
+  .phone {
+    margin-bottom: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: $gray-500;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.5px !important;
+  }
+
+  p {
+    margin: 0;
+    color: $gray-300;
+    font-size: 14px;
+    max-width: 250px;
+  }
+
+  span {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+
+  }
+}
+
+
+.button {
+  margin: 20px 0 20px !important;
 }
 
 .messangers {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: min-content;
 
   & > * + * {
     margin-left: 20px;
@@ -132,47 +141,110 @@
 
   .icon {
     font-size: 22px;
-    color: white;
+    color: $gray-300;
+
+    &:hover {
+      color: $gray-100;
+    }
+  }
+
+  .messenger {
+    cursor: pointer;
   }
 }
 
 .copy {
-  font-size: 14px;
-  width: 100%;
-  display: flex;
+  font-size: 12px;
   color: #616060;
-  text-align: center;
+  margin-top: 60px;
+  line-height: 20px;
+  align-items: flex-end;
+  text-align: left;
+}
 
-  .divider {
-    position: absolute;
-    width: inherit;
-    height: 1px;
-    background: rgba(82, 82, 82, 0.51);
+.logoBlock {
+  display: flex;
+  height: 40px;
+  margin-right: 20px;
+
+  .logo {
+    height: inherit;
+    margin-right: 10px;
+
+    img {
+      height: 100%;
+    }
   }
 
-  .underText {
-    width: 100%;
-    text-align: center;
-    display: block;
-    padding: 5px;
+  .nameLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: oswald;
+    line-height: 1;
+    font-weight: 200;
+
+    .name {
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    & > * {
+      text-align: left;
+    }
   }
 }
 
+@media only screen and (max-width: 780px) {
+  .footerAbout {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1020px) {
+  .logoBlock {
+    margin-right: 0;
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 10px;
+
+    & > * {
+      margin: 0;
+    }
+  }
+
+  .copy {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .contactsContainer {
+    min-width: initial;
+  }
+
+  .footerAbout {
+    margin-top: 20px;
+  }
+
   .footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
     .content {
       flex-direction: column;
       align-items: center;
-      padding: 30px 20px;
+
+      & > * {
+        margin-bottom: 40px;
+      }
 
       .menu {
         flex-flow: wrap;
         justify-content: center;
-
-        & > * {
-          margin-right: 10px;
-        }
       }
 
       .info {

@@ -1,8 +1,8 @@
 import {observable, get, action, makeObservable, computed} from 'mobx';
 
 class RouterStore {
-
     @observable location = {};
+
     match = {};
     history = {};
 

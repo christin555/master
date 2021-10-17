@@ -2,6 +2,7 @@ import {observable, reaction, action, toJS, computed, makeObservable} from 'mobx
 import {status as statusEnum} from '../../enums';
 import api from 'api';
 import {alert} from '../Notifications';
+import {array2Object} from '../../utils';
 
 class FilterStore {
     RouterStore
@@ -16,14 +17,22 @@ class FilterStore {
       makeObservable(this);
 
       reaction(
-        () => [this.CatalogStore.category],
+        () => this.CatalogStore.category,
         this.getFilterFields,
         {fireImmediately: true}
       );
     }
 
+    @computed get filterFieldsObject() {
+      return array2Object(this.filterFields, 'name');
+    }
+
     @computed get filterValues() {
       return this.CatalogStore.filter;
+    }
+
+    clear = () => {
+      this.CatalogStore.setFilter({});
     }
 
     @action setStatus = (status) => {
@@ -34,7 +43,17 @@ class FilterStore {
       this.filterFields = filterFields;
     }
 
-    @action setFilterValues = (name, value) => {
+    delVal = (name, value) => {
+      const filter = toJS(this.filterValues);
+
+      if (Array.isArray(filter[name])) {
+        filter[name] = filter[name].filter((id) => !id === value);
+      }
+
+      this.CatalogStore.setFilter(filter);
+    }
+
+    setFilterValues = (name, value) => {
       let filter = toJS(this.filterValues);
 
       if (!filter) {

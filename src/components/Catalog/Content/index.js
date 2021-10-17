@@ -5,6 +5,9 @@ import Cards from '../../../shared/Cards';
 import {inject} from 'mobx-react';
 import EmptyBlock from '../../../shared/EmptyBlock';
 import {status as statusEnum} from '../../../enums';
+import Chips from './Chips';
+
+const plural = require('plural-ru');
 
 @inject(({CatalogStore}) => {
   return {
@@ -20,56 +23,72 @@ import {status as statusEnum} from '../../../enums';
   };
 })
 class Content extends React.Component {
-    getPagination = (withCount) => {
-      const {
-        isLastLevel,
-        isFastFilterEnabled,
-        count,
-        setOffset,
-        setLimit,
-        offset,
-        limit
-      } = this.props;
+  get label() {
+    const {
+      count
+    } = this.props;
 
-      return (isLastLevel || isFastFilterEnabled) && (
-        <div className={s.header}>
-          <div className={s.count}>
-            {withCount && `${count} товаров` || null}
-          </div>
-          {
-            <TablePagination
-              className={s.pagnt}
-              labelRowsPerPage={'Выводить по'}
-              rowsPerPageOptions={[10, 20, 50]}
-              component='div'
-              count={count}
-              page={offset}
-              onPageChange={setOffset}
-              rowsPerPage={limit}
-              onRowsPerPageChange={setLimit}
-            />
-          }
+    const pluralLabel = plural(
+      count,
+      'товар',
+      'товара',
+      'товаров'
+    );
+
+    return `${count} ${pluralLabel}`;
+  }
+
+  getPagination = (withCount) => {
+    const {
+      isLastLevel,
+      isFastFilterEnabled,
+      count,
+      setOffset,
+      setLimit,
+      offset,
+      limit
+    } = this.props;
+
+    return (isLastLevel || isFastFilterEnabled) && (
+      <div className={s.header}>
+        <div className={s.count}>
+          {this.label}
         </div>
-      ) || null;
+        {
+          <TablePagination
+            labelDisplayedRows={({from, to, count}) => `${from}-${to} из ${count !== -1 ? count : `больше ${to}`}`}
+            className={s.pagnt}
+            labelRowsPerPage={null}
+            rowsPerPageOptions={[10, 20, 50]}
+            component='div'
+            count={count}
+            page={offset}
+            onPageChange={setOffset}
+            rowsPerPage={limit}
+            onRowsPerPageChange={setLimit}
+          />
+        }
+      </div>
+    ) || null;
+  }
+
+  render() {
+    const {cards, status, isLastLevel} = this.props;
+
+    if (!cards.length && status !== statusEnum.LOADING) {
+      return <EmptyBlock />;
     }
 
-    render() {
-      const {cards, status, isLastLevel} = this.props;
-
-      if (!cards.length && status !== statusEnum.LOADING) {
-        return <EmptyBlock />;
-      }
-
-      return (
-        <div className={s.content}>
-          {this.getPagination(true)}
-          <div className={s.cards}>
-            <Cards items={cards} withPhone={isLastLevel} />
-          </div>
-          {this.getPagination(false)}
+    return (
+      <div className={s.content}>
+        {this.getPagination(true)}
+        <Chips />
+        <div className={s.cards}>
+          <Cards items={cards} withPhone={isLastLevel} />
         </div>
-      );
-    }
+      </div>
+    );
+  }
 }
 
 export default Content;

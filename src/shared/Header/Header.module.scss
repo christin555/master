@@ -1,293 +1,87 @@
-.isHome {
-  background: none;
-  box-shadow: none !important;
+@import '../style';
 
-  & > * {
-    color: #f9f9fd;
-  }
 
-  a {
-    color: #f9f9fd;
-
-    &:hover {
-      color: #b3b3b3;
-    }
-  }
+@mixin menu {
+  display: flex;
+  padding: 10px 0px;
+  @include paddingStandard;
 }
 
 .containerHeader {
-  position: absolute;
-  width: 100%;
+  //position: absolute;
   z-index: 100;
-}
-
-.header {
-  width: 100%;
-  position: fixed;
-    z-index: 2;
-    color: #34373d;
-  box-shadow: 0 4px 20px rgba(217, 216, 216, 0.56);
   top: 0;
   display: flex;
+  flex-direction: column;
+  width: 100%;
 
-  &:not(.isHome) a {
-    color: #34373d;
-
-    &:hover {
-      color: #949494;
-    }
-  }
-
-  &.isScrolled,
-  &:not(.isHome) {
-    input[class*="MuiInputBase-input"],
-    input[class*="MuiInputBase-input"]::placeholder {
-      color: #34373d;
-    }
-  }
-
-  .headerBackground {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    background-color: white;
-    transition: opacity .3s;
-    opacity: 0;
-  }
-
-  &:not(.isHome) .headerBackground {
-    opacity: 1;
-  }
-
-  .logoBlock {
-    margin-right: 8px;
-    width: 80px;
-    height: inherit;
+  .top {
+    background: $white;
+    @include menu;
     display: flex;
-    justify-content: center;
-
-
-    .logo {
-      margin: 5px;
-      width: 50px;
-      height: 50px;
-
-      img {
-        width: 100%;
-        height: 100%;
-        top: -25%;
-      }
-    }
-  }
-
-  .container {
-    height: 65px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    width: inherit;
-    padding: 5px 10px 0 0;
 
-    .right {
+    .name {
+      font-family: oswald;
+      font-size: 36px;
+      font-weight: 400;
+    }
+
+    .red {
+      color: $red;
+    }
+
+    .info {
       display: flex;
       flex-direction: column;
-      //color: white;
       align-items: flex-start;
-      cursor: pointer;
+      justify-content: center;
+    }
+  }
 
-      .name {
-        font-size: 30px;
-        display: flex;
-        flex-direction: row;
-        letter-spacing: 2px !important;
-        line-height: 24px;
-        font-weight: 600;
-        align-items: flex-end;
-      }
+  .menu {
+    background: $black;
+    @include menu;
+    align-items: center;
+    text-transform: uppercase;
+    justify-content: center;
+    letter-spacing: .5px;
 
-      .nameSmall {
-        margin-top: 6px;
-        font-size: 12px;
-        letter-spacing: 2px;
-        font-weight: 300;
-      }
+
+    a {
+      color: $white;
+      font-weight: 400;
     }
 
-    .left {
-      display: flex;
-      align-items: center;
+    .isActive {
+      color: $red;
+    }
 
-      .search {
-        border: 1px solid #959595;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1px 10px;
-        width: 25vw;
-        margin-right: 20px;
-        height: 30px;
-        align-items: center;
-      }
-
-      .phone {
-        padding: 2px 0;
-        line-height: 24px;
-        font-size: 16px;
-        font-weight: 300;
-        text-decoration: none;
-
-        &:hover {
-          color: #b3b3b3;
-        }
-      }
-
-      .place {
-        margin-left: 10px;
-        font-size: 20px;
-      }
+    & > * + * {
+      margin-left: 20px;
     }
   }
 }
 
-.menuContainer {
-  padding: 85px 80px 20px;
-}
-
-.menu {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  line-height: 24px;
-  font-weight: 300;
-  height: 40px;
-
-  a {
-    text-decoration: none;
-  }
-
-  &:not(.isHome) a {
-    color: #34373d;
-
-    &:hover {
-      color: #949494;
-    }
-  }
-  .isActive {
-    font-weight: 500;
-    color: #c41414;
-  }
-
-  .important {
-    border-bottom: 2px solid #b8b8b8;
-
-    &:hover {
-      border-bottom: 3px solid #e2e2e2;
-    }
-  }
-
-  & > * {
-    padding: 5px 0;
-    width: 200px;
-    height: 25px;
-
-    &:hover {
-      color: #e2e2e2;
-      cursor: pointer;
-    }
-  }
-}
-
-.isScrolled {
-  color: #000000;
-
-  box-shadow: 0 4px 20px rgba(217, 216, 216, 0.56) !important;
-
-  .headerBackground {
-    opacity: 1;
-  }
-
-  & > * {
-    color: #000000;
-  }
-
-  .address {
-    svg {
-      fill: #000000;
-    }
-
-    &:hover svg {
-      fill: #b3b3b3;
-    }
-  }
-
-  .phone {
-    color: #000000;
-  }
-}
-
-.address {
-  display: flex;
-  align-items: center;
-  font-weight: 400;
-  cursor: pointer;
-  text-decoration: none;
-  transition: unset;
-
-  &:visited {
-    color: white;
-  }
-
-  .iconContact {
-    font-size: 20px;
-    margin-left: 10px;
-  }
-
-  svg {
-    transition: unset;
-  }
-}
 
 @media only screen and (max-width: 480px) {
-  .header {
-    height: 50px;
 
-    .logoBlock {
-      width: auto;
-      margin-right: 0;
+  .containerHeader {
+    .top {
+      padding: 5px 10px;
 
-      .logo {
-        margin: 8px;
-        width: 30px;
-        height: 30px;
+      .name {
+        font-size: 16pt;
       }
-    }
 
-    .container {
-      height: inherit;
-      padding: 0;
-
-      .left {
+      .info{
         display: none;
       }
+    }
 
-      .right {
-        .name {
-          font-size: 16px;
-        }
-
-        .nameSmall {
-          letter-spacing: 0.8px;
-          font-size: 10px;
-          margin-top: 0;
-        }
-      }
+    .menu {
+      display: none;
     }
   }
-
-  .menuContainer {
-    display: none;
-  }
 }
+
