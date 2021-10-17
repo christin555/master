@@ -14,22 +14,58 @@
   </url>
   <url>
     <loc>https://master-pola.com/about</loc>
-    <lastmod>2021-09-19T18:04:21+00:00</lastmod>
+    <lastmod>2021-09-24T18:04:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://master-pola.com/works</loc>
-    <lastmod>2021-09-19T18:04:21+00:00</lastmod>
+    <lastmod>2021-09-24T18:04:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://master-pola.com/gallery</loc>
-    <lastmod>2021-09-19T18:04:21+00:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2021-09-24T18:04:21+00:00</lastmod>
+    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://master-pola.com/catalog</loc>
+    <lastmod>2021-09-24T18:04:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+   <url>
+    <loc>https://master-pola.com/catalog/doors</loc>
+    <lastmod>2021-09-24T18:04:21+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+    <url>
+    <loc>https://master-pola.com/catalog/floors</loc>
+    <lastmod>2021-09-24T18:04:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://master-pola.com/catalog/quartzvinyl/</loc>
+    <lastmod>2021-09-24T18:04:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://master-pola.com/catalog/quartzvinyl_kleevay/</loc>
+    <lastmod>2021-09-24T18:04:21+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://master-pola.com/catalog/quartzvinyl_zamkovay/</loc>
+    <lastmod>2021-09-24T18:04:21+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+      <url>
+    <loc>https://master-pola.com/catalog/laminate/</loc>
     <lastmod>2021-09-19T18:04:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -38,13 +74,13 @@
     <loc>https://master-pola.com/product/214</loc>
     <lastmod>2021-09-19T18:04:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://master-pola.com/product/229</loc>
     <lastmod>2021-09-19T18:04:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://master-pola.com/product/176</loc>

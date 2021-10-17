@@ -133,7 +133,7 @@ class Product extends React.Component {
       <React.Fragment>
         <Helmet>
           <title>{`Мастер Пола - ${values.name}`}</title>
-          <meta name='description' content={`Тюмень, коллекция ${values.collection} - ${values.name}`} />
+          <meta name='description' content={`Тюмень, коллекция ${values.collection} - ${values.name}. ${hierarchy.map(({name}) => name).join(',')}`} />
         </Helmet>
         <Hierarchy hierarchy={hierarchy} />
         <div className={s.content}>
@@ -147,12 +147,12 @@ class Product extends React.Component {
 
             <div className={s.product}>
               <span className={s.brand}> Коллекция {values.collection} </span>
-              <span className={s.name}>
+              <title className={s.name}>
                 {values.name}
                 <span className={s.id}> Код {values.id}</span>
-              </span>
+              </title>
               <Divider />
-              <span className={s.desc}> {values.description} </span>
+              <description className={s.desc}> {values.description} </description>
               {
                 values.price && (
                   <div className={s.price}>

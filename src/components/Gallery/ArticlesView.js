@@ -4,6 +4,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import {Divider} from '@material-ui/core';
 import s from './Articles.module.scss';
 import YouTube from 'react-youtube';
+import {Helmet} from 'react-helmet';
 
 @inject(({ArticlesStore}) => {
   return {
@@ -39,6 +40,10 @@ class ArticlesView extends React.Component {
 
       return (
         <React.Fragment>
+        <Helmet>
+          <title>{`Мастер Пола. Напольные покрытия и двери. Статьи. `}</title>
+          <meta name='description' content={`Тюмень, Напольные покрытия, двери, ламинат, паркет, линолеум, смеси. ${articles.map(({title}) => title).join(',')}`} />
+        </Helmet>
           <div className={s.header}>
             {'НАШ БЛОГ'}
             <div className={s.line} />
@@ -49,15 +54,15 @@ class ArticlesView extends React.Component {
                 <div className={s.article}>
                   {this.getMedia({src, title, content, id, type})}
                   <div>
-                    <div className={s.title}>
+                    <title className={s.title}>
                       {title}
-                    </div>
-                    <div className={s.articleContent}>
+                    </title>
+                    <description className={s.articleContent}>
                       {(content || '')
                         .split('\n')
                         .map((item, index) =>
                           <span key={index}>{item.replace(/\\n/g, '')}</span>)}
-                    </div>
+                    </description>
                   </div>
                 </div>
                 <Divider className={s.divider} />

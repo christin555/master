@@ -4,6 +4,7 @@ const API_URL = `${process.env.REACT_APP_API_HOST}`;
 const baseQuery = axios.create({
   baseURL: API_URL,
   responseType: 'json',
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json'
