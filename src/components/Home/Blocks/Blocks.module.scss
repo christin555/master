@@ -269,8 +269,8 @@
     flex-direction: column;
 
     .blockArticles {
-      display: flex;
-      flex-direction: column;
+      grid-template-rows: minmax(300px,400px);
+      grid-template-columns: auto;
     }
   }
   .catalogBlock {
