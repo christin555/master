@@ -22,14 +22,13 @@ class Catalog extends React.Component {
   }
 
   render() {
-    const {hierarchy, status} = this.props;
+    const {status} = this.props;
 
     return (
       <React.Fragment>
         {
           status === statusEnum.LOADING && <Loader /> || null
         }
-        <Hierarchy hierarchy={hierarchy} />
         <div className={s.header}>
           <Title title={this.headerTitle} />
         </div>

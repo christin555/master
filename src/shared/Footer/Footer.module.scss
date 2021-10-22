@@ -46,6 +46,7 @@
 
 .links {
   display: flex;
+  text-align: left;
 
   & > * {
     display: flex;
@@ -59,18 +60,10 @@
       margin-bottom: 30px;
     }
 
-    .policy {
-      margin-top: 20px;
-      text-transform: none;
-      text-align: left;
-      font-size: 16px;
-    }
-
     & > * {
       color: $gray-500;
       margin-bottom: 10px;
       line-height: 24px;
-      text-align: left;
 
       &:hover {
         cursor: pointer;
@@ -156,7 +149,6 @@
 .copy {
   font-size: 12px;
   color: #616060;
-  margin-top: 60px;
   line-height: 20px;
   align-items: flex-end;
   text-align: left;
@@ -195,6 +187,13 @@
   }
 }
 
+.policy {
+  margin: 40px 0;
+  text-transform: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 780px) {
   .footerAbout {
     display: flex;
@@ -211,9 +210,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 10px;
+    text-align: center;
 
     & > * {
       margin: 0;
+      align-items: center;
     }
   }
 
@@ -224,6 +225,7 @@
 
   .contactsContainer {
     min-width: initial;
+    width: inherit;
   }
 
   .footerAbout {

@@ -4,16 +4,44 @@
   display: flex;
   flex-direction: column;
 
-  & > * + * {
+  & > * {
     margin-top: 50px;
   }
 }
 
 .catalogBlock {
   display: flex;
+  flex-direction: column;
   @include paddingStandard;
-  margin-top: 60px;
   justify-content: space-between;
+
+  .catalogItems {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap: 40px;
+    grid-row-gap: 20px;
+
+    .mainBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 16px;
+      text-align: center;
+      font-weight: 400;
+
+      .buttonContainer {
+        display: flex;
+        align-content: flex-start;
+        height: 60px;
+
+        .but {
+          font-size: 16px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
 }
 
 .mediaContainer {
@@ -60,6 +88,29 @@
       width: 100%;
       border-radius: inherit;
     }
+  }
+}
+
+
+.catalog {
+  margin: 40px 50px;
+  display: flex;
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 300px));
+    grid-column-gap: 20px;
+    grid-row-gap: 15px;
+    width: 100%;
+    height: min-content;
+    justify-content: center;
+  }
+
+  .button {
+    display: flex;
+    margin-top: 20px;
+    border-color: white;
+    color: #f9f9fd;
   }
 }
 
@@ -112,35 +163,6 @@
   }
 }
 
-.catalogContainer {
-  justify-content: center;
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-
-  & > * {
-    line-height: 2.25;
-    letter-spacing: 0.15px;
-    text-align: right;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  .activeCategory {
-    display: block;
-    height: 2px;
-    width: 40px;
-    background: $red;
-    text-align: right;
-  }
-
-  .but {
-    margin-top: 20px;
-  }
-}
-
 .iconChar {
   font-size: 60px;
   color: $gray-100;
@@ -148,16 +170,18 @@
 }
 
 .charsBlock {
-  @include paddingStandard;
+  padding: 0 10vw;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
 
   & > * {
     display: flex;
-    margin-left: 50px;
   }
 
+  & > * + * {
+    margin-left: 50px;
+  }
 
   .border {
     position: absolute;

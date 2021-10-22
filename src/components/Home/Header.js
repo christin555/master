@@ -9,29 +9,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 
 const Header = () => (
   <div className={s.wrapper}>
-    <div className={s.subs}>
-            ПОДПИСЫВАЙСЯ!
-
-      <a
-        target={'_blank'}
-        rel='noopener noreferrer'
-        href='https://www.instagram.com/masterpola72'
-        title='Перейти на канал в Instagram'
-      >
-        <InstagramIcon className={s.icon} />
-              instagram
-      </a>
-
-      <a
-        target={'_blank'}
-        rel='noopener noreferrer'
-        href='https://www.youtube.com/channel/UC86lrjiQpHt0Fwzr0FoBxyA'
-        title='Перейти на канал в Instagram'
-      >  <YouTubeIcon className={s.icon} />
-                youtube
-      </a>
-
-    </div>
+    <div className={s.shadow} />
     <div className={s.overlay}>
       <div className={s.txtblocks}>
         <h1 className={s.name}>
@@ -40,19 +18,25 @@ const Header = () => (
         <h2 className={s.slogan}>
                     РЕАЛИЗУЙТЕ МЕЧТЫ ВМЕСТЕ С НАМИ
         </h2>
-        <div className={s.buttons}>
-          <Callme
-            className={s.buttonOutlined}
-            buttonText={'БЕСПЛАТНАЯ КОСНУЛЬТАЦИЯ'}
-          />
-          <Button
-            className={s.buttonContained}
-            variant={'contained'}
-            component={Link}
-            to='/catalog'
+        <div className={s.subs}>
+          <a
+            target={'_blank'}
+            rel='noopener noreferrer'
+            href='https://www.instagram.com/masterpola72'
+            title='Перейти на канал в Instagram'
           >
-            {'КАТАЛОГ'}
-          </Button>
+            <InstagramIcon className={s.icon} />
+                  instagram
+          </a>
+          <a
+            target={'_blank'}
+            rel='noopener noreferrer'
+            href='https://www.youtube.com/channel/UC86lrjiQpHt0Fwzr0FoBxyA'
+            title='Перейти на канал в Instagram'
+          >  <YouTubeIcon className={s.icon} />
+                  youtube
+          </a>
+
         </div>
       </div>
     </div>

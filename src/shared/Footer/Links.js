@@ -64,11 +64,6 @@ const Footer = () => {
           itemsMenu.map(({name, alias}) =>
             <Link to={alias} key={alias}>{name}</Link>)
         }
-        <span className={s.policy}>
-          Политика конфиденциальности
-          <br />
-           © Мастер Пола, 2021
-        </span>
       </div>
     </div>
   );

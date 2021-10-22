@@ -7,8 +7,9 @@ import About from './About';
 
 const Blocks = () => (
   <div className={s.homeBlocks}>
-    <Catalog />
     <Chars />
+    <Catalog />
+
     <About />
     <Blog />
   </div>

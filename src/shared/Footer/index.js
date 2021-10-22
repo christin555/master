@@ -16,6 +16,11 @@ const Footer = () => (
         <Links />
         <Contacts />
       </div>
+      <span className={s.policy}>
+          Политика конфиденциальности
+        <br />
+           © Мастер Пола, 2021
+      </span>
       <Copy />
     </div>
   </DefaultStyle>

@@ -41,7 +41,19 @@
 }
 
 .carousel {
-  max-width: 400px;
+  max-width: 500px;
+
+  .axis-vertical {
+    margin: 0 !important;
+  }
+
+  ul {
+    padding-inline-start: 0
+  }
+
+  img {
+    max-height: 500px;
+  }
 }
 
 .header {
@@ -70,6 +82,7 @@
   .preview {
     .text {
       max-width: unset;
+
       .title {
         margin-top: 10px;
       }

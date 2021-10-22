@@ -24,7 +24,7 @@ const Burger = ({pathname, menu, toPage, search, setParams, setSearch}) => {
   };
 
   return (
-    <div className={s.menuContainer}>
+    <div className={s.burgerContainer}>
       <IconButton size={'small'} className={s.burgerIcon} onClick={() => setOpen(true)}> <MenuIcon
         className={s.burgerIcon}
       />

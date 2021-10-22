@@ -7,9 +7,14 @@ import Callme from '../../shared/Callme';
 class Works extends React.Component {
   get images() {
     return [
-      {original: 'https://45.147.179.124:8000/public/works1.jpg', thumbnail: 'https://45.147.179.124:8000/public/works1.jpg'},
-      {original: 'https://45.147.179.124:8000/public/works2.jpg', thumbnail: 'https://45.147.179.124:8000/public/works2.jpg'}
-    ];
+      'https://sun3-8.userapi.com/impg/xQ-Dm6Q7LfQH8XaTl3PK59i2Dyeqhfdl0CmO1A/MOj9TwG7Nwo.jpg?size=640x640&quality=96&sign=6ab3ae1062a598839f27de8094c1ee4c&type=album',
+      'https://sun9-63.userapi.com/impg/Jk1dEvTJNV3JJiBNft6a4Q6ZlC8Ue_52hJcKRQ/HyaCxaJHwSE.jpg?size=640x640&quality=96&sign=e9b95b48d0ac612eacf23457516667a6&type=album',
+      'https://sun9-21.userapi.com/impg/kzQAeMjH9dcgCJ2HtnT7jV0mzL3a8RjeJ0cM6A/I6_q_9sz1_g.jpg?size=1280x853&quality=96&sign=7aa678adf04a7da544d42d62cedce7cd&type=album',
+      'https://sun9-73.userapi.com/impg/fFSS9w_mnsk99SIvq5xevNgMNnuLgc7lJdyZKA/8MOGMU-XNGo.jpg?size=853x1280&quality=96&sign=ec82af87b54fcdfcd34a7d1b715a45cd&type=album',
+      'https://sun9-85.userapi.com/impg/n34elxu4lKo_qe4-FlLcm69RH0hXqeE11yhBhw/xYrpS3BB5XU.jpg?size=1280x853&quality=96&sign=24a7093b8df67fc22c65a4b4db838708&type=album'
+    ].map((img) => {
+      return {original: img};
+    });
   }
 
   render() {
@@ -21,10 +26,11 @@ class Works extends React.Component {
         </div>
         <div className={s.content}>
           <div className={s.preview}>
-            <Carousel
-              images={this.images}
-              className={s.carousel}
-            />
+            <div className={s.carousel}>
+              <Carousel
+                images={this.images}
+              />
+            </div>
             <div className={s.text}>
               <div className={s.title}>
                                 Команда, которой можно доверить ремонт

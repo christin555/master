@@ -1,21 +1,22 @@
 @mixin paddingStandard {
-  @media (max-width: 780px){
-    padding: 0 10px;
-  }
-
   @media (min-width: 1700px){
     padding-left: 150px;
     padding-right: 150px;
   }
 
-  @media (min-width: 780px){
+  @media (min-width: 1300px) {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  @media (min-width: 480px){
     padding-left: 40px;
     padding-right: 40px;
   }
 
-  @media (min-width: 1300px) {
-    padding-left: 80px;
-    padding-right: 80px;
+  @media (max-width: 480px){
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -37,9 +38,9 @@ $black: #131212;
 
 $white-20: #F7F7F7;
 $white-10: rgba(255, 255, 255, 0.9);
-$gray-10: #c7c7c7;
+$gray-10: #ffffff;
 
-$gray-20: #F3F3F3;
+$gray-20: #f8f8f8;
 $gray-100: #9299a7;
 
 $gray-100-10: rgba(146, 153, 167, 0.1);

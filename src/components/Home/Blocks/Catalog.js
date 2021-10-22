@@ -1,103 +1,60 @@
-import React, {useState} from 'react';
+import React from 'react';
 import s from './Blocks.module.scss';
+import doors from '../../../shared/img/doors.jpg';
 import laminate from '../../../shared/img/laminate.jpg';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import cls from 'classnames';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import quartzvinyl from '../../../shared/img/quartzvinyl.jpg';
+import CatalogCard from '../../../shared/CatalogCard';
 import Button from '../../../shared/Button';
 import {Link} from 'react-router-dom';
 
 const items = [
   {
     name: 'Двери',
-    img: laminate,
-    alias: 'laminate'
+    img: doors,
+    alias: 'doors'
   },
   {
     name: 'Ламинат',
     img: laminate,
-    alias: 'doors'
+    alias: 'laminate'
   },
   {
-    name: 'Линолеум',
-    img: laminate,
-    alias: '/catalog'
-  },
-  {
-    name: 'Керамогранит',
-    img: laminate,
-    alias: '/catalog'
-  },
-  {
-    name: 'Пробковое покрытие',
-    img: laminate,
-    alias: '/catalog'
-  },
-  {
-    name: 'Спортивное покрытие',
-    img: laminate,
-    alias: '/catalog'
+    name: 'Кварцвинил',
+    img: quartzvinyl,
+    alias: 'quartzvinyl'
   }
 ];
 
 const Blocks = () => {
-
-  const [activeImg, setActiveImg] = useState(0);
-  const toNextBlock = () => {
-    if (activeImg < items.length - 1) {
-      setActiveImg(activeImg + 1);
-    }
-  };
-
-  const toPrevBlock = () => {
-    if (activeImg !== 0) {
-      setActiveImg(activeImg - 1);
-    }
-  };
-
-  const blocksMedia = items.map(({img}, index) => (
-    <div
-      key={index}
-      className={cls(s.imgBlock, {[s.activeImg]: index === activeImg})}
-    >
-      <img src={img} />
-    </div>
-  ));
-
-  const blocksCatalog = items.map(({name}, index) => (
-    <div key={index}>
-      {name}
-      {index === activeImg && <div className={s.activeCategory} /> || null}
-    </div>
+  const blocksCatalog = items.map(({name, img, alias}, index) => (
+    <CatalogCard key={index} name={name} img={img} alias={alias} />
   ));
 
   return (
     <div className={s.catalogBlock}>
-      <div className={s.mediaContainer}>
-        <div className={s.iconBlock} onClick={toPrevBlock}>
-          <div className={s.icon}>
-            <ArrowBackIosIcon />
+      <div className={s.catalogItems}>
+        <div className={s.mainBlock}>
+          <span>
+            <p>
+            В нашем салоне вы можете подобрать для своего помещения напольное покрытие на любой вкус и цвет.
+            </p>
+            <p>
+           С уверенностью гарантируем, что высокое качество нашего товара будет радовать вас долгие годы.
+            </p>
+          </span>
+          <div className={s.buttonContainer}>
+            <Button
+              className={s.but}
+              variant={'outlined'}
+              component={Link}
+              to='/catalog'
+            >
+              {'Каталог'}
+            </Button>
           </div>
+
         </div>
-        <div className={s.mediaBlock}>
-          {blocksMedia}
-        </div>
-        <div className={s.iconBlock} onClick={toNextBlock}>
-          <div className={s.icon}>
-            <ArrowForwardIosIcon />
-          </div>
-        </div>
-      </div>
-      <div className={s.catalogContainer}>
         {blocksCatalog}
-        <Button
-          className={s.but}
-          variant={'outlined'}
-          component={Link}
-          to='/catalog'
-        >
-          {'Каталог'}
-        </Button>
       </div>
     </div>
   );

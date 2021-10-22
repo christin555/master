@@ -24,7 +24,7 @@
   }
 }
 
-.menuContainer {
+.burgerContainer {
   height: inherit;
   display: none;
   align-items: center;
@@ -92,7 +92,7 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .menuContainer {
+  .burgerContainer {
     display: flex;
   }
 }
