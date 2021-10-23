@@ -16,6 +16,16 @@ const plural = require('plural-ru');
 })
 class CardView extends React.Component {
 
+  get collectionLabel() {
+    const {collection} = this.props;
+
+    if (!collection) {
+      return null;
+    }
+
+    return <span className={s.collection}> {`Коллекция ${collection}`} </span>;
+  }
+
   get colors() {
     const {finishingMaterial = []} = this.props;
 
@@ -42,7 +52,7 @@ class CardView extends React.Component {
       brand,
       id,
       price,
-      straightLink
+      straightLink,
     } = this.props;
     const pathname = straightLink && alias || alias && `/catalog/${alias}` || `/product/${id}`;
 
@@ -68,12 +78,13 @@ class CardView extends React.Component {
           >
             {
               brand && (
-                <span className={s.collection}>
+                <span className={s.brand}>
                   {brand}
                   {this.colors}
                 </span>
               )
             }
+            {this.collectionLabel}
             <span className={s.name}>
               {name}
             </span>

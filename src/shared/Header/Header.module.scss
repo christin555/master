@@ -79,6 +79,7 @@
   .headerContent {
     display: flex;
     justify-content: space-between;
+    height: 60px;
     @include paddingStandard;
 
     .logoBlock {
@@ -104,7 +105,7 @@
       font-family: oswald;
       letter-spacing: 2px !important;
       font-weight: 500;
-      margin-left: 10px;
+      margin-left: 20px;
     }
 
     .left {
@@ -143,7 +144,7 @@
 }
 
 .menuContainer {
-  padding: 70px 0 20px 0;
+  padding: 75px 0 20px 0;
 
   @include paddingStandard;
 }

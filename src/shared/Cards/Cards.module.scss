@@ -1,3 +1,5 @@
+@import '../style';
+
 .root {
   border-radius: 0 !important;
 
@@ -15,7 +17,7 @@
     align-items: stretch;
   }
 
-    width: 100%;
+  width: 100%;
 }
 
 .media {
@@ -63,6 +65,10 @@
   flex-direction: column;
   background: rgba(255, 255, 255, 0.56);
   min-height: 30px;
+  font-weight: 300;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5px;
 
   .id {
     font-size: 12px;
@@ -71,19 +77,20 @@
     margin-bottom: 10px;
   }
 
+  .brand {
+    color: $gray-200;
+    margin-bottom: 2px;
+  }
+
   .collection {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    color: #7f7f7f;
+    font-size: 14px;
+    color: $gray-400;
     margin-bottom: 10px;
   }
 
   .name {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    color: #444141;
+    color: $gray-400;
+    font-weight: 400;
   }
 
   .price {
@@ -109,7 +116,7 @@
 @media only screen and (max-width: 480px) {
 
   .content {
-    padding: 8px!important;
+    padding: 8px !important;
     font-size: 12px;
 
     .collection, .name {
