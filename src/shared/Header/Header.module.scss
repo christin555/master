@@ -93,19 +93,24 @@
         margin: 5px 0;
         width: 45px;
         height: 45px;
+        transition: transform .2s, -webkit-transform .2s;
 
         img {
           width: inherit;
           height: inherit;
+        }
+
+        &:hover {
+          transform: scale(1.04);
         }
       }
     }
 
     .name {
       font-family: oswald;
-      letter-spacing: 2px !important;
+      letter-spacing: 1.5px !important;
       font-weight: 500;
-      margin-left: 20px;
+      margin-left: 15px;
     }
 
     .left {
@@ -144,7 +149,7 @@
 }
 
 .menuContainer {
-  padding: 75px 0 20px 0;
+  padding: 85px 0 20px 0;
 
   @include paddingStandard;
 }

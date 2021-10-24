@@ -109,7 +109,9 @@ class Product extends React.Component {
         <div className={s.items}> {
           finishingMaterial.values.map(({id, name, img}) => (
             <div key={id}>
-              <img alt={name} src={img} />
+              <div className={s.materialImg}>
+                <img alt={name} src={img} />
+              </div>
               <span>{name}</span>
             </div>
           ))
@@ -128,7 +130,7 @@ class Product extends React.Component {
           <title>{`Мастер Пола - ${values.name}`}</title>
           <meta name='description' content={`Тюмень, коллекция ${values.collection} - ${values.name}. ${hierarchy.map(({name}) => name).join(',')}`} />
         </Helmet>
-        <Hierarchy hierarchy={hierarchy} />
+        <Hierarchy hierarchy={hierarchy} className={s.hierarchy} />
         <div className={s.content}>
           <div className={classNames(s.card, {[s.door]: !!values.finishingMaterial})}>
             <Carousel
@@ -137,10 +139,12 @@ class Product extends React.Component {
               width={'40vw'}
             />
             <div className={s.product}>
-              <span className={s.brand}> Коллекция {values.collection} </span>
+              <span className={s.brand}> {values.brand} </span>
               <title className={s.name}>
                 {values.name}
-                <span className={s.id}> Код {values.id}</span>
+                <span className={s.collection}>
+                  Коллекция {values.collection}
+                </span>
               </title>
               <Divider />
               <description className={s.desc}> {values.description} </description>
@@ -155,16 +159,16 @@ class Product extends React.Component {
               <div className={s.chars}>
                 {this.mainFields}
               </div>
+              {this.finishingMaterial}
+              <div className={s.additional}>
+                {this.chipFields}
+              </div>
               <div>
                 <Callme
                   product={{...values, img: values?.imgs && values.imgs[0]?.src}}
                   className={s.call}
                   buttonText={'Оставить заявку'}
                 />
-              </div>
-              {this.finishingMaterial}
-              <div className={s.additional}>
-                {this.chipFields}
               </div>
             </div>
           </div>

@@ -9,13 +9,11 @@ class CatalogStore {
     FilterStore
 
     @observable status = statusEnum.LOADING;
-    @observable cards;
+    @observable categories;
+    @observable products;
     @observable hierarchy;
     @observable isLastLevel;
     @observable count = 0;
-
-    @observable offset = 0;
-    @observable limit = 20;
 
     constructor({RouterStore, CatalogStore}) {
       this.RouterStore = RouterStore;
@@ -37,6 +35,23 @@ class CatalogStore {
       this.FilterStore = new FilterStore({RouterStore, CatalogStore: this});
     }
 
+    @computed get limit() {
+      const urlAddress = new URLSearchParams(this.RouterStore.params || '');
+
+      return Number(urlAddress.get('limit')) || 12;
+    }
+
+    @computed get page() {
+      const urlAddress = new URLSearchParams(this.RouterStore.params || '');
+
+      return Number(urlAddress.get('page')) || 1;
+    }
+
+    @computed get offset() {
+
+      return (this.page - 1) * this.limit;
+    }
+
     @computed get category() {
       return get(get(this.RouterStore.match, 'params'), 'category') || null;
     }
@@ -45,8 +60,17 @@ class CatalogStore {
       return !!this.urlParams?.search;
     }
 
+    @computed get productsAvailable() {
+      return !!this.products?.length;
+    }
+
     @computed get filter() {
       const searchParams = new URLSearchParams(this.RouterStore.params || {});
+
+      if (!searchParams?.length) {
+        return;
+      }
+
       const filter = {};
 
       for (const pair of searchParams.entries()) {
@@ -61,8 +85,12 @@ class CatalogStore {
       return filter;
     }
 
-    @action setCards = (cards) => {
-      this.cards = cards;
+    @action setCategories = (categories) => {
+      this.categories = categories;
+    }
+
+    @action setProducts = (products) => {
+      this.products = products;
     }
 
     @action setHierarchy = (hierarchy) => {
@@ -77,13 +105,25 @@ class CatalogStore {
       this.count = count;
     }
 
-    @action setOffset = (_, offset) => {
-      this.offset = offset;
+    @action setPage = (page) => {
+      const searchParams = new URLSearchParams();
+
+      searchParams.append('page', page);
+
+      this.RouterStore.history.push({
+        search: searchParams.toString()
+      });
     }
 
-    @action setLimit = ({target: value}) => {
-      this.limit = value.value;
-      this.offset = 0;
+    @action setLimit = (limit) => {
+      const searchParams = new URLSearchParams();
+
+      searchParams.append('limit', limit);
+      searchParams.append('offset', 0);
+
+      this.RouterStore.history.push({
+        search: searchParams.toString()
+      });
     }
 
     @action setStatus = (status) => {
@@ -112,7 +152,6 @@ class CatalogStore {
         this.setHierarchy(hierarchy);
         this.setIsLastLevel(isLastLevel);
       } catch(_) {
-        alert({type: 'error', title: 'Ошибка при получении иерархии'});
       }
     }
 
@@ -126,7 +165,6 @@ class CatalogStore {
 
         this.setCount(count);
       } catch(_) {
-        alert({type: 'error', title: 'Ошибка при подсчете товаров'});
       }
     }
 
@@ -134,17 +172,17 @@ class CatalogStore {
       const {category, limit, offset, filter} = this;
 
       this.setStatus(statusEnum.LOADING);
-      this.setCards([]);
 
       try {
         const body = {searchParams: {category, filter}, limit, offset};
-        const cards = await api.post('catalog/getCatalog', body);
+        const {categories, products} = await api.post('catalog/getCatalog', body);
 
-        this.setCards(cards);
+        this.setCategories(categories);
+        this.setProducts(products);
         this.setStatus(statusEnum.SUCCESS);
       } catch(_) {
         this.setStatus(statusEnum.ERROR);
-        alert({type: 'error', title: 'Ошибка при получении иерархии'});
+        alert({type: 'error', title: 'Ошибка при получении товаров'});
       }
     }
 }

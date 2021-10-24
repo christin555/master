@@ -5,6 +5,7 @@ const defaultPalette = {
   white: variables.white,
   gray20: variables['gray-20'],
   gray10: variables['gray-10'],
+  gray40: variables['gray-40'],
   gray10010: variables['gray-100-10'],
   gray10040: variables['gray-100-40'],
   gray300: variables['gray-300'],

@@ -1,29 +1,10 @@
 @import '../../shared/style';
 
-body {
-  font-family: Montserrat, sans-serif;
+
+.hierarchy {
+  @include paddingStandard;
 }
 
-.level {
-  padding: 0 80px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 14px;
-  color: #8e8e8e;
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-weight: 300;
-
-  .icon {
-    font-size: 10px;
-    margin: 0 5px;
-  }
-
-  .last {
-    color: #bababa;
-  }
-}
 
 .door {
   background: url(../../shared/img/wall.jpg) no-repeat top;
@@ -37,7 +18,8 @@ body {
   flex-direction: column;
 
   .card {
-    padding: 0 80px;
+    @include paddingStandard;
+
     display: grid;
     grid-column-gap: 20px;
     grid-template-columns: minmax(300px, 0.8fr) minmax(400px, 1fr);
@@ -69,11 +51,10 @@ body {
     margin-left: 50px;
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 10px 20px;
 
     .additional {
       margin-top: 20px;
-      font-weight: 400;
       font-size: 18px;
       display: flex;
       flex-wrap: wrap;
@@ -101,7 +82,7 @@ body {
         display: flex;
         align-items: center;
         font-size: 24px;
-        font-weight: 600;
+        font-weight: 400;
 
         .icon {
           margin-right: 8px;
@@ -112,35 +93,36 @@ body {
         margin-top: 5px;
         display: flex;
         align-items: center;
-        font-weight: 500;
         font-size: 16px;
         color: #7f7f7f;
       }
     }
 
     .brand {
-      font-weight: 400;
+      font-weight: 300;
       margin-top: 10px;
+      text-transform: uppercase;
     }
 
     .name {
       display: flex;
       justify-content: space-between;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 24px;
-      margin: 5px 0 20px;
+      margin: 20px 0 20px;
+      align-items: center;
     }
 
-    .id{
+    .collection {
+      text-transform: uppercase;
       font-weight: 400;
       font-size: 14px;
-      color: #a8a6a6;
+      color: $gray-200;
     }
 
     .desc {
       text-align: justify;
       margin-top: 10px;
-      font-weight: 300;
       font-size: 16px;
     }
   }
@@ -148,13 +130,14 @@ body {
 
 .titleCharacteristic {
   margin-top: 20px;
-  background: #e5e5e5;
+  background: $gray-100-10;
   padding: 0 80px;
   font-weight: 400;
   font-size: 16px;
   height: 50px;
   display: flex;
   align-items: center;
+  text-transform: uppercase;
 }
 
 .characteristic {
@@ -172,7 +155,6 @@ body {
   flex-direction: column;
   width: 100%;
   margin-right: 50px;
-  font-weight: 400;
   font-size: 14px;
 }
 
@@ -206,33 +188,37 @@ body {
 
 .iconChip {
   font-size: 20px;
+  color: $red;
 }
 
 .materials {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 16px;
 
   .items {
     display: grid;
-    grid-column-gap: 10px;
-    grid-row-gap: 50px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     margin-top: 10px;
+    line-height: 18px;
 
     & > * {
-      font-weight: 600;
       font-size: 14px;
-      width: 100px;
-      height: 100px;
-      margin-right: 10px;
 
-      img {
-        width: 100%;
-        height: 100%;
+      .materialImg {
+        margin-bottom: 8px;
+        width: inherit;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
+
     }
   }
 }
@@ -242,8 +228,41 @@ body {
   height: 75px;
 }
 
-.call{
+.call {
   border-color: black;
   border-radius: 0;
-  margin-top: 15px;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+
+  .content > .card {
+    display: flex;
+    flex-direction: column;
+
+    .product {
+      margin-left: 0;
+
+      .name {
+        flex-direction: column;
+        align-items: flex-start;
+
+        & > * {
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+
+  .materials > .items {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+
+  .characteristic {
+    grid-template-columns: 1fr;
+  }
+
+  .call{
+    width: 100%;
+  }
 }

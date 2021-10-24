@@ -1,15 +1,54 @@
-.content {
+@import '../../../shared/style';
+
+.container {
   width: 100%;
+
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap: 40px;
+    grid-row-gap: 20px;
+  }
 
   .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 20px;
 
     .count {
       font-weight: 400;
       font-size: 20px;
     }
+
+    .limitButton {
+      font-size: 14px;
+      background: $gray-100-10;
+      padding: 8px;
+    }
+
+    .limitActive {
+      font-weight: bold;
+    }
+
+    .limit {
+      display: flex;
+
+      & > * + * {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    width: inherit;
+    margin-top: 40px;
+
+  }
+
+  .cardsContainer {
+    width: inherit;
   }
 
   .cards {
@@ -33,19 +72,17 @@
 }
 
 .pagnt {
-  font-size: 14px !important;
-  font-weight: 300 !important;
-  place-self: flex-end;
-
-  p {
-    font-size: inherit !important;
-    font-weight: inherit !important;
-  }
+  margin-top: 40px;
 }
 
 @media only screen and (max-width: 480px) {
   .content {
     margin: 10px 0;
+    flex-direction: column;
+
+    & > * {
+      margin-right: 0;
+    }
 
     .cards {
       font-size: 12px;
@@ -53,24 +90,22 @@
       margin: 10px;
       width: unset;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+
     }
 
     .header {
       margin: 10px 0;
-      flex-direction: column;
-      align-items: flex-start;
 
       .count {
         font-size: 14px;
       }
-
-      .pagnt {
-        padding: 0;
-
-        & > * > * + * {
-          margin: 0 5px;
-        }
-      }
     }
+  }
+  .pagnt {
+    padding: 0;
+    &>*{
+      justify-content: space-around;
+    }
+
   }
 }

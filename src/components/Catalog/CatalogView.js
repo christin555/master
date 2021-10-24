@@ -33,7 +33,6 @@ class Catalog extends React.Component {
           <Title title={this.headerTitle} />
         </div>
         <div className={s.content}>
-          <Filter />
           <Content />
         </div>
       </React.Fragment>

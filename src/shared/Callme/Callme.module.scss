@@ -79,6 +79,12 @@
 .buttonMain {
   border-radius: 0 !important;
   border-color: black;
+  transition: color .15s ease-out .05s;
+
+  &:hover {
+    color: white !important;
+    background: black !important;
+  }
 }
 
 @media only screen and (max-width: 480px) {

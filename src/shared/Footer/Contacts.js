@@ -21,7 +21,7 @@ const Contacts = () => (
       <p>
         Задать вопрос, оформить покупку или заказать расчет
       </p>
-      <Callme className={s.button} buttonText={'ЗАЗАКАТЬ ЗВОНОК'} />
+      <Callme className={s.button} buttonText={'ЗАКАЗАТЬ ЗВОНОК'} />
       <div className={s.messangers}>
         <a
           target={'_blank'}

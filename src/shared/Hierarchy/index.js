@@ -3,6 +3,7 @@ import s from './Hierarchy.module.scss';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import {inject} from 'mobx-react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 @inject(({RouterStore: {history}}) => {
   return {history};
@@ -18,11 +19,11 @@ class Hierarchy extends React.Component {
   toCatalog = () => this.props.history.push({pathname: '/catalog'});
 
   render() {
-    const {hierarchy} = this.props;
+    const {hierarchy, className} = this.props;
 
     return (
-      <div className={s.level}>
-        <span onClick={this.toCatalog}>Каталог</span>
+      <div className={classNames(s.level, className)}>
+        {hierarchy?.length ? <span onClick={this.toCatalog}>Каталог</span> : null}
         {
           hierarchy.map(({name, alias}, index) => (
             <React.Fragment key={index}>

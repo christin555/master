@@ -23,7 +23,7 @@ class CardView extends React.Component {
       return null;
     }
 
-    return <span className={s.collection}> {`Коллекция ${collection}`} </span>;
+    return <span> {`| ${collection}`} </span>;
   }
 
   get colors() {
@@ -52,7 +52,7 @@ class CardView extends React.Component {
       brand,
       id,
       price,
-      straightLink,
+      straightLink
     } = this.props;
     const pathname = straightLink && alias || alias && `/catalog/${alias}` || `/product/${id}`;
 
@@ -80,11 +80,11 @@ class CardView extends React.Component {
               brand && (
                 <span className={s.brand}>
                   {brand}
-                  {this.colors}
+                  {this.collectionLabel}
+                  {/* {this.colors}*/}
                 </span>
               )
             }
-            {this.collectionLabel}
             <span className={s.name}>
               {name}
             </span>
