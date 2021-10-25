@@ -31,10 +31,6 @@ class FilterStore {
       return this.CatalogStore.filter;
     }
 
-    clear = () => {
-      this.CatalogStore.setFilter({});
-    }
-
     @action setStatus = (status) => {
       this.status = status;
     }
@@ -81,6 +77,10 @@ class FilterStore {
         this.setStatus(statusEnum.ERROR);
         alert({type: 'error', title: 'Ошибка при получении фильтра'});
       }
+    }
+
+    clear = () => {
+      this.CatalogStore.setFilter({});
     }
 }
 

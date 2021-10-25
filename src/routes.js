@@ -49,7 +49,9 @@ export default () => (
             path='/works'
             render={(props) => <Wrapper {...props} name={'works'} />}
           />
-          <Route render={() => <div>{'Miss'}</div>} />
+          <Route
+            render={(props) => <Wrapper {...props} name={'notFound'} />}
+          />
         </Switch>
       </BrowserRouter>
     </Provider>

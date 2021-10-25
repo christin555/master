@@ -1,36 +1,33 @@
 import {observable, action, makeObservable} from 'mobx';
 
 class HeaderStore {
-  RouterStore
+    RouterStore
 
-  @observable search;
+    @observable search;
 
-  constructor({RouterStore}) {
-    this.RouterStore = RouterStore;
+    constructor({RouterStore}) {
+      this.RouterStore = RouterStore;
 
-    makeObservable(this);
-  }
-
-  @action setSearch = ({target: {value}}) => {
-    this.search = value;
-  }
-
-  setParams = () => {
-    const params = {search: this.search};
-    const urlParams = new URLSearchParams();
-
-    for (const [key, value] of Object.entries(params)) {
-      if (value) {
-        urlParams.append(key, value);
-      }
+      makeObservable(this);
     }
 
-    this.RouterStore.history.push({
-      pathname: '/catalog',
-      search: urlParams.toString()
-    });
+    @action setSearch = ({target: {value}}) => {
+      this.search = value;
+    }
 
-  }
+    @action setParams = () => {
+      const urlParams = new URLSearchParams();
+
+      urlParams.set('search', this.search);
+
+      this.search = '';
+
+      this.RouterStore.history.push({
+        pathname: '/catalog',
+        search: urlParams.toString()
+      });
+
+    }
 }
 
 export default HeaderStore;

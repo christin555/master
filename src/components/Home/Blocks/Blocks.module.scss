@@ -17,7 +17,7 @@
 
   .catalogItems {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-column-gap: 40px;
     grid-row-gap: 20px;
 
@@ -207,7 +207,7 @@
 
 .blog {
   background: $white-20;
-  padding: 10px 0;
+  padding: 14px 0;
   @include paddingStandard;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -217,16 +217,16 @@
     display: flex;
     flex-direction: column;
     grid-column: 1;
+    justify-content: space-between;
 
     .buttonArt {
-      margin-top: 10px;
+      margin-top: 20px;
       place-self: flex-end;
     }
   }
 
   .blockArticles {
     grid-column: 2/4;
-    padding: 10px 0;
     display: grid;
     grid-template-columns:   repeat(3, minmax(100px, 350px));
     grid-column-gap: 20px;

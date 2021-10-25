@@ -76,6 +76,11 @@
     font-size: 32px !important;
   }
 
+  &:not(.isHome) input[class*="MuiInputBase-input"],
+  &:not(.isHome) input[class*="MuiInputBase-input"]::placeholder {
+    color: $gray-400;
+  }
+
   .headerContent {
     display: flex;
     justify-content: space-between;
@@ -101,7 +106,7 @@
         }
 
         &:hover {
-          transform: scale(1.04);
+          transform: scale(1.2);
         }
       }
     }

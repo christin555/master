@@ -7,10 +7,11 @@ import CatalogCard from '../../../shared/CatalogCard';
 import Button from '../../../shared/Button';
 import {Link} from 'react-router-dom';
 
+//заменить на получение с бк
 const items = [
   {
     name: 'Двери',
-    img: doors,
+    img: 'https://wide-world.ru/image/catalog/news/dverisruchkami.jpg',
     alias: 'doors'
   },
   {
@@ -22,6 +23,16 @@ const items = [
     name: 'Кварцвинил',
     img: quartzvinyl,
     alias: 'quartzvinyl'
+  },
+  {
+    name: 'Спортивное покрытие',
+    img: 'https://www.tarkett.ru/media/img/large/IN_TEE_OMNISPORTS_V65.jpg',
+    alias: 'sport'
+  },
+  {
+    name: 'Керамогранит',
+    img: 'https://modern05.ru/upload/iblock/c6e/c6e3c78be9b57ea2f7fc411c9c953f33.jpg',
+    alias: 'keramogranit'
   }
 ];
 

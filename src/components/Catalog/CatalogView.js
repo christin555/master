@@ -11,12 +11,17 @@ import Title from '../../shared/Title';
 @inject(({CatalogStore}) => {
   return {
     hierarchy: CatalogStore.hierarchy || [],
-    status: CatalogStore.status
+    status: CatalogStore.status,
+    fastfilter: CatalogStore.fastfilter
   };
 })
 class Catalog extends React.Component {
   get headerTitle() {
-    const {hierarchy} = this.props;
+    const {hierarchy, fastfilter} = this.props;
+
+    if (!hierarchy.length && fastfilter) {
+      return `Поиск`;
+    }
 
     return hierarchy.length && hierarchy[hierarchy.length - 1].name || 'Каталог';
   }

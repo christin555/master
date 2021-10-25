@@ -29,7 +29,7 @@ class Hierarchy extends React.Component {
             <React.Fragment key={index}>
               <ArrowForwardIosIcon className={s.icon} />
               <span
-                onClick={() => alias && this.routeChange(alias)}
+                onClick={() => index !== hierarchy.length - 1 && alias && this.routeChange(alias)}
                 className={index === hierarchy.length - 1 ? s.last : null}
               >
                 {name}

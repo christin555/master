@@ -2,8 +2,6 @@ import React from 'react';
 import s from './Content.module.scss';
 import Cards from '../../../shared/Cards';
 import {inject} from 'mobx-react';
-import EmptyBlock from '../../../shared/EmptyBlock';
-import {status as statusEnum} from '../../../enums';
 import Chips from './Chips';
 import {Pagination} from '@material-ui/lab';
 import {IconButton} from '@material-ui/core';
@@ -20,15 +18,14 @@ const plural = require('plural-ru');
     setLimit: CatalogStore.setLimit,
     page: CatalogStore.page,
     limit: CatalogStore.limit,
-    status: CatalogStore.status,
-    isFastFilterEnabled: CatalogStore.isFastFilterEnabled,
-    hierarchy: CatalogStore.hierarchy || []
+    fastfilter: CatalogStore.fastfilter
   };
 })
 class Content extends React.Component {
   get label() {
     const {
-      count
+      count,
+      fastfilter
     } = this.props;
 
     const pluralLabel = plural(
@@ -37,6 +34,10 @@ class Content extends React.Component {
       'товара',
       'товаров'
     );
+
+    if (fastfilter) {
+      return `По вашему запросу «${fastfilter}» нашлось ${count} ${pluralLabel}`;
+    }
 
     return `${count} ${pluralLabel}`;
   }
@@ -89,11 +90,7 @@ class Content extends React.Component {
     }
 
     render() {
-      const {products, status, isLastLevel, productsAvailable} = this.props;
-
-      if (!productsAvailable && status !== statusEnum.LOADING) {
-        return <EmptyBlock />;
-      }
+      const {products, isLastLevel, productsAvailable} = this.props;
 
       if (!productsAvailable) {
         return null;

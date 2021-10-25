@@ -33,19 +33,23 @@ const Footer = () => {
   const itemsCatalog = [
     {
       name: 'Ламинат',
-      alias: '/laminate'
+      alias: '/catalog/laminate'
     },
     {
       name: 'Керамогранит',
-      alias: '/keramogranit'
+      alias: '/catalog/keramogranit'
     },
     {
       name: 'Кварцвиниловая плитка',
-      alias: '/quartzvinyl'
+      alias: '/catalog/quartzvinyl'
+    },
+    {
+      name: 'Спортивное покрытие',
+      alias: '/catalog/sport'
     },
     {
       name: 'Двери',
-      alias: '/doors'
+      alias: '/catalog/doors'
     }
   ];
 

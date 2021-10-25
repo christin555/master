@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './EmtyBlock.module.scss';
+import s from './style.module.scss';
 
 const EmptyBlock = () => (
   <div className={s.nogoods}>
