@@ -33,11 +33,13 @@ class Filter extends React.Component {
       if (Array.isArray(val)) {
         const values = array2Object(filterFields[_key]?.values, 'id');
 
-        val.forEach((item) => {
-          const itemVal = values[item]?.name;
+        if (values) {
+          val.forEach((item) => {
+            const itemVal = values[item]?.name;
 
-          arr.push({label: `${key} - ${itemVal}`, val: item, key: _key});
-        });
+            arr.push({label: `${key} - ${itemVal}`, val: item, key: _key});
+          });
+        }
       } else {
         arr.push({label: `${key} - ${val}`, val, key: _key});
       }

@@ -33,8 +33,6 @@ class RouterStore {
     getParam = (param) => {
       const urlAddress = new URLSearchParams(this.params || '');
 
-      console.log('urlAddress', this.params, urlAddress);
-
       return urlAddress.get(param);
     }
 }

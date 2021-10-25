@@ -12,15 +12,16 @@ const mock = [
     type: 'youtube'
   },
   {
-    title: 'Керамогранит',
-    src: 'CXZZJMe9OwM',
-    type: 'youtube'
-  },
-  {
     title: 'Фрески AFFRESCO',
     src: 'wHxlaxkd8cU',
     type: 'youtube'
+  },
+  {
+    title: 'Ищите интересное и практичное решение для ремонта квартиры?',
+    src: 'A8YKSOwEFFE',
+    type: 'youtube'
   }
+
 ];
 const Blog = () => {
   const blocks = mock.map(({title, src}, index) => (

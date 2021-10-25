@@ -73,31 +73,34 @@ class CardView extends React.Component {
 
             <Buttons {...this.props} />
           </CardMedia>
-          <CardContent
-            className={s.content}
-          >
-            {
-              brand && (
-                <span className={s.brand}>
-                  {brand}
-                  {this.collectionLabel}
-                  {/* {this.colors}*/}
-                </span>
-              )
-            }
-            <span className={s.name}>
-              {name}
-            </span>
-            {
-              price && (
-                <span className={s.price}> {price.price} ₽
-                  <span className={s.unit}>
-                  за 1 м2
+
+          <Link to={pathname}>
+            <CardContent
+              className={s.content}
+            >
+              {
+                brand && (
+                  <span className={s.brand}>
+                    {brand}
+                    {this.collectionLabel}
+                    {/* {this.colors}*/}
                   </span>
-                </span>
-              ) || null
-            }
-          </CardContent>
+                )
+              }
+              <span className={s.name}>
+                {name}
+              </span>
+              {
+                price && (
+                  <span className={s.price}> {price.price} ₽
+                    <span className={s.unit}>
+                  за 1 м2
+                    </span>
+                  </span>
+                ) || null
+              }
+            </CardContent>
+          </Link>
         </CardActionArea>
       </Card>
     );

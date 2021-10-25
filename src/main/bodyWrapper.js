@@ -12,6 +12,10 @@ import cn from 'classnames';
   };
 })
 class Body extends Component {
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const {children, pathname} = this.props;
     const isNotHome = pathname !== '/';

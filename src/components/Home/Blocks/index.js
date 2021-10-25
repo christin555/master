@@ -9,7 +9,6 @@ const Blocks = () => (
   <div className={s.homeBlocks}>
     <Chars />
     <Catalog />
-
     <About />
     <Blog />
   </div>
