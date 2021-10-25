@@ -28,6 +28,10 @@ const Page = loadable(
       case 'works': {
         return import('../components/Works');
       }
+      case 'notFound': {
+        return import('../shared/InformBlocks/PageNotFound');
+      }
+
       default:
 
     }

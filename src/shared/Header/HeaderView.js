@@ -11,7 +11,7 @@ import BurgerMenu from './Burger';
 
 @inject(({RouterStore, HeaderStore}) => {
   return {
-    HeaderStore: HeaderStore.search,
+    search: HeaderStore.search,
     setSearch: HeaderStore.setSearch,
     setParams: HeaderStore.setParams,
     pathname: RouterStore.pathname,

@@ -5,25 +5,55 @@ import Hierarchy from '../../../shared/Hierarchy';
 import Categories from './Categories';
 import Products from './Products';
 import Filter from '../Filter';
+import {status as statusEnum} from '../../../enums';
+import {InWork, NoResults} from '../../../shared/InformBlocks';
+import classNames from 'classnames';
+import {Divider} from '@material-ui/core';
 
 @inject(({CatalogStore}) => {
   return {
-    hierarchy: CatalogStore.hierarchy || []
+    hierarchy: CatalogStore.hierarchy || [],
+    status: CatalogStore.status,
+    productsAvailable: CatalogStore.productsAvailable,
+    fastfilter: CatalogStore.fastfilter
   };
 })
 class Content extends React.Component {
 
-  render() {
-    const {hierarchy} = this.props;
+  get InformBlock() {
+    const {status, productsAvailable, fastfilter} = this.props;
 
-    // if (!cards.length && status !== statusEnum.LOADING) {
-    //   return <EmptyBlock />;
-    // }
+    if (!productsAvailable && status !== statusEnum.LOADING && !fastfilter) {
+      return <InWork />;
+    }
+
+    if (!productsAvailable && status !== statusEnum.LOADING && fastfilter) {
+      return <NoResults label={fastfilter} />;
+    }
+
+    return null;
+  }
+
+  render() {
+    const {hierarchy, fastfilter} = this.props;
+
+    if (fastfilter) {
+      return (
+        <div className={s.container}>
+          {this.InformBlock}
+          <div className={classNames(s.content, s.buttomMargin)}>
+            <Products />
+          </div>
+          <Categories />
+        </div>
+      );
+    }
 
     return (
       <div className={s.container}>
         <Hierarchy hierarchy={hierarchy} />
         <Categories />
+        {this.InformBlock}
         <div className={s.content}>
           <Filter />
           <Products />

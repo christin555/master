@@ -15,7 +15,7 @@ class CatalogStore {
     @observable isLastLevel;
     @observable count = 0;
 
-    constructor({RouterStore, CatalogStore}) {
+    constructor({RouterStore}) {
       this.RouterStore = RouterStore;
       autorun(this.getHierarchy);
       makeObservable(this);
@@ -47,8 +47,35 @@ class CatalogStore {
       return Number(urlAddress.get('page')) || 1;
     }
 
-    @computed get offset() {
+    @computed get fastfilter() {
+      const urlAddress = new URLSearchParams(this.RouterStore.params || '');
 
+      return urlAddress.get('search');
+    }
+
+    @computed get filter() {
+      const searchParams = new URLSearchParams(this.RouterStore.params || {});
+      const filter = {};
+
+      for (const pair of searchParams.entries()) {
+        const key = pair[0];
+        const val = pair[1];
+
+        if (key === 'search') {
+          filter[key] = val;
+        } else {
+          filter[key] = pair[1]
+            .split(',')
+            .map((item) => Number(item.trim()))
+            .filter(Boolean);
+        }
+
+      }
+
+      return filter;
+    }
+
+    @computed get offset() {
       return (this.page - 1) * this.limit;
     }
 
@@ -56,33 +83,8 @@ class CatalogStore {
       return get(get(this.RouterStore.match, 'params'), 'category') || null;
     }
 
-    @computed get isFastFilterEnabled() {
-      return !!this.urlParams?.search;
-    }
-
     @computed get productsAvailable() {
       return !!this.products?.length;
-    }
-
-    @computed get filter() {
-      const searchParams = new URLSearchParams(this.RouterStore.params || {});
-
-      if (!searchParams?.length) {
-        return;
-      }
-
-      const filter = {};
-
-      for (const pair of searchParams.entries()) {
-        const items = pair[1]
-          .split(',')
-          .map((item) => Number(item.trim()))
-          .filter(Boolean);
-
-        filter[pair[0]] = items;
-      }
-
-      return filter;
     }
 
     @action setCategories = (categories) => {
@@ -105,39 +107,25 @@ class CatalogStore {
       this.count = count;
     }
 
-    @action setPage = (page) => {
-      const searchParams = new URLSearchParams();
-
-      searchParams.append('page', page);
-
-      this.RouterStore.history.push({
-        search: searchParams.toString()
-      });
-    }
-
-    @action setLimit = (limit) => {
-      const searchParams = new URLSearchParams();
-
-      searchParams.append('limit', limit);
-      searchParams.append('offset', 0);
-
-      this.RouterStore.history.push({
-        search: searchParams.toString()
-      });
-    }
-
     @action setStatus = (status) => {
       this.status = status;
     }
 
-    @action setFilter = (filter) => {
+    setPage = (page) => this.setURLSearchParams(this.limit, page, this.filter);
+    setLimit = (limit) => this.setURLSearchParams(limit, 1, this.filter);
+    setFilter = (filter) => this.setURLSearchParams(this.limit, this.offset, filter);
+
+    setURLSearchParams = (limit, offset, filter) => {
       const urlParams = new URLSearchParams();
 
       for (const [key, value] of Object.entries(filter)) {
         if (!(!value || Array.isArray(value) && !value.length)) {
-          urlParams.append(key, value);
+          urlParams.set(key, value);
         }
       }
+
+      urlParams.set('limit', limit);
+      urlParams.set('page', offset);
 
       this.RouterStore.history.push({
         search: urlParams.toString()
