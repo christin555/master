@@ -1,24 +1,49 @@
-import React from 'react';
-import {inject, Provider} from 'mobx-react';
-import FilterStore from '../../../stores/CatalogStore/FilterStore';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import FilterView from './FilterView';
+import {inject, Provider} from 'mobx-react';
+import {get} from 'mobx';
+import {filterFabric} from './filterFabric';
 
-@inject(({CatalogStore}) => {
-  return {CatalogStore};
+@inject(({RouterStore}) => {
+  return {
+    RouterStore
+  };
 })
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
+class Filter extends Component {
+  get category() {
+    return get(get(this.props.RouterStore.match, 'params'), 'category') || null;
+  }
 
-    this.FilterStore = props.CatalogStore.FilterStore;
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.category) {
+      console.log(this.category, filterFabric(this.category));
+    }
+  }
+
+  componentDidMount() {
+    console.log('mount', this.category);
   }
 
   render() {
+    // const {Fields, Store} = filterFabric(this.category);
+    //
+    // this.FilterStore = new Store();
+
+
     return (
-      <Provider FilterStore={this.FilterStore}>
-        <FilterView />
-      </Provider>
+      <FilterView>
+        {/*<Provider FilterStore={this.FilterStore}>*/}
+        {/*  <Fields />*/}
+        {/*</Provider>*/}
+      </FilterView>
     );
   }
 }
-export default Search;
+
+Filter.propTypes = {
+  FilterStore: PropTypes.object,
+  RouterStore: PropTypes.object
+};
+
+export default Filter;

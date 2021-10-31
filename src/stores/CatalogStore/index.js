@@ -20,19 +20,22 @@ class CatalogStore {
       autorun(this.getHierarchy);
       makeObservable(this);
 
-      reaction(
+      this.getCatalog();
+      this.getCountProducts();
+
+      this.getCatalogDisposer = reaction(
         () => [this.offset, this.category, this.limit, this.RouterStore.params, this.filter],
         this.getCatalog,
         {fireImmediately: true}
       );
 
-      reaction(
+      this.getCountProductsDisposer = reaction(
         () => [this.category, this.RouterStore.params, this.filter],
         this.getCountProducts,
         {fireImmediately: true}
       );
 
-      this.FilterStore = new FilterStore({RouterStore, CatalogStore: this});
+      this.FilterStore = new FilterStore({RouterStore, CatalogStore});
     }
 
     @computed get limit() {
