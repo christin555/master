@@ -25,14 +25,12 @@ class CatalogStore {
 
       this.getCatalogDisposer = reaction(
         () => [this.offset, this.category, this.limit, this.RouterStore.params, this.filter],
-        this.getCatalog,
-        {fireImmediately: true}
+        this.getCatalog
       );
 
       this.getCountProductsDisposer = reaction(
         () => [this.category, this.RouterStore.params, this.filter],
-        this.getCountProducts,
-        {fireImmediately: true}
+        this.getCountProducts
       );
     }
 
@@ -114,9 +112,8 @@ class CatalogStore {
     this.status = status;
   };
 
-  // setPage = (page) => this.setURLSearchParams(this.limit, page, this.filter);
-  // setLimit = (limit) => this.setURLSearchParams(limit, 1, this.filter);
-  // setFilter = (filter) => this.setURLSearchParams(this.limit, this.offset, filter);
+  setPage = (page) => this.UrlStore.toPATH(this.limit, page);
+  setLimit = (limit) => this.UrlStore.toPATH(limit, 1);
 
   setURLSearchParams = (limit, offset, filter) => {
     const urlParams = new URLSearchParams();
@@ -126,13 +123,13 @@ class CatalogStore {
     //     urlParams.set(key, value);
     //   }
     // }
-    //
+
     // urlParams.set('limit', limit);
     // urlParams.set('page', offset);
 
-    this.RouterStore.history.push({
-      search: this.UrlStore.url
-    });
+    // this.RouterStore.history.push({
+    //   search: urlParams.toString()
+    // });
   };
 
   getHierarchy = async() => {

@@ -1,4 +1,4 @@
-import {computed, makeObservable, observable} from 'mobx';
+import {computed, makeObservable, toJS} from 'mobx';
 import {FilterStore} from './Base';
 import UrlStore from '../UrlStore';
 
@@ -13,8 +13,8 @@ export class LaminateStore extends FilterStore {
     return 'laminate';
   }
 
-  @computed get colorFamily() {
-    return this.values.colorFamily;
+  @computed get color() {
+    return this.values.color;
   }
 
   @computed get resistanceClasses() {
@@ -36,16 +36,25 @@ export class LaminateStore extends FilterStore {
   @computed get collections() {
     const collections = this.values.collections || [];
 
-    return collections.map((collection) => {
-      const isSameBrandCollection = UrlStore.has('brandId', collection.brandId);
+    if (UrlStore.hasKey('brandId')) {
+      return toJS(collections).map((collection) => {
+        const isSameBrandCollection = UrlStore.has('brandId', collection.brandId);
 
-      collection.disabled = isSameBrandCollection === false;
+        collection.disabled = isSameBrandCollection === false;
 
-      return collection;
-    });
+        return collection;
+      });
+    }
+
+    return collections;
   }
 
   setCheckboxValue = (key) => (checked, {id}) => {
+    if (key === 'brandId') {
+      // Сбрасываем выбранные колллекции, если поменяли бренд
+      UrlStore.clearKey('collectionId');
+    }
+
     if (!checked) {
       UrlStore.del(key, id);
     } else {

@@ -1,46 +1,5 @@
-import {makeObservable, observable, action, toJS, computed} from 'mobx';
+import {makeObservable, observable, action, computed} from 'mobx';
 import RouterStore from './Router';
-
-class Checkbox {
-  data = {};
-
-  constructor() {
-    makeObservable(this, {
-      set: action,
-      del: action,
-      size: computed
-    });
-  }
-
-  set = (key, value) => {
-    if (this.data[key]) {
-      this.data[key].push(value);
-    } else {
-      this.data[key] = [value];
-    }
-  };
-
-  del = (key, value, comparer) => {
-    const checked = this.data[key];
-    let cmp = comparer;
-
-    if (!cmp) {
-      cmp = (check) => JSON.stringify(check) === JSON.stringify(value);
-    }
-
-    const newChecked = checked.filter(cmp);
-
-    if (newChecked.length === 0) {
-      delete this.data[key];
-    } else {
-      this.data[key] = newChecked;
-    }
-  };
-
-  size() {
-    return this;
-  }
-}
 
 class UrlStore {
   forUrl = new Map();
@@ -59,6 +18,8 @@ class UrlStore {
     return this.forUrl.size > 0;
   }
 
+  get = (key) => this.forUrl.get(key);
+
   set = (key, value) => {
     if (this.forUrl.has(key)) {
       this.forUrl.get(key).add(value);
@@ -69,6 +30,10 @@ class UrlStore {
 
   del = (key, value) => {
     const set = this.forUrl.get(key);
+
+    if (!set) {
+      return;
+    }
 
     set.forEach((v) => {
       if (JSON.stringify(v) === JSON.stringify(value)) {
@@ -91,6 +56,12 @@ class UrlStore {
     return false;
   };
 
+  hasKey = (key) => this.forUrl.has(key);
+
+  clearKey = (key) => {
+    this.forUrl.delete(key);
+  };
+
   toJSON() {
     const urlSearch = {};
 
@@ -101,8 +72,19 @@ class UrlStore {
     return urlSearch;
   }
 
-  toPATH() {
+  toPATH(limit, offset) {
+    const urlSearch = new URLSearchParams(RouterStore.params);
 
+    this.forUrl.forEach((set, key) => {
+      urlSearch.append(key, [...set]);
+    });
+
+    urlSearch.set('limit', limit);
+    urlSearch.set('page', offset);
+
+    RouterStore.history.push({
+      search: urlSearch.toString()
+    });
   }
 
   clear = () => {

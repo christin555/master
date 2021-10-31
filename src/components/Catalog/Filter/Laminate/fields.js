@@ -4,9 +4,9 @@ import {inject} from 'mobx-react';
 import {FormCheckbox} from '../Base/FormCheckbox';
 import {SimpleAccordion} from '../Base/SimpleAccordion';
 
-@inject(({FilterStore}) => {
+@inject(({FilterStore, UrlStore}) => {
   return {
-    colorFamily: FilterStore.colorFamily,
+    color: FilterStore.color,
     resistanceClasses: FilterStore.resistanceClasses,
     thickness: FilterStore.thickness,
     width: FilterStore.width,
@@ -16,13 +16,13 @@ import {SimpleAccordion} from '../Base/SimpleAccordion';
   };
 })
 class Fields extends Component {
-  get colorFamily() {
-    return this.props.colorFamily?.map((colorFamily) => (
+  get color() {
+    return this.props.color?.map((color) => (
       <FormCheckbox
-        key={colorFamily.id}
-        name={colorFamily.name}
-        id={colorFamily.id}
-        onChange={this.props.setCheckboxValue('colorFamily')}
+        key={color.id}
+        name={color.name}
+        id={color.id}
+        onChange={this.props.setCheckboxValue('color')}
       />
     ));
   }
@@ -87,7 +87,7 @@ class Fields extends Component {
     return (
       <FormCheckbox
         name={'Да'}
-        id={1}
+        id={true}
         onChange={this.props.setCheckboxValue('withHeatingFloor')}
       />
     );
@@ -103,7 +103,7 @@ class Fields extends Component {
           {this.collections}
         </SimpleAccordion>
         <SimpleAccordion id={3} name={'Оттенок'}>
-          {this.colorFamily}
+          {this.color}
         </SimpleAccordion>
         <SimpleAccordion id={4} name={'Класс нагрузки'}>
           {this.resistanceClasses}
@@ -126,7 +126,8 @@ Fields.propTypes = {
   collections: PropTypes.array,
   finishingMaterials: PropTypes.array,
   setCollection: PropTypes.func,
-  setFinishingMaterial: PropTypes.func
+  setFinishingMaterial: PropTypes.func,
+  checkedCollections: PropTypes.object
 };
 
 export default Fields;
