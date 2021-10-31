@@ -21,6 +21,6 @@ export class DoorsStore extends FilterStore {
   }
 
   toJSON() {
-    return this.values;
+    return this.selectedValues;
   }
 }

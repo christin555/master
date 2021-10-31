@@ -1,6 +1,6 @@
 import React from 'react';
 import {inject, Provider} from 'mobx-react';
-import CatalogStore from '../../stores/CatalogStore';
+import {CatalogStore} from '../../stores/CatalogStore';
 import CatalogView from './CatalogView';
 
 @inject(({RouterStore}) => {

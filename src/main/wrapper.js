@@ -41,7 +41,11 @@ const Page = loadable(
   }
 );
 
-const Wrapper = ({name}) => <Body> <Page name={name} /> </Body>;
+const Wrapper = ({name}) => (
+  <Body>
+    <Page name={name} />
+  </Body>
+);
 
 Wrapper.propTypes = {
   name: PropTypes.string

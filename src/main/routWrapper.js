@@ -15,25 +15,25 @@ class StoreWrapper extends Component {
     this.updateStore();
   }
 
-    updateStore = () => {
-      const {
-        RouterStore
-      } = this.props;
+  updateStore = () => {
+    const {
+      RouterStore
+    } = this.props;
 
-      RouterStore.setRoute(
-        this.props.location,
-        this.props.match,
-        this.props.history
-      );
-    };
+    RouterStore.setRoute(
+      this.props.location,
+      this.props.match,
+      this.props.history
+    );
+  };
 
-    render() {
-      const {name} = this.props;
+  render() {
+    const {name} = this.props;
 
-      return (
-        <Wrapper name={name} />
-      );
-    }
+    return (
+      <Wrapper name={name} />
+    );
+  }
 }
 
 StoreWrapper.propTypes = {

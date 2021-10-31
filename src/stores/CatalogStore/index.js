@@ -2,7 +2,6 @@ import {observable, get, reaction, action, autorun, computed, makeObservable} fr
 import {status as statusEnum} from '../../enums';
 import api from 'api';
 import {alert} from '../Notifications';
-import FilterStore from './FilterStore';
 
 class CatalogStore {
     RouterStore
@@ -34,8 +33,6 @@ class CatalogStore {
         this.getCountProducts,
         {fireImmediately: true}
       );
-
-      this.FilterStore = new FilterStore({RouterStore, CatalogStore});
     }
 
     @computed get limit() {
@@ -178,4 +175,4 @@ class CatalogStore {
     }
 }
 
-export default CatalogStore;
+export {CatalogStore};

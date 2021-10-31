@@ -37,6 +37,6 @@ export class LaminateStore extends FilterStore {
   }
 
   toJSON() {
-    return this.values;
+    return this.selectedValues;
   }
 }

@@ -1,16 +1,13 @@
-import {DoorsStore} from './Doors/store';
-import {LaminateStore} from './Laminate/store';
-import DoorsFields from './Doors/fields';
-import LaminateFields from './Laminate/fields';
+import DoorsFilterView from './Doors/view';
+import LaminateFilterView from './Laminate/view';
 
 export const filterFabric = (category) => {
   switch (category) {
-    case DoorsStore.category:
-      return {Store: DoorsStore, Fields: DoorsFields};
-    case LaminateStore.category:
-      return {Store: LaminateStore, Fields: LaminateFields};
+    case DoorsFilterView.CATEGORY:
+      return DoorsFilterView;
+    case LaminateFilterView.CATEGORY:
+      return LaminateFilterView;
     default:
       return null;
-    // throw new Error('Unknown store');
   }
 };

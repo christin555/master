@@ -106,7 +106,7 @@ class Content extends React.Component {
               {this.limit}
             </div>
           </div>
-          <Chips />
+          {/*<Chips />*/}
           <div className={s.cards}>
             <Cards items={products} withPhone={isLastLevel} />
           </div>

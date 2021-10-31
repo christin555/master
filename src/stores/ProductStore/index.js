@@ -3,7 +3,7 @@ import {status as statusEnum} from '../../enums';
 import api from 'api';
 import {alert} from '../Notifications';
 
-class CatalogStore {
+class ProductStore {
   RouterStore
 
   @observable status = statusEnum.LOADING;
@@ -58,4 +58,4 @@ class CatalogStore {
   }
 }
 
-export default CatalogStore;
+export {ProductStore};

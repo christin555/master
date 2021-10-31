@@ -1,49 +1,33 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import FilterView from './FilterView';
-import {inject, Provider} from 'mobx-react';
+import {inject} from 'mobx-react';
 import {get} from 'mobx';
 import {filterFabric} from './filterFabric';
 
 @inject(({RouterStore}) => {
   return {
-    RouterStore
+    category: get(get(RouterStore.match, 'params'), 'category') || null
   };
 })
 class Filter extends Component {
-  get category() {
-    return get(get(this.props.RouterStore.match, 'params'), 'category') || null;
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.category) {
-      console.log(this.category, filterFabric(this.category));
-    }
-  }
-
-  componentDidMount() {
-    console.log('mount', this.category);
-  }
-
   render() {
-    // const {Fields, Store} = filterFabric(this.category);
-    //
-    // this.FilterStore = new Store();
+    const Fields = filterFabric(this.props.category);
 
+    if (!Fields) {
+      return null;
+    }
 
     return (
       <FilterView>
-        {/*<Provider FilterStore={this.FilterStore}>*/}
-        {/*  <Fields />*/}
-        {/*</Provider>*/}
+        <Fields />
       </FilterView>
     );
   }
 }
 
 Filter.propTypes = {
-  FilterStore: PropTypes.object,
-  RouterStore: PropTypes.object
+  category: PropTypes.string
 };
 
 export default Filter;
