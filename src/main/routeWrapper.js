@@ -44,4 +44,4 @@ StoreWrapper.propTypes = {
   name: PropTypes.string
 };
 
-export default StoreWrapper;
+export {StoreWrapper};

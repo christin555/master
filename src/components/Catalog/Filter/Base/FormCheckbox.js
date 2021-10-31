@@ -5,7 +5,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const FormCheckbox = (props) => {
-  const {checked, onChange, name, id} = props;
+  const {checked, onChange, name, id, disabled} = props;
+
+  const handleChecked = (evt) => {
+    if (onChange) {
+      onChange(evt.target.checked, {name, id});
+    }
+  };
 
   return (
     <FormControlLabel
@@ -13,9 +19,10 @@ export const FormCheckbox = (props) => {
       key={id}
       control={(
         <Checkbox
+          disabled={disabled}
           size={'small'}
           checked={checked}
-          onChange={onChange?.bind(this, id)}
+          onChange={handleChecked}
           name='checkedA'
         />
       )}
@@ -28,5 +35,6 @@ FormCheckbox.propTypes = {
   checked: PropTypes.bool,
   onChange: PropTypes.func,
   name: PropTypes.string,
-  id: PropTypes.number
+  id: PropTypes.number,
+  disabled: PropTypes.bool
 };

@@ -8,8 +8,7 @@ import {SimpleAccordion} from '../Base/SimpleAccordion';
   return {
     collections: FilterStore.collections,
     finishingMaterials: FilterStore.finishingMaterials,
-    setCollection: FilterStore.setCollection,
-    setFinishingMaterial: FilterStore.setFinishingMaterial
+    setValue: FilterStore.setValue
   };
 })
 class Fields extends Component {
@@ -19,7 +18,7 @@ class Fields extends Component {
         key={collection.id}
         name={collection.name}
         id={collection.id}
-        onChange={this.props.setCollection}
+        onChange={this.props.setValue('collectionId')}
       />
     ));
   }
@@ -30,7 +29,7 @@ class Fields extends Component {
         key={finishingMaterial.id}
         name={finishingMaterial.name}
         id={finishingMaterial.id}
-        onChange={this.props.setFinishingMaterial}
+        onChange={this.props.setValue('finishingMaterial')}
       />
     ));
   }

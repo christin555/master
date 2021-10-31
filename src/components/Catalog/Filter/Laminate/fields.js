@@ -12,28 +12,28 @@ import {SimpleAccordion} from '../Base/SimpleAccordion';
     width: FilterStore.width,
     brands: FilterStore.brands,
     collections: FilterStore.collections,
-    setCollection: FilterStore.setCollection
+    setCheckboxValue: FilterStore.setCheckboxValue
   };
 })
 class Fields extends Component {
   get colorFamily() {
-    return this.props.colorFamily?.map((collection) => (
+    return this.props.colorFamily?.map((colorFamily) => (
       <FormCheckbox
-        key={collection.id}
-        name={collection.name}
-        id={collection.id}
-        onChange={this.props.setCollection}
+        key={colorFamily.id}
+        name={colorFamily.name}
+        id={colorFamily.id}
+        onChange={this.props.setCheckboxValue('colorFamily')}
       />
     ));
   }
 
   get resistanceClasses() {
-    return this.props.resistanceClasses?.map((resistanceClasses) => (
+    return this.props.resistanceClasses?.map((resistanceClass) => (
       <FormCheckbox
-        key={resistanceClasses.id}
-        name={resistanceClasses.name}
-        id={resistanceClasses.id}
-        onChange={this.props.setCollection}
+        key={resistanceClass.id}
+        name={resistanceClass.name}
+        id={resistanceClass.id}
+        onChange={this.props.setCheckboxValue('resistanceClass')}
       />
     ));
   }
@@ -44,7 +44,7 @@ class Fields extends Component {
         key={thickness.id}
         name={thickness.name}
         id={thickness.id}
-        onChange={this.props.setCollection}
+        onChange={this.props.setCheckboxValue('thickness')}
       />
     ));
   }
@@ -55,7 +55,7 @@ class Fields extends Component {
         key={width.id}
         name={width.name}
         id={width.id}
-        onChange={this.props.setFinishingMaterial}
+        onChange={this.props.setCheckboxValue('width')}
       />
     ));
   }
@@ -66,7 +66,7 @@ class Fields extends Component {
         key={brand.id}
         name={brand.name}
         id={brand.id}
-        onChange={this.props.setCollection}
+        onChange={this.props.setCheckboxValue('brandId')}
       />
     ));
   }
@@ -77,7 +77,8 @@ class Fields extends Component {
         key={collection.id}
         name={collection.name}
         id={collection.id}
-        onChange={this.props.setCollection}
+        disabled={collection.disabled}
+        onChange={this.props.setCheckboxValue('collectionId')}
       />
     ));
   }
@@ -87,7 +88,7 @@ class Fields extends Component {
       <FormCheckbox
         name={'Да'}
         id={1}
-        onChange={this.props.setCollection}
+        onChange={this.props.setCheckboxValue('withHeatingFloor')}
       />
     );
   }

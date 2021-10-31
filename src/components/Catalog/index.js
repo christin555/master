@@ -3,15 +3,15 @@ import {inject, Provider} from 'mobx-react';
 import {CatalogStore} from '../../stores/CatalogStore';
 import CatalogView from './CatalogView';
 
-@inject(({RouterStore}) => {
-  return {RouterStore};
+@inject(({RouterStore, UrlStore}) => {
+  return {RouterStore, UrlStore};
 })
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    const {RouterStore} = this.props;
+    const {RouterStore, UrlStore} = this.props;
 
-    this.CatalogStore = new CatalogStore({RouterStore});
+    this.CatalogStore = new CatalogStore({RouterStore, UrlStore});
   }
 
   render() {

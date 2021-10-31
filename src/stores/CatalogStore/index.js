@@ -14,8 +14,9 @@ class CatalogStore {
     @observable isLastLevel;
     @observable count = 0;
 
-    constructor({RouterStore}) {
+    constructor({RouterStore, UrlStore}) {
       this.RouterStore = RouterStore;
+      this.UrlStore = UrlStore;
       autorun(this.getHierarchy);
       makeObservable(this);
 
@@ -54,110 +55,114 @@ class CatalogStore {
     }
 
     @computed get filter() {
-      const searchParams = new URLSearchParams(this.RouterStore.params || {});
-      const filter = {};
+      return this.UrlStore.toJSON();
 
-      for (const pair of searchParams.entries()) {
-        const key = pair[0];
-        const val = pair[1];
-
-        if (key === 'search') {
-          filter[key] = val;
-        } else {
-          filter[key] = pair[1]
-            .split(',')
-            .map((item) => Number(item.trim()))
-            .filter(Boolean);
-        }
-
-      }
-
-      return filter;
+      // const searchParams = new URLSearchParams(this.RouterStore.params || {});
+      // const filter = {};
+      //
+      // for (const pair of searchParams.entries()) {
+      //   const key = pair[0];
+      //   const val = pair[1];
+      //
+      //   if (key === 'search') {
+      //     filter[key] = val;
+      //   } else {
+      //     filter[key] = pair[1]
+      //       .split(',')
+      //       .map((item) => Number(item.trim()))
+      //       .filter(Boolean);
+      //   }
+      //
+      // }
+      //
+      // return filter;
     }
 
-    @computed get offset() {
-      return (this.page - 1) * this.limit;
+  @computed get offset() {
+    return (this.page - 1) * this.limit;
+  }
+
+  @computed get category() {
+    return get(get(this.RouterStore.match, 'params'), 'category') || null;
+  }
+
+  @computed get productsAvailable() {
+    return !!this.products?.length;
+  }
+
+  @action setCategories = (categories) => {
+    this.categories = categories;
+  };
+
+  @action setProducts = (products) => {
+    this.products = products;
+  };
+
+  @action setHierarchy = (hierarchy) => {
+    this.hierarchy = hierarchy;
+  };
+
+  @action setIsLastLevel = (isLastLevel) => {
+    this.isLastLevel = isLastLevel;
+  };
+
+  @action setCount = (count) => {
+    this.count = count;
+  };
+
+  @action setStatus = (status) => {
+    this.status = status;
+  };
+
+  // setPage = (page) => this.setURLSearchParams(this.limit, page, this.filter);
+  // setLimit = (limit) => this.setURLSearchParams(limit, 1, this.filter);
+  // setFilter = (filter) => this.setURLSearchParams(this.limit, this.offset, filter);
+
+  setURLSearchParams = (limit, offset, filter) => {
+    const urlParams = new URLSearchParams();
+
+    // for (const [key, value] of Object.entries(filter)) {
+    //   if (!(!value || Array.isArray(value) && !value.length)) {
+    //     urlParams.set(key, value);
+    //   }
+    // }
+    //
+    // urlParams.set('limit', limit);
+    // urlParams.set('page', offset);
+
+    this.RouterStore.history.push({
+      search: this.UrlStore.url
+    });
+  };
+
+  getHierarchy = async() => {
+    try {
+      const body = {category: this.category};
+      const {hierarchy, isLastLevel} = await api.post('catalog/getHierarchy', body);
+
+      this.setHierarchy(hierarchy);
+      this.setIsLastLevel(isLastLevel);
+    } catch(_) {
     }
+  };
 
-    @computed get category() {
-      return get(get(this.RouterStore.match, 'params'), 'category') || null;
+  getCountProducts = async() => {
+    const {category, filter} = this;
+
+    try {
+      const body = {searchParams: {category, filter}};
+
+      const count = await api.post('catalog/countProducts ', body);
+
+      this.setCount(count);
+    } catch(_) {
     }
-
-    @computed get productsAvailable() {
-      return !!this.products?.length;
-    }
-
-    @action setCategories = (categories) => {
-      this.categories = categories;
-    }
-
-    @action setProducts = (products) => {
-      this.products = products;
-    }
-
-    @action setHierarchy = (hierarchy) => {
-      this.hierarchy = hierarchy;
-    }
-
-    @action setIsLastLevel = (isLastLevel) => {
-      this.isLastLevel = isLastLevel;
-    }
-
-    @action setCount = (count) => {
-      this.count = count;
-    }
-
-    @action setStatus = (status) => {
-      this.status = status;
-    }
-
-    setPage = (page) => this.setURLSearchParams(this.limit, page, this.filter);
-    setLimit = (limit) => this.setURLSearchParams(limit, 1, this.filter);
-    setFilter = (filter) => this.setURLSearchParams(this.limit, this.offset, filter);
-
-    setURLSearchParams = (limit, offset, filter) => {
-      const urlParams = new URLSearchParams();
-
-      for (const [key, value] of Object.entries(filter)) {
-        if (!(!value || Array.isArray(value) && !value.length)) {
-          urlParams.set(key, value);
-        }
-      }
-
-      urlParams.set('limit', limit);
-      urlParams.set('page', offset);
-
-      this.RouterStore.history.push({
-        search: urlParams.toString()
-      });
-    }
-
-    getHierarchy = async() => {
-      try {
-        const body = {category: this.category};
-        const {hierarchy, isLastLevel} = await api.post('catalog/getHierarchy', body);
-
-        this.setHierarchy(hierarchy);
-        this.setIsLastLevel(isLastLevel);
-      } catch(_) {
-      }
-    }
-
-    getCountProducts = async() => {
-      const {category, filter} = this;
-
-      try {
-        const body = {searchParams: {category, filter}};
-
-        const count = await api.post('catalog/countProducts ', body);
-
-        this.setCount(count);
-      } catch(_) {
-      }
-    }
+  };
 
     getCatalog = async() => {
       const {category, limit, offset, filter} = this;
+
+      console.log(filter);
 
       this.setStatus(statusEnum.LOADING);
 

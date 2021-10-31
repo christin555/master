@@ -1,5 +1,6 @@
 import {computed, makeObservable} from 'mobx';
-import {FilterStore} from '../Base';
+import {FilterStore} from './Base';
+import UrlStore from '../UrlStore';
 
 export class DoorsStore extends FilterStore {
   constructor() {
@@ -19,6 +20,14 @@ export class DoorsStore extends FilterStore {
   @computed get finishingMaterials() {
     return this.values.finishingMaterials;
   }
+
+  setValue = (key) => (checked, {id}) => {
+    if (!checked) {
+      UrlStore.del(key, id);
+    } else {
+      UrlStore.set(key, id);
+    }
+  };
 
   toJSON() {
     return this.selectedValues;

@@ -1,6 +1,6 @@
 import {action, observable} from 'mobx';
-import api from '../../../api';
-import {alert} from '../../../stores/Notifications';
+import api from '../../api';
+import {alert} from '../Notifications';
 
 export class FilterStore {
   @observable values = {};

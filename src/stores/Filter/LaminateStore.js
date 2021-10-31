@@ -1,5 +1,6 @@
-import {computed, makeObservable} from 'mobx';
-import {FilterStore} from '../Base';
+import {computed, makeObservable, observable} from 'mobx';
+import {FilterStore} from './Base';
+import UrlStore from '../UrlStore';
 
 export class LaminateStore extends FilterStore {
   constructor() {
@@ -33,8 +34,24 @@ export class LaminateStore extends FilterStore {
   }
 
   @computed get collections() {
-    return this.values.collections;
+    const collections = this.values.collections || [];
+
+    return collections.map((collection) => {
+      const isSameBrandCollection = UrlStore.has('brandId', collection.brandId);
+
+      collection.disabled = isSameBrandCollection === false;
+
+      return collection;
+    });
   }
+
+  setCheckboxValue = (key) => (checked, {id}) => {
+    if (!checked) {
+      UrlStore.del(key, id);
+    } else {
+      UrlStore.set(key, id);
+    }
+  };
 
   toJSON() {
     return this.selectedValues;

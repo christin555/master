@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'mobx-react';
-import {DoorsStore} from './store';
+import {DoorsStore} from '../../../../stores/Filter/DoorsStore';
 import Fields from './fields';
 
 class DoorsFilterView extends React.Component {

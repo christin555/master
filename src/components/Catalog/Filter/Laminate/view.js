@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'mobx-react';
-import {LaminateStore} from './store';
+import {LaminateStore} from '../../../../stores/Filter/LaminateStore';
 import Fields from './fields';
 
 class LaminateFilterView extends React.Component {
