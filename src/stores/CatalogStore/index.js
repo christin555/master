@@ -14,10 +14,12 @@ class CatalogStore {
   /**
    * @param {RouterStore} RouterStore
    * @param {PageStore} PageStore
+   * @param {UrlStore} UrlStore
    */
-  constructor(RouterStore, PageStore) {
+  constructor(RouterStore, PageStore, UrlStore) {
     this.RouterStore = RouterStore;
     this.PageStore = PageStore;
+    this.UrlStore = UrlStore;
 
     makeObservable(this);
 
@@ -78,10 +80,9 @@ class CatalogStore {
 
   getCountProducts = async() => {
     const {category} = this;
-    const {filter} = this.PageStore;
 
     try {
-      const body = {searchParams: {category, filter}};
+      const body = {searchParams: {category, filter: {}}};
       const count = await api.post('catalog/countProducts ', body);
 
       this.setCount(count);
@@ -92,12 +93,22 @@ class CatalogStore {
 
   getCatalog = async() => {
     const {category} = this;
-    const {offset, limit, filter} = this.PageStore;
+    const {offset, limit} = this.PageStore;
+
+    console.log(this.UrlStore.selectedFilter);
 
     this.setStatus(statusEnum.LOADING);
 
     try {
-      const body = {searchParams: {category, filter}, limit, offset};
+      const body = {
+        searchParams: {
+          category,
+          // filter: this.FilterStore.toJSON()
+          filter: {}
+        },
+        limit,
+        offset
+      };
       const {categories, products} = await api.post('catalog/getCatalog', body);
 
       this.setCategories(categories);

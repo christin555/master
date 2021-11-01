@@ -12,8 +12,8 @@ class Catalog extends React.Component {
     super(props);
     const {RouterStore, UrlStore} = this.props;
 
-    this.PageStore = new PageStore(RouterStore, UrlStore);
-    this.CatalogStore = new CatalogStore(RouterStore, this.PageStore);
+    this.PageStore = new PageStore(RouterStore);
+    this.CatalogStore = new CatalogStore(RouterStore, this.PageStore, UrlStore);
   }
 
   componentWillUnmount() {

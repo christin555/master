@@ -1,49 +1,29 @@
 import {action, computed, makeObservable} from 'mobx';
 
 export class PageStore {
-  constructor(RouterStore, UrlStore) {
+  constructor(RouterStore) {
     makeObservable(this, {
-      filter: computed.struct,
+      _params: computed,
       page: computed,
       limit: computed,
+      offset: computed,
       setPage: action,
-      setLimit: action,
-      setFilter: action
+      setLimit: action
     });
 
     this.RouterStore = RouterStore;
-    this.UrlStore = UrlStore;
   }
 
-  get params() {
+  get _params() {
     return new URLSearchParams(this.RouterStore.params || '');
   }
 
   get limit() {
-    return Number(this.params.get('limit')) || 12;
+    return Number(this._params.get('limit')) || 12;
   }
 
   get page() {
-    return Number(this.params.get('page')) || 1;
-  }
-
-  get filter() {
-    const {params} = this;
-
-    params.delete('limit');
-    params.delete('page');
-
-    const filter = {};
-
-    params.forEach((filterValue, key) => {
-      if (key === 'search') {
-        filter[key] = filterValue;
-      } else {
-        // filter[key] = filterValue.split(',');
-      }
-    });
-
-    return filter;
+    return Number(this._params.get('page')) || 1;
   }
 
   get offset() {
@@ -51,33 +31,23 @@ export class PageStore {
   }
 
   setPage = (page) => {
-    const {params} = this;
+    const {_params} = this;
 
-    params.set('page', page);
+    _params.set('page', page);
 
     this.RouterStore.history.push({
-      search: params.toString()
+      search: _params.toString()
     });
   };
 
   setLimit = (limit) => {
-    const {params} = this;
+    const {_params} = this;
 
-    params.set('limit', limit);
+    _params.set('limit', limit);
+    _params.set('page', '1');
 
     this.RouterStore.history.push({
-      search: params.toString()
+      search: _params.toString()
     });
-  };
-
-  setFilter = () => {
-    const {params} = this;
-
-    params.delete('limit');
-    params.delete('page');
-
-    // this.RouterStore.history.push({
-    //   search: urlParams.toString()
-    // });
   };
 }

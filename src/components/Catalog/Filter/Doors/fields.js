@@ -3,36 +3,46 @@ import PropTypes from 'prop-types';
 import {inject} from 'mobx-react';
 import {FormCheckbox} from '../Base/FormCheckbox';
 import {SimpleAccordion} from '../Base/SimpleAccordion';
+import {toJS} from 'mobx';
 
 @inject(({FilterStore}) => {
   return {
     collections: FilterStore.collections,
     finishingMaterials: FilterStore.finishingMaterials,
-    setValue: FilterStore.setValue
+    setValue: FilterStore.setValue,
+    checked: toJS(FilterStore.checked)
   };
 })
 class Fields extends Component {
   get collections() {
-    return this.props.collections?.map((collection) => (
+    return this.props.collections?.map(({id, name}) => (
       <FormCheckbox
-        key={collection.id}
-        name={collection.name}
-        id={collection.id}
+        checked={this.isChecked('collectionId', id)}
+        key={id}
+        name={name}
+        id={id}
         onChange={this.props.setValue('collectionId')}
       />
     ));
   }
 
   get finishingMaterials() {
-    return this.props.finishingMaterials?.map((finishingMaterial) => (
+    return this.props.finishingMaterials?.map(({id, name}) => (
       <FormCheckbox
-        key={finishingMaterial.id}
-        name={finishingMaterial.name}
-        id={finishingMaterial.id}
+        checked={this.isChecked('finishingMaterial', id)}
+        key={id}
+        name={name}
+        id={id}
         onChange={this.props.setValue('finishingMaterial')}
       />
     ));
   }
+
+  isChecked = (key, value) => {
+    const {checked} = this.props;
+
+    return checked[`${key}-${value}`] || false;
+  };
 
   render() {
     return (

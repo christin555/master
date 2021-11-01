@@ -6,10 +6,11 @@ class UrlStore {
   constructor() {
     makeObservable(this, {
       forUrl: observable,
+      isActive: computed,
       set: action,
       clear: action,
-      isActive: computed,
-      del: action
+      del: action,
+      clearKey: action
     });
   }
 
@@ -61,18 +62,26 @@ class UrlStore {
     this.forUrl.delete(key);
   };
 
-  toJSON() {
-    const urlSearch = {};
-
-    this.forUrl.forEach((set, key) => {
-      urlSearch[key] = [...set];
-    });
-
-    return urlSearch;
-  }
-
   clear = () => {
     this.forUrl.clear();
+
+    this.customClear && this.customClear();
+  };
+
+  setClear = (customClear) => {
+    this.customClear = customClear;
+  };
+
+  setToJSON = (customJSON) => {
+    this.customJSON = customJSON;
+  };
+
+  toJSON = () => {
+    if (this.customJSON) {
+      return this.customJSON();
+    }
+
+    return {};
   };
 }
 

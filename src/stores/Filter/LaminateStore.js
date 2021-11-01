@@ -1,8 +1,8 @@
 import {computed, makeObservable, toJS} from 'mobx';
-import {FilterStore} from './Base';
+import {BaseFilterStore} from './Base';
 import UrlStore from '../UrlStore';
 
-export class LaminateStore extends FilterStore {
+export class LaminateStore extends BaseFilterStore {
   constructor() {
     super(LaminateStore.category);
 
