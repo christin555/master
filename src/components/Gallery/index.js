@@ -3,7 +3,7 @@ import {Provider} from 'mobx-react';
 import {ArticlesStore} from '../../stores/ArticlesStore';
 import ArticlesView from './ArticlesView';
 
-class Search extends React.Component {
+class Gallery extends React.Component {
   constructor(props) {
     super(props);
 
@@ -19,4 +19,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default Gallery;

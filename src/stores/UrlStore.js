@@ -1,5 +1,4 @@
 import {makeObservable, observable, action, computed} from 'mobx';
-import RouterStore from './Router';
 
 class UrlStore {
   forUrl = new Map();
@@ -70,21 +69,6 @@ class UrlStore {
     });
 
     return urlSearch;
-  }
-
-  toPATH(limit, offset) {
-    const urlSearch = new URLSearchParams(RouterStore.params);
-
-    this.forUrl.forEach((set, key) => {
-      urlSearch.append(key, [...set]);
-    });
-
-    urlSearch.set('limit', limit);
-    urlSearch.set('page', offset);
-
-    RouterStore.history.push({
-      search: urlSearch.toString()
-    });
   }
 
   clear = () => {

@@ -1,87 +1,39 @@
-import {observable, get, reaction, action, autorun, computed, makeObservable} from 'mobx';
+import {observable, get, action, autorun, computed, makeObservable} from 'mobx';
 import {status as statusEnum} from '../../enums';
 import api from 'api';
 import {alert} from '../Notifications';
 
 class CatalogStore {
-    RouterStore
-    FilterStore
+  @observable status = statusEnum.LOADING;
+  @observable categories;
+  @observable products;
+  @observable hierarchy;
+  @observable isLastLevel;
+  @observable count = 0;
 
-    @observable status = statusEnum.LOADING;
-    @observable categories;
-    @observable products;
-    @observable hierarchy;
-    @observable isLastLevel;
-    @observable count = 0;
+  /**
+   * @param {RouterStore} RouterStore
+   * @param {PageStore} PageStore
+   */
+  constructor(RouterStore, PageStore) {
+    this.RouterStore = RouterStore;
+    this.PageStore = PageStore;
 
-    constructor({RouterStore, UrlStore}) {
-      this.RouterStore = RouterStore;
-      this.UrlStore = UrlStore;
-      autorun(this.getHierarchy);
-      makeObservable(this);
+    makeObservable(this);
 
-      this.getCatalog();
-      this.getCountProducts();
-
-      this.getCatalogDisposer = reaction(
-        () => [this.offset, this.category, this.limit, this.RouterStore.params, this.filter],
-        this.getCatalog
-      );
-
-      this.getCountProductsDisposer = reaction(
-        () => [this.category, this.RouterStore.params, this.filter],
-        this.getCountProducts
-      );
-    }
-
-    @computed get limit() {
-      const urlAddress = new URLSearchParams(this.RouterStore.params || '');
-
-      return Number(urlAddress.get('limit')) || 12;
-    }
-
-    @computed get page() {
-      const urlAddress = new URLSearchParams(this.RouterStore.params || '');
-
-      return Number(urlAddress.get('page')) || 1;
-    }
-
-    @computed get fastfilter() {
-      const urlAddress = new URLSearchParams(this.RouterStore.params || '');
-
-      return urlAddress.get('search');
-    }
-
-    @computed get filter() {
-      return this.UrlStore.toJSON();
-
-      // const searchParams = new URLSearchParams(this.RouterStore.params || {});
-      // const filter = {};
-      //
-      // for (const pair of searchParams.entries()) {
-      //   const key = pair[0];
-      //   const val = pair[1];
-      //
-      //   if (key === 'search') {
-      //     filter[key] = val;
-      //   } else {
-      //     filter[key] = pair[1]
-      //       .split(',')
-      //       .map((item) => Number(item.trim()))
-      //       .filter(Boolean);
-      //   }
-      //
-      // }
-      //
-      // return filter;
-    }
-
-  @computed get offset() {
-    return (this.page - 1) * this.limit;
+    this.getHierarchyDisposer = autorun(this.getHierarchy);
+    this.getCatalogDisposer = autorun(this.getCatalog);
+    this.getCountProductsDisposer = autorun(this.getCountProducts);
   }
 
   @computed get category() {
     return get(get(this.RouterStore.match, 'params'), 'category') || null;
+  }
+
+  @computed get fastfilter() {
+    const urlAddress = new URLSearchParams(this.RouterStore.params || '');
+
+    return urlAddress.get('search');
   }
 
   @computed get productsAvailable() {
@@ -112,26 +64,6 @@ class CatalogStore {
     this.status = status;
   };
 
-  setPage = (page) => this.UrlStore.toPATH(this.limit, page);
-  setLimit = (limit) => this.UrlStore.toPATH(limit, 1);
-
-  setURLSearchParams = (limit, offset, filter) => {
-    const urlParams = new URLSearchParams();
-
-    // for (const [key, value] of Object.entries(filter)) {
-    //   if (!(!value || Array.isArray(value) && !value.length)) {
-    //     urlParams.set(key, value);
-    //   }
-    // }
-
-    // urlParams.set('limit', limit);
-    // urlParams.set('page', offset);
-
-    // this.RouterStore.history.push({
-    //   search: urlParams.toString()
-    // });
-  };
-
   getHierarchy = async() => {
     try {
       const body = {category: this.category};
@@ -140,41 +72,48 @@ class CatalogStore {
       this.setHierarchy(hierarchy);
       this.setIsLastLevel(isLastLevel);
     } catch(_) {
+      // do nothing
     }
   };
 
   getCountProducts = async() => {
-    const {category, filter} = this;
+    const {category} = this;
+    const {filter} = this.PageStore;
 
     try {
       const body = {searchParams: {category, filter}};
-
       const count = await api.post('catalog/countProducts ', body);
 
       this.setCount(count);
     } catch(_) {
+      // do nothing
     }
   };
 
-    getCatalog = async() => {
-      const {category, limit, offset, filter} = this;
+  getCatalog = async() => {
+    const {category} = this;
+    const {offset, limit, filter} = this.PageStore;
 
-      console.log(filter);
+    this.setStatus(statusEnum.LOADING);
 
-      this.setStatus(statusEnum.LOADING);
+    try {
+      const body = {searchParams: {category, filter}, limit, offset};
+      const {categories, products} = await api.post('catalog/getCatalog', body);
 
-      try {
-        const body = {searchParams: {category, filter}, limit, offset};
-        const {categories, products} = await api.post('catalog/getCatalog', body);
-
-        this.setCategories(categories);
-        this.setProducts(products);
-        this.setStatus(statusEnum.SUCCESS);
-      } catch(_) {
-        this.setStatus(statusEnum.ERROR);
-        alert({type: 'error', title: 'Ошибка при получении товаров'});
-      }
+      this.setCategories(categories);
+      this.setProducts(products);
+      this.setStatus(statusEnum.SUCCESS);
+    } catch(_) {
+      this.setStatus(statusEnum.ERROR);
+      alert({type: 'error', title: 'Ошибка при получении товаров'});
     }
+  };
+
+  closeStore() {
+    this.getHierarchyDisposer();
+    this.getCatalogDisposer();
+    this.getCountProductsDisposer();
+  }
 }
 
 export {CatalogStore};
