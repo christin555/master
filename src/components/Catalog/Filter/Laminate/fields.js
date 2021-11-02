@@ -112,7 +112,7 @@ class Fields extends Component {
   isDisabled = (key, value) => {
     const {disabled} = this.props;
 
-    return disabled[`${key}-${value}`] || false;
+    return disabled[`${key}-${value}`];
   };
 
   render() {

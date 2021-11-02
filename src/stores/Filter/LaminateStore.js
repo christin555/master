@@ -40,28 +40,68 @@ export class LaminateStore extends BaseFilterStore {
     return this.values.collections;
   }
 
-  beforeValueCheck = (key, checked, id) => {
-    if (key === 'brandId' && checked) {
-      this.clearCheckedCollections();
-    }
-  };
-
   @action clearCheckedCollections = () => {
-    const params = new URLSearchParams(this.RouterStore.params || '')
+    const params = new URLSearchParams(this.RouterStore.params || '');
 
     params.delete('collectionId');
 
     this.RouterStore.history.push({search: params.toString()});
+    this.setToKey('checked', 'collectionId', false);
+  };
 
-    Object.keys(this.checked)
-      .forEach((key) => {
-        if (key.indexOf('collectionId') > -1) {
-          this.checked[key] = false;
+  @action disableCollectionsByBrandId = (brandId, checked) => {
+    const brandIds = Object.keys(this.checked)
+      .filter((key) => key.indexOf('brandId') > -1 && this.checked[key])
+      .map((key) => Number(key.split('-')[1]));
+
+    // Если ничего не выбрано в брендах, то все коллекции по умолчанию можно тыкать
+    if (!brandIds.length) {
+      this.setToKey('disabled', 'collectionId', false);
+
+      return;
+    }
+
+    this.collections.forEach((collection) => {
+      const brId = collection.brandId;
+
+      let state;
+
+      if (checked) {
+        // Дизейблим если бренд текущего элемента не был выбран в фильтре
+        state = !brandIds.includes(brId) && brId !== brandId;
+      } else {
+        // Если бренд в фильтре был выбран, а потом чекбокс убрали,
+        // то необходимо снова задизейблить
+        state = !brandIds.includes(brandId) && brId === brandId;
+      }
+
+      this.setDisabled('collectionId', collection.id, state);
+    });
+  };
+
+  clear() {
+    super.clear();
+
+    this.disabled = {};
+  }
+
+  afterValueCheck = (key, id, checked) => {
+    if (key === 'brandId') {
+      this.clearCheckedCollections();
+      this.disableCollectionsByBrandId(id, checked);
+    }
+  };
+
+  setToKey = (field, key, value) => {
+    Object.keys(this[field])
+      .forEach((objectKey) => {
+        if (objectKey.indexOf(key) > -1) {
+          this[field][objectKey] = value;
         }
       });
   };
 
-  @action disableCollectionsByBrandId(brandId) {
-    console.log(brandId);
-  }
+  setDisabled = (key, value, state) => {
+    this.disabled[`${key}-${value}`] = state;
+  };
 }

@@ -28,7 +28,9 @@ export class BaseFilterStore {
 
     this.initChecked();
 
-    makeObservable(this);
+    makeObservable(this, {
+      clear: action.bound
+    });
   }
 
   get RouterStore() {
@@ -56,7 +58,7 @@ export class BaseFilterStore {
     this.values = values;
   }
 
-  @action.bound clear() {
+  clear() {
     this.clearPath();
     this.checked = {};
   }
