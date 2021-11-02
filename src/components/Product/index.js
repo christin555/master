@@ -1,12 +1,12 @@
 import React from 'react';
 import {inject, Provider} from 'mobx-react';
-import ProductStore from '../../stores/ProductStore';
+import {ProductStore} from '../../stores/ProductStore';
 import ProductView from './ProductView';
 
 @inject(({RouterStore}) => {
   return {RouterStore};
 })
-class Search extends React.Component {
+class Product extends React.Component {
   constructor(props) {
     super(props);
     const {RouterStore} = this.props;
@@ -22,4 +22,4 @@ class Search extends React.Component {
     );
   }
 }
-export default Search;
+export default Product;

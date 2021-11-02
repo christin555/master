@@ -1,8 +1,6 @@
 import React from 'react';
 import s from './Catalog.module.scss';
-import Filter from './Filter';
 import Content from './Content';
-import Hierarchy from 'shared/Hierarchy';
 import {inject} from 'mobx-react';
 import Loader from 'shared/Loader';
 import {status as statusEnum} from '../../enums';

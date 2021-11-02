@@ -3,8 +3,7 @@ import {status as statusEnum} from '../../enums';
 import api from '../../api';
 import {alert} from '../Notifications';
 
-class HomeStore {
-  RouterStore
+class CallmeStore {
   product;
 
   @observable isShow;
@@ -12,8 +11,7 @@ class HomeStore {
   @observable name;
   @observable phone;
 
-  constructor({RouterStore, product}) {
-    this.RouterStore = RouterStore;
+  constructor({product}) {
     this.product = product;
     makeObservable(this);
   }
@@ -63,4 +61,4 @@ class HomeStore {
   }
 }
 
-export default HomeStore;
+export {CallmeStore};

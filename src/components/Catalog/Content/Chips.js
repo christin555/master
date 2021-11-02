@@ -1,25 +1,18 @@
 import React from 'react';
 import s from './Content.module.scss';
 import {inject} from 'mobx-react';
-import {toJS} from 'mobx';
 import CloseIcon from '@material-ui/icons/Close';
 import Chip from '../../../shared/Chip';
 import {array2Object} from '../../../utils';
 
-@inject(({CatalogStore: {FilterStore}}) => {
+@inject(({UrlStore}) => {
   return {
-    filterFields: FilterStore.filterFieldsObject,
-    filterValues: toJS(FilterStore.filterValues || {}),
-    setFilterValues: FilterStore.setFilterValues,
-    delVal: FilterStore.delVal
+    filterFields: [],
+    filterValues: {},
+    del: UrlStore.del
   };
 })
-class Filter extends React.Component {
-
-  get isFilterActive() {
-    return !!Object.keys(this.props.filterValues).length;
-  }
-
+class Chips extends React.Component {
   get splittedValues() {
     const {filterValues, filterFields} = this.props;
 
@@ -46,12 +39,11 @@ class Filter extends React.Component {
 
       return arr;
     }, []);
-
   }
 
-  render() {
-    const {delVal} = this.props;
+  removeValue = (key, val) => this.props.del(key, val);
 
+  render() {
     if (!this.isFilterActive) {
       return null;
     }
@@ -64,7 +56,7 @@ class Filter extends React.Component {
             color={'primary'}
             label={label}
             deleteIcon={<CloseIcon />}
-            onDelete={() => delVal(key, val)}
+            onDelete={this.removeValue(key, val)}
           />
         ))}
       </div>
@@ -72,4 +64,4 @@ class Filter extends React.Component {
   }
 }
 
-export default Filter;
+export default Chips;
