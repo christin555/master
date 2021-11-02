@@ -4,10 +4,10 @@ import {inject} from 'mobx-react';
 import CloseIcon from '@material-ui/icons/Close';
 import Button from '../../../shared/Button';
 
-@inject(({UrlStore}) => {
+@inject(({RootStore: {ActiveFilterStore}}) => {
   return {
-    isActive: UrlStore.isActive,
-    clear: UrlStore.clear
+    isActive: ActiveFilterStore.isActive,
+    clear: ActiveFilterStore.clear
   };
 })
 class FilterTitle extends React.Component {

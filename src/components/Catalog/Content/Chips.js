@@ -5,11 +5,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import Chip from '../../../shared/Chip';
 import {array2Object} from '../../../utils';
 
-@inject(({UrlStore}) => {
+@inject(({RootStore: {ActiveFilterStore}}) => {
   return {
     filterFields: [],
     filterValues: {},
-    del: UrlStore.del
+    // del: ActiveFilterStore.
   };
 })
 class Chips extends React.Component {

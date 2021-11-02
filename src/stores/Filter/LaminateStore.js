@@ -1,10 +1,13 @@
-import {computed, makeObservable, toJS} from 'mobx';
+import {computed, makeObservable, observable, action} from 'mobx';
 import {BaseFilterStore} from './Base';
-import UrlStore from '../UrlStore';
 
 export class LaminateStore extends BaseFilterStore {
-  constructor() {
-    super(LaminateStore.category);
+  @observable disabled = {};
+
+  constructor(RootStore) {
+    super(LaminateStore.category, RootStore);
+
+    RootStore.register('LaminateStore', this);
 
     makeObservable(this);
   }
@@ -34,35 +37,31 @@ export class LaminateStore extends BaseFilterStore {
   }
 
   @computed get collections() {
-    const collections = this.values.collections || [];
-
-    if (UrlStore.hasKey('brandId')) {
-      return toJS(collections).map((collection) => {
-        const isSameBrandCollection = UrlStore.has('brandId', collection.brandId);
-
-        collection.disabled = isSameBrandCollection === false;
-
-        return collection;
-      });
-    }
-
-    return collections;
+    return this.values.collections;
   }
 
-  setCheckboxValue = (key) => (checked, {id}) => {
-    if (key === 'brandId') {
-      // Сбрасываем выбранные колллекции, если поменяли бренд
-      UrlStore.clearKey('collectionId');
-    }
-
-    if (!checked) {
-      UrlStore.del(key, id);
-    } else {
-      UrlStore.set(key, id);
+  beforeValueCheck = (key, checked, id) => {
+    if (key === 'brandId' && checked) {
+      this.clearCheckedCollections();
     }
   };
 
-  toJSON() {
-    return this.selectedValues;
+  @action clearCheckedCollections = () => {
+    const params = new URLSearchParams(this.RouterStore.params || '')
+
+    params.delete('collectionId');
+
+    this.RouterStore.history.push({search: params.toString()});
+
+    Object.keys(this.checked)
+      .forEach((key) => {
+        if (key.indexOf('collectionId') > -1) {
+          this.checked[key] = false;
+        }
+      });
+  };
+
+  @action disableCollectionsByBrandId(brandId) {
+    console.log(brandId);
   }
 }

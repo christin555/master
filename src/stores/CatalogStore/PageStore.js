@@ -1,7 +1,7 @@
 import {action, computed, makeObservable} from 'mobx';
 
 export class PageStore {
-  constructor(RouterStore) {
+  constructor(RouterStore, RootStore) {
     makeObservable(this, {
       _params: computed,
       page: computed,
@@ -10,6 +10,8 @@ export class PageStore {
       setPage: action,
       setLimit: action
     });
+
+    RootStore.register('PageStore', this);
 
     this.RouterStore = RouterStore;
   }

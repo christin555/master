@@ -1,13 +1,20 @@
 import React from 'react';
-import {Provider} from 'mobx-react';
+import {inject, Provider} from 'mobx-react';
 import {LaminateStore} from '../../../../stores/Filter/LaminateStore';
 import Fields from './fields';
 
+@inject(({RootStore}) => {
+  return {
+    RootStore
+  };
+})
 class LaminateFilterView extends React.Component {
   constructor(props) {
     super(props);
 
-    this.FilterStore = new LaminateStore();
+    const {RootStore} = this.props;
+
+    this.FilterStore = new LaminateStore(RootStore);
   }
 
   componentDidMount() {

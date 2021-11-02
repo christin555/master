@@ -6,7 +6,6 @@ import RouterStore from './stores/Router';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import DefaultStyle from './themes/DefaultStyle';
-import UrlStore from './stores/UrlStore';
 
 // eslint-disable-next-line react/display-name
 const wrap = (name) => (props) => <StoreWrapper {...props} name={name} />;
@@ -14,7 +13,7 @@ const wrap = (name) => (props) => <StoreWrapper {...props} name={name} />;
 // eslint-disable-next-line react/display-name,react/no-multi-comp
 export default () => (
   <DefaultStyle>
-    <Provider RouterStore={RouterStore} UrlStore={UrlStore}>
+    <Provider RouterStore={RouterStore}>
       <BrowserRouter>
         <ReactNotification />
         <Switch>

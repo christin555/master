@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import {inject} from 'mobx-react';
 import {FormCheckbox} from '../Base/FormCheckbox';
 import {SimpleAccordion} from '../Base/SimpleAccordion';
+import {toJS} from 'mobx';
 
-@inject(({FilterStore, UrlStore}) => {
+@inject(({FilterStore}) => {
   return {
     color: FilterStore.color,
     resistanceClasses: FilterStore.resistanceClasses,
@@ -12,73 +13,81 @@ import {SimpleAccordion} from '../Base/SimpleAccordion';
     width: FilterStore.width,
     brands: FilterStore.brands,
     collections: FilterStore.collections,
-    setCheckboxValue: FilterStore.setCheckboxValue
+    setValue: FilterStore.setValue,
+    checked: toJS(FilterStore.checked),
+    disabled: toJS(FilterStore.disabled)
   };
 })
 class Fields extends Component {
   get color() {
-    return this.props.color?.map((color) => (
+    return this.props.color?.map(({id, name}) => (
       <FormCheckbox
-        key={color.id}
-        name={color.name}
-        id={color.id}
-        onChange={this.props.setCheckboxValue('color')}
+        checked={this.isChecked('color', id)}
+        key={id}
+        name={name}
+        id={id}
+        onChange={this.props.setValue('color')}
       />
     ));
   }
 
   get resistanceClasses() {
-    return this.props.resistanceClasses?.map((resistanceClass) => (
+    return this.props.resistanceClasses?.map(({id, name}) => (
       <FormCheckbox
-        key={resistanceClass.id}
-        name={resistanceClass.name}
-        id={resistanceClass.id}
-        onChange={this.props.setCheckboxValue('resistanceClass')}
+        checked={this.isChecked('resistanceClass', id)}
+        key={id}
+        name={name}
+        id={id}
+        onChange={this.props.setValue('resistanceClass')}
       />
     ));
   }
 
   get thickness() {
-    return this.props.thickness?.map((thickness) => (
+    return this.props.thickness?.map(({id, name}) => (
       <FormCheckbox
-        key={thickness.id}
-        name={thickness.name}
-        id={thickness.id}
-        onChange={this.props.setCheckboxValue('thickness')}
+        checked={this.isChecked('thickness', id)}
+        key={id}
+        name={name}
+        id={id}
+        onChange={this.props.setValue('thickness')}
       />
     ));
   }
 
   get width() {
-    return this.props.width?.map((width) => (
+    return this.props.width?.map(({id, name}) => (
       <FormCheckbox
-        key={width.id}
-        name={width.name}
-        id={width.id}
-        onChange={this.props.setCheckboxValue('width')}
+        checked={this.isChecked('width', id)}
+        key={id}
+        name={name}
+        id={id}
+        onChange={this.props.setValue('width')}
       />
     ));
   }
 
   get brands() {
-    return this.props.brands?.map((brand) => (
+    return this.props.brands?.map(({id, name}) => (
       <FormCheckbox
-        key={brand.id}
-        name={brand.name}
-        id={brand.id}
-        onChange={this.props.setCheckboxValue('brandId')}
+        checked={this.isChecked('brandId', id)}
+        key={id}
+        name={name}
+        id={id}
+        onChange={this.props.setValue('brandId')}
       />
     ));
   }
 
   get collections() {
-    return this.props.collections?.map((collection) => (
+    return this.props.collections?.map(({id, name}) => (
       <FormCheckbox
-        key={collection.id}
-        name={collection.name}
-        id={collection.id}
-        disabled={collection.disabled}
-        onChange={this.props.setCheckboxValue('collectionId')}
+        checked={this.isChecked('collectionId', id)}
+        key={id}
+        name={name}
+        id={id}
+        disabled={this.isDisabled('collectionId', id)}
+        onChange={this.props.setValue('collectionId')}
       />
     ));
   }
@@ -86,12 +95,25 @@ class Fields extends Component {
   get withHeatingFloor() {
     return (
       <FormCheckbox
+        checked={this.isChecked('withHeatingFloor', 1)}
         name={'Да'}
-        id={true}
-        onChange={this.props.setCheckboxValue('withHeatingFloor')}
+        id={1}
+        onChange={this.props.setValue('withHeatingFloor')}
       />
     );
   }
+
+  isChecked = (key, value) => {
+    const {checked} = this.props;
+
+    return checked[`${key}-${value}`] || false;
+  };
+
+  isDisabled = (key, value) => {
+    const {disabled} = this.props;
+
+    return disabled[`${key}-${value}`] || false;
+  };
 
   render() {
     return (

@@ -11,21 +11,29 @@ class CatalogStore {
   @observable isLastLevel;
   @observable count = 0;
 
-  /**
-   * @param {RouterStore} RouterStore
-   * @param {PageStore} PageStore
-   * @param {UrlStore} UrlStore
-   */
-  constructor(RouterStore, PageStore, UrlStore) {
+  constructor(RouterStore, RootStore) {
+    this.RootStore = RootStore;
     this.RouterStore = RouterStore;
-    this.PageStore = PageStore;
-    this.UrlStore = UrlStore;
 
     makeObservable(this);
+
+    RootStore.register('CatalogStore', this);
 
     this.getHierarchyDisposer = autorun(this.getHierarchy);
     this.getCatalogDisposer = autorun(this.getCatalog);
     this.getCountProductsDisposer = autorun(this.getCountProducts);
+  }
+
+  get PageStore() {
+    return this.RootStore.PageStore;
+  }
+
+  get ActiveFilterStore() {
+    return this.RootStore.ActiveFilterStore;
+  }
+
+  @computed get filter() {
+    return this.ActiveFilterStore.selectedFilter || {};
   }
 
   @computed get category() {
@@ -79,10 +87,10 @@ class CatalogStore {
   };
 
   getCountProducts = async() => {
-    const {category} = this;
+    const {category, filter} = this;
 
     try {
-      const body = {searchParams: {category, filter: {}}};
+      const body = {searchParams: {category, filter}};
       const count = await api.post('catalog/countProducts ', body);
 
       this.setCount(count);
@@ -92,10 +100,8 @@ class CatalogStore {
   };
 
   getCatalog = async() => {
-    const {category} = this;
+    const {category, filter} = this;
     const {offset, limit} = this.PageStore;
-
-    console.log(this.UrlStore.selectedFilter);
 
     this.setStatus(statusEnum.LOADING);
 
@@ -103,8 +109,7 @@ class CatalogStore {
       const body = {
         searchParams: {
           category,
-          // filter: this.FilterStore.toJSON()
-          filter: {}
+          filter
         },
         limit,
         offset
