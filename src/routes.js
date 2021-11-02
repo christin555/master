@@ -6,6 +6,7 @@ import RouterStore from './stores/Router';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import DefaultStyle from './themes/DefaultStyle';
+require('dayjs/locale/ru');
 
 // eslint-disable-next-line react/display-name
 export default () => (
@@ -36,8 +37,8 @@ export default () => (
           />
           <Route
             exact={true}
-            path='/gallery'
-            render={(props) => <Wrapper {...props} name={'gallery'} />}
+            path='/blog'
+            render={(props) => <Wrapper {...props} name={'blog'} />}
           />
           <Route
             exact={true}

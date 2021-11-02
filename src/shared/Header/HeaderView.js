@@ -52,7 +52,7 @@ class Header extends Component {
     {name: 'О нас', important: false, link: '/about'},
     //{name: 'Контакты', important: false, link: '/contacts'},
     {name: 'Оплата и доставка', important: false, link: '/delivery'},
-    {name: 'Наш блог', important: false, link: '/gallery'},
+    {name: 'Наш блог', important: false, link: '/blog'},
     {name: 'Услуги', important: true, link: '/works'}
   ]
 

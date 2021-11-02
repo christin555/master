@@ -19,8 +19,8 @@ const Page = loadable(
       case 'product': {
         return import('../components/Product');
       }
-      case 'gallery': {
-        return import('../components/Gallery');
+      case 'blog': {
+        return import('../components/Blog');
       }
       case 'delivery': {
         return import('../components/Delivery');

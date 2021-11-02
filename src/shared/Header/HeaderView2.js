@@ -63,7 +63,7 @@ class HeaderView2 extends Component {
 
     render() {
       const {isScrolled} = this.state;
-      const {pathname, search, setParams, setSearch} = this.props;
+      const {pathname} = this.props;
       const isHome = pathname === '/';
 
       return (
