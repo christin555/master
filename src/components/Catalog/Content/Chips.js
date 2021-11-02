@@ -3,58 +3,29 @@ import s from './Content.module.scss';
 import {inject} from 'mobx-react';
 import CloseIcon from '@material-ui/icons/Close';
 import Chip from '../../../shared/Chip';
-import {array2Object} from '../../../utils';
 
 @inject(({RootStore: {ActiveFilterStore}}) => {
   return {
-    filterFields: [],
-    filterValues: {},
-    // del: ActiveFilterStore.
+    chips: ActiveFilterStore.chips,
+    isFilterActive: ActiveFilterStore.isActive,
+    del: ActiveFilterStore.setValue
   };
 })
 class Chips extends React.Component {
-  get splittedValues() {
-    const {filterValues, filterFields} = this.props;
-
-    if (!filterFields) {
-      return [];
-    }
-
-    return Object.entries(filterValues).reduce((arr, [_key, val]) => {
-      const key = filterFields[_key]?.title;
-
-      if (Array.isArray(val)) {
-        const values = array2Object(filterFields[_key]?.values, 'id');
-
-        if (values) {
-          val.forEach((item) => {
-            const itemVal = values[item]?.name;
-
-            arr.push({label: `${key} - ${itemVal}`, val: item, key: _key});
-          });
-        }
-      } else {
-        arr.push({label: `${key} - ${val}`, val, key: _key});
-      }
-
-      return arr;
-    }, []);
-  }
-
-  removeValue = (key, val) => this.props.del(key, val);
+  removeValue = (key, val) => () => this.props.del(key)(false, {id: val});
 
   render() {
-    if (!this.isFilterActive) {
+    if (!this.props.isFilterActive) {
       return null;
     }
 
     return (
       <div className={s.chips}>
-        {this.splittedValues.map(({label, key, val}, index) => (
+        {this.props.chips.map(({fieldName, label, key, val}) => (
           <Chip
-            key={index}
+            key={val}
             color={'primary'}
-            label={label}
+            label={`${fieldName} - ${label}`}
             deleteIcon={<CloseIcon />}
             onDelete={this.removeValue(key, val)}
           />

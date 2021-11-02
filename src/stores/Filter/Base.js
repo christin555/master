@@ -21,6 +21,9 @@ const groupParamsByKey = (params) => {
 export class BaseFilterStore {
   @observable values = {};
   @observable checked = {};
+  @observable chips = [];
+  // Override in child;
+  fieldsLabel = {};
 
   constructor(category, RootStore) {
     this.category = category;
@@ -51,7 +54,8 @@ export class BaseFilterStore {
   }
 
   @computed get isActive() {
-    return Object.keys(this.checked).length > 0;
+    return Object.keys(this.checked)
+      .filter((k) => this.checked[k] === true).length > 0;
   }
 
   @action _setValues(values) {
@@ -99,17 +103,24 @@ export class BaseFilterStore {
     // implement in children
   }
 
-  setValue = (key) => async(checked, {id}) => {
+  setValue = (key) => async(checked, item) => {
+    const {id} = item;
+
     await this.resetPage();
-    await this.beforeValueCheck(key, id, checked);
+    await this.beforeValueCheck(key, item, checked);
 
     await this.setPath(key, id, checked);
     this.setChecked(key, id, checked);
+    this.setChips(key, item, checked);
 
-    await this.afterValueCheck(key, id, checked);
+    await this.afterValueCheck(key, item, checked);
   };
 
   hasValue = (key, id) => this.checked[`${key}-${id}`];
+
+  hasKey = (key) => Object
+    .keys(this.checked)
+    .filter((checkedKey) => checkedKey.indexOf(key) > -1 && this.checked[checkedKey] === true).length > 0;
 
   resetPage = () => {
     this.RootStore.PageStore.setPage(1);
@@ -129,6 +140,23 @@ export class BaseFilterStore {
     const prefix = `${key}-${value}`;
 
     this.checked[prefix] = state;
+  };
+
+  @action setChips = (key, item, checked) => {
+    if (checked) {
+      this.chips.push({
+        fieldName: this.fieldsLabel[key],
+        label: item.name,
+        key,
+        val: item.id
+      });
+    } else {
+      const idx = this.chips.findIndex((chip) => {
+        return chip.key === key && chip.val === item.id;
+      });
+
+      this.chips.splice(idx, 1);
+    }
   };
 
   setPath(key, id, checked) {

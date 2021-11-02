@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export const SimpleAccordion = (props) => {
-  const {id, name, children} = props;
+  const {id, name, children, active} = props;
 
   return (
     <Accordion elevation={0} square={true} key={id} className={s.accordionItem}>
       <AccordionSummary className={s.summary} expandIcon={<ExpandMoreIcon />}>
         <span className={s.heading}>
           {name}
-          <span className={s.active} />
+          {active && <span className={s.active} />}
         </span>
       </AccordionSummary>
       <AccordionDetails className={s.details}>
@@ -25,5 +25,6 @@ export const SimpleAccordion = (props) => {
 SimpleAccordion.propTypes = {
   id: PropTypes.number,
   name: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  active: PropTypes.bool
 };

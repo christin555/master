@@ -20,4 +20,12 @@ export class DoorsStore extends BaseFilterStore {
   @computed get finishingMaterials() {
     return this.values.finishingMaterials;
   }
+
+  @computed get isFinishingMaterialActive() {
+    return this.hasKey('finishingMaterial');
+  }
+
+  @computed get isCollectionActive() {
+    return this.hasKey('collectionId');
+  }
 }

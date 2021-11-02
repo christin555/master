@@ -10,6 +10,8 @@ import {toJS} from 'mobx';
     collections: FilterStore.collections,
     finishingMaterials: FilterStore.finishingMaterials,
     setValue: FilterStore.setValue,
+    isCollectionActive: FilterStore.isCollectionActive,
+    isFinishingMaterialActive: FilterStore.isFinishingMaterialActive,
     checked: toJS(FilterStore.checked)
   };
 })
@@ -45,12 +47,17 @@ class Fields extends Component {
   };
 
   render() {
+    const {
+      isFinishingMaterialActive,
+      isCollectionActive
+    } = this.props;
+
     return (
       <React.Fragment>
-        <SimpleAccordion id={1} name={'Коллекция'}>
+        <SimpleAccordion id={1} name={'Коллекция'} active={isCollectionActive}>
           {this.collections}
         </SimpleAccordion>
-        <SimpleAccordion id={2} name={'Материал отделки'}>
+        <SimpleAccordion id={2} name={'Материал отделки'} active={isFinishingMaterialActive}>
           {this.finishingMaterials}
         </SimpleAccordion>
       </React.Fragment>

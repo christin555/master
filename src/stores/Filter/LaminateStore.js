@@ -3,6 +3,15 @@ import {BaseFilterStore} from './Base';
 
 export class LaminateStore extends BaseFilterStore {
   @observable disabled = {};
+  fieldsLabel = {
+    'color': 'Оттенок',
+    'resistanceClass': 'Класс нагрузки',
+    'thickness': 'Толщина',
+    'width': 'Ширина',
+    'brandId': 'Бренд',
+    'collectionId': 'Коллекция',
+    'withHeatingFloor': 'Совместимость с теплыми полами'
+  };
 
   constructor(RootStore) {
     super(LaminateStore.category, RootStore);
@@ -40,13 +49,43 @@ export class LaminateStore extends BaseFilterStore {
     return this.values.collections;
   }
 
+  @computed get isColorActive() {
+    return this.hasKey('color');
+  }
+
+  @computed get isResistanceClassesActive() {
+    return this.hasKey('resistanceClass');
+  }
+
+  @computed get isThicknessActive() {
+    return this.hasKey('thickness');
+  }
+
+  @computed get isWidthActive() {
+    return this.hasKey('width');
+  }
+
+  @computed get isBrandsActive() {
+    return this.hasKey('brandId');
+  }
+
+  @computed get isCollectionsActive() {
+    return this.hasKey('collectionId');
+  }
+
+  @computed get isWithHeatingFloor() {
+    return this.hasKey('withHeatingFloor');
+  }
+
   @action clearCheckedCollections = () => {
+    const colId = 'collectionId';
     const params = new URLSearchParams(this.RouterStore.params || '');
 
-    params.delete('collectionId');
+    params.delete(colId);
 
     this.RouterStore.history.push({search: params.toString()});
-    this.setToKey('checked', 'collectionId', false);
+    this.setToKey('checked', colId, false);
+    this.chips = this.chips.filter((chip) => chip.key !== colId);
   };
 
   @action disableCollectionsByBrandId = (brandId, checked) => {
@@ -85,7 +124,7 @@ export class LaminateStore extends BaseFilterStore {
     this.disabled = {};
   }
 
-  afterValueCheck = (key, id, checked) => {
+  afterValueCheck = (key, {id}, checked) => {
     if (key === 'brandId') {
       this.clearCheckedCollections();
       this.disableCollectionsByBrandId(id, checked);

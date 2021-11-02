@@ -15,7 +15,15 @@ import {toJS} from 'mobx';
     collections: FilterStore.collections,
     setValue: FilterStore.setValue,
     checked: toJS(FilterStore.checked),
-    disabled: toJS(FilterStore.disabled)
+    disabled: toJS(FilterStore.disabled),
+
+    isColorActive: FilterStore.isColorActive,
+    isResistanceClassesActive: FilterStore.isResistanceClassesActive,
+    isThicknessActive: FilterStore.isThicknessActive,
+    isWidthActive: FilterStore.isWidthActive,
+    isBrandsActive: FilterStore.isBrandsActive,
+    isCollectionsActive: FilterStore.isCollectionsActive,
+    isWithHeatingFloor: FilterStore.isWithHeatingFloor
   };
 })
 class Fields extends Component {
@@ -116,27 +124,37 @@ class Fields extends Component {
   };
 
   render() {
+    const {
+      isColorActive,
+      isResistanceClassesActive,
+      isThicknessActive,
+      isWidthActive,
+      isBrandsActive,
+      isCollectionsActive,
+      isWithHeatingFloorActive
+    } = this.props;
+
     return (
       <React.Fragment>
-        <SimpleAccordion id={1} name={'Бренд'}>
+        <SimpleAccordion id={1} name={'Бренд'} active={isBrandsActive}>
           {this.brands}
         </SimpleAccordion>
-        <SimpleAccordion id={2} name={'Коллекция'}>
+        <SimpleAccordion id={2} name={'Коллекция'} active={isCollectionsActive}>
           {this.collections}
         </SimpleAccordion>
-        <SimpleAccordion id={3} name={'Оттенок'}>
+        <SimpleAccordion id={3} name={'Оттенок'} active={isColorActive}>
           {this.color}
         </SimpleAccordion>
-        <SimpleAccordion id={4} name={'Класс нагрузки'}>
+        <SimpleAccordion id={4} name={'Класс нагрузки'} active={isResistanceClassesActive}>
           {this.resistanceClasses}
         </SimpleAccordion>
-        <SimpleAccordion id={5} name={'Совместимость с теплыми полами'}>
+        <SimpleAccordion id={5} name={'Совместимость с теплыми полами'} active={isWithHeatingFloorActive}>
           {this.withHeatingFloor}
         </SimpleAccordion>
-        <SimpleAccordion id={6} name={'Толщина'}>
+        <SimpleAccordion id={6} name={'Толщина'} active={isThicknessActive}>
           {this.thickness}
         </SimpleAccordion>
-        <SimpleAccordion id={7} name={'Ширина'}>
+        <SimpleAccordion id={7} name={'Ширина'} active={isWidthActive}>
           {this.width}
         </SimpleAccordion>
       </React.Fragment>
