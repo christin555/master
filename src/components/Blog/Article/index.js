@@ -51,9 +51,9 @@ class ArticlesView extends React.Component {
 
     switch (type) {
       case 1:
-        return <span className={classNames(s.categoryLabel, s.useful)}> Полезные статьи</span>;
+        return <span className={s.categoryLabel}> Полезные статьи</span>;
       case 2:
-        return <span className={classNames(s.categoryLabel, s.news)}> Новости</span>;
+        return <span className={s.categoryLabel}> Новости</span>;
     }
 
     return null;

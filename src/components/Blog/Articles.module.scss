@@ -4,8 +4,9 @@
   @include paddingStandard;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-column-gap: 20px;
-  grid-row-gap: 40px;
+  grid-column-gap: 40px;
+  grid-row-gap: 20px;
+  padding: 20px 0;
 }
 
 .header {
@@ -13,10 +14,9 @@
   font-size: 24px;
   display: flex;
   flex-direction: column;
-  padding: 20px 0 20px 0;
+  padding: 40px 0;
   @include paddingStandard;
   font-weight: 500;
-  margin-bottom: 20px;
 }
 
 .line {
@@ -26,11 +26,17 @@
   width: 40px;
   background: #c41414;
 }
+
+.underLineText {
+  font-weight: 300;
+  margin-top: 40px;
+}
+
 @media only screen and (max-width: 480px) {
   .header, .content {
     padding: 0 10px;
 
-    .article{
+    .article {
       .imgBlock {
         grid-column-start: unset;
       }

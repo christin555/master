@@ -23,6 +23,11 @@ class ArticlesView extends React.Component {
         <div className={s.header}>
           {'НАШ БЛОГ'}
           <div className={s.line} />
+
+          <span className={s.underLineText}>
+            Наши специалисты имеют многолетний опыт в укладке напольных покрытий и всегда рады поделиться своими знаниями!
+          </span>
+
         </div>
         <div className={s.content}>
           {articles.map((article, index) => <Article key={index} {...article} />)}
