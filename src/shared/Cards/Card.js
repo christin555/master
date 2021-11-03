@@ -8,6 +8,7 @@ import cn from 'classnames';
 import {inject} from 'mobx-react';
 import Buttons from './Buttons';
 import {Link} from 'react-router-dom';
+import formatPrice from '../../utils/formatPrice';
 
 const plural = require('plural-ru');
 
@@ -92,10 +93,8 @@ class CardView extends React.Component {
               </span>
               {
                 price && (
-                  <span className={s.price}> {price.price} ₽
-                    <span className={s.unit}>
-                  за 1 м2
-                    </span>
+                  <span className={s.price}> {formatPrice(price)}
+                    <span className={s.unit}> за 1 м2 </span>
                   </span>
                 ) || null
               }

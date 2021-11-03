@@ -67,15 +67,11 @@
     }
 
     .price {
-      margin: 20px 0;
-      box-shadow: 0 4px 24px rgba(186, 181, 181, 0.5);
+      margin: 10px 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      height: 100px;
       width: 100%;
-      background: #f9f9fd;
       max-width: 300px;
 
       .value {
@@ -86,6 +82,7 @@
 
         .icon {
           margin-right: 8px;
+          color: $gray-500;
         }
       }
 
@@ -130,14 +127,15 @@
 
 .titleCharacteristic {
   margin-top: 20px;
+  @include paddingStandard;
   background: $gray-100-10;
-  padding: 0 80px;
   font-weight: 400;
   font-size: 16px;
   height: 50px;
   display: flex;
   align-items: center;
   text-transform: uppercase;
+  color: $red;
 }
 
 .characteristic {

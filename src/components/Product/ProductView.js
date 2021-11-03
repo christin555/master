@@ -13,6 +13,7 @@ import s from './Product.module.scss';
 import Callme from '../../shared/Callme';
 import {toJS} from 'mobx';
 import {Helmet} from 'react-helmet';
+import formatPrice from '../../utils/formatPrice';
 
 @inject(({ProductStore}) => {
   return {
@@ -128,7 +129,10 @@ class Product extends React.Component {
       <React.Fragment>
         <Helmet>
           <title>{`Мастер Пола - ${values.name}`}</title>
-          <meta name='description' content={`Тюмень, коллекция ${values.collection} - ${values.name}. ${hierarchy.map(({name}) => name).join(',')}`} />
+          <meta
+            name='description'
+            content={`Тюмень, коллекция ${values.collection} - ${values.name}. ${hierarchy.map(({name}) => name).join(',')}`}
+          />
         </Helmet>
         <Hierarchy hierarchy={hierarchy} className={s.hierarchy} />
         <div className={s.content}>
@@ -151,8 +155,10 @@ class Product extends React.Component {
               {
                 values.price && (
                   <div className={s.price}>
-                    <span className={s.value}> <MonetizationOnIcon className={s.icon} />  837 ₽</span>
-                    <span className={s.unit}>Цена за м2 </span>
+                    <span className={s.value}>
+                      <MonetizationOnIcon className={s.icon} />
+                      {formatPrice(values.price)}
+                    </span>
                   </div>
                 ) || null
               }
