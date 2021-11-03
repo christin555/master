@@ -19,7 +19,7 @@ class CatalogStore {
     this.getHierarchy();
   }
 
-  @computed get id() {
+  @computed get alias() {
     return get(get(this.RouterStore.match, 'params'), 'id') || null;
   }
 
@@ -37,7 +37,7 @@ class CatalogStore {
 
   getHierarchy = async() => {
     try {
-      const body = {product: this.id};
+      const body = {product: this.alias};
       const {hierarchy} = await api.post('catalog/getHierarchy', body);
 
       this.setHierarchy(hierarchy);
@@ -48,7 +48,7 @@ class CatalogStore {
 
   getProduct = async() => {
     try {
-      const {values, fields} = await api.get(`products/get/${this.id}`);
+      const {values, fields} = await api.get(`products/get/${this.alias}`);
 
       this.setValues(values);
       this.setFields(fields);

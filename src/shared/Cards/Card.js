@@ -51,11 +51,9 @@ class CardView extends React.Component {
       img,
       name,
       brand,
-      id,
-      price,
-      straightLink
+      price
     } = this.props;
-    const pathname = straightLink && alias || alias && `/catalog/${alias}` || `/product/${id}`;
+    const pathname = `/product/${alias}`;
 
     return (
       <Card className={s.root}>
