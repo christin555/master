@@ -1,7 +1,6 @@
 import React from 'react';
 import {inject} from 'mobx-react';
 import CatalogCard from '../../../shared/CatalogCard';
-import {toJS} from 'mobx';
 import s from './Content.module.scss';
 
 @inject(({CatalogStore}) => {
@@ -12,8 +11,6 @@ import s from './Content.module.scss';
 class CategoriesView extends React.Component {
   render() {
     const {categories} = this.props;
-
-    console.log(toJS(categories));
 
     return (
       <div className={s.categories}>

@@ -8,7 +8,6 @@ import Filter from '../Filter';
 import {status as statusEnum} from '../../../enums';
 import {InWork, NoResults} from '../../../shared/InformBlocks';
 import classNames from 'classnames';
-import {Divider} from '@material-ui/core';
 
 @inject(({CatalogStore}) => {
   return {
@@ -19,7 +18,6 @@ import {Divider} from '@material-ui/core';
   };
 })
 class Content extends React.Component {
-
   get InformBlock() {
     const {status, productsAvailable, fastfilter} = this.props;
 

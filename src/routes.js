@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import Wrapper from './main/routWrapper';
+import {StoreWrapper} from './main/routeWrapper';
 import {Provider} from 'mobx-react';
 import RouterStore from './stores/Router';
 import ReactNotification from 'react-notifications-component';
@@ -8,6 +8,9 @@ import 'react-notifications-component/dist/theme.css';
 import DefaultStyle from './themes/DefaultStyle';
 
 // eslint-disable-next-line react/display-name
+const wrap = (name) => (props) => <StoreWrapper {...props} name={name} />;
+
+// eslint-disable-next-line react/display-name,react/no-multi-comp
 export default () => (
   <DefaultStyle>
     <Provider RouterStore={RouterStore}>
@@ -17,40 +20,40 @@ export default () => (
           <Route
             exact={true}
             path='/'
-            render={(props) => <Wrapper {...props} name={'home'} />}
+            render={wrap('home')}
           />
           <Route
             exact={true}
             path='/about'
-            render={(props) => <Wrapper {...props} name={'about'} />}
+            render={wrap('about')}
           />
           <Route
             exact={true}
             path='/catalog/:category?'
-            render={(props) => <Wrapper {...props} name={'catalog'} />}
+            render={wrap('catalog')}
           />
           <Route
             exact={true}
             path='/product/:id'
-            render={(props) => <Wrapper {...props} name={'product'} />}
+            render={wrap('product')}
           />
           <Route
             exact={true}
             path='/gallery'
-            render={(props) => <Wrapper {...props} name={'gallery'} />}
+            render={wrap('gallery')}
           />
           <Route
             exact={true}
             path='/delivery'
-            render={(props) => <Wrapper {...props} name={'delivery'} />}
+            render={wrap('delivery')}
           />
           <Route
             exact={true}
             path='/works'
-            render={(props) => <Wrapper {...props} name={'works'} />}
+            render={wrap('works')}
           />
           <Route
-            render={(props) => <Wrapper {...props} name={'notFound'} />}
+            render={wrap('notFound')}
           />
         </Switch>
       </BrowserRouter>

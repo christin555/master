@@ -1,24 +1,33 @@
-import React from 'react';
-import {inject, Provider} from 'mobx-react';
-import FilterStore from '../../../stores/CatalogStore/FilterStore';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import FilterView from './FilterView';
+import {inject} from 'mobx-react';
+import {get} from 'mobx';
+import {filterFabric} from './filterFabric';
 
-@inject(({CatalogStore}) => {
-  return {CatalogStore};
+@inject(({RouterStore}) => {
+  return {
+    category: get(get(RouterStore.match, 'params'), 'category') || null
+  };
 })
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.FilterStore = props.CatalogStore.FilterStore;
-  }
-
+class Filter extends Component {
   render() {
+    const Fields = filterFabric(this.props.category);
+
+    if (!Fields) {
+      return null;
+    }
+
     return (
-      <Provider FilterStore={this.FilterStore}>
-        <FilterView />
-      </Provider>
+      <FilterView>
+        <Fields />
+      </FilterView>
     );
   }
 }
-export default Search;
+
+Filter.propTypes = {
+  category: PropTypes.string
+};
+
+export default Filter;

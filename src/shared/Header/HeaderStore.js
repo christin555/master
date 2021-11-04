@@ -26,7 +26,6 @@ class HeaderStore {
         pathname: '/catalog',
         search: urlParams.toString()
       });
-
     }
 }
 

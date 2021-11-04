@@ -4,14 +4,10 @@ import api from 'api';
 import {alert} from '../Notifications';
 
 class ArticlesStore {
-  RouterStore
-
   @observable status = statusEnum.LOADING;
   @observable articles;
 
-  constructor({RouterStore}) {
-    this.RouterStore = RouterStore;
-
+  constructor() {
     makeObservable(this);
 
     this.getArticles();
@@ -40,4 +36,4 @@ class ArticlesStore {
   }
 }
 
-export default ArticlesStore;
+export {ArticlesStore};

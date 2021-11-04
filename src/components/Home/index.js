@@ -1,25 +1,13 @@
 import React from 'react';
-import {inject, Provider} from 'mobx-react';
-import HomeStore from '../../stores/HomeStore';
-import HomeView from './HomeView';
+import s from './Home.module.scss';
+import Blocks from './Blocks';
+import Header from './Header';
 
-@inject(({RouterStore}) => {
-  return {RouterStore};
-})
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    const {RouterStore} = this.props;
+const Home = () => (
+  <div className={s.contentContainer}>
+    <Header />
+    <Blocks />
+  </div>
+);
 
-    this.HomeStore = new HomeStore({RouterStore});
-  }
-
-  render() {
-    return (
-      <Provider HomeStore={this.HomeStore}>
-        <HomeView />
-      </Provider>
-    );
-  }
-}
-export default Search;
+export default Home;
