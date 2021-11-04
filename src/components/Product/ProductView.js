@@ -2,20 +2,20 @@ import React from 'react';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import Chip from '@material-ui/core/Chip';
 import Icons from 'shared/Icons';
-import {inject} from 'mobx-react';
+import { inject } from 'mobx-react';
 import Hierarchy from '../../shared/Hierarchy';
 import Nophoto from 'shared/img/nophoto.png';
 import Carousel from '../../shared/Carousel';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import {Divider} from '@material-ui/core';
+import { Divider } from '@material-ui/core';
 import classNames from 'classnames';
 import s from './Product.module.scss';
 import Callme from '../../shared/Callme';
-import {toJS} from 'mobx';
-import {Helmet} from 'react-helmet';
+import { toJS } from 'mobx';
+import { Helmet } from 'react-helmet';
 import formatPrice from '../../utils/formatPrice';
 
-@inject(({ProductStore}) => {
+@inject(({ ProductStore }) => {
   return {
     values: toJS(ProductStore.values || {}),
     fields: ProductStore.fields || [],
@@ -24,10 +24,10 @@ import formatPrice from '../../utils/formatPrice';
 })
 class Product extends React.Component {
   get mainFields() {
-    const {values, fields} = this.props;
+    const { values,fields } = this.props;
     const rows = [];
 
-    fields.filter(({type}) => type === 'isMain').forEach(({title, name}) => {
+    fields.filter(({ type }) => type === 'isMain').forEach(({ title,name }) => {
       if (values[name]) {
         rows.push(
           <div className={s.row}>
@@ -43,10 +43,10 @@ class Product extends React.Component {
   }
 
   get chipFields() {
-    const {values, fields} = this.props;
+    const { values,fields } = this.props;
     const rows = [];
 
-    fields.filter(({type}) => type === 'isChip').forEach(({title, name, icon}) => {
+    fields.filter(({ type }) => type === 'isChip').forEach(({ title,name,icon }) => {
       const Icon = Icons[icon];
 
       if (values[name]) {
@@ -60,13 +60,13 @@ class Product extends React.Component {
   }
 
   get images() {
-    const {values} = this.props;
+    const { values } = this.props;
 
     if (!values.imgs) {
-      return [{original: Nophoto}];
+      return [{ original: Nophoto }];
     }
 
-    return values.imgs.map(({src}) => {
+    return values.imgs.map(({ src }) => {
       return {
         original: src,
         thumbnail: src,
@@ -78,10 +78,10 @@ class Product extends React.Component {
   //переделать на array2object по type
   //Хорошо
   get allFields() {
-    const {values, fields} = this.props;
+    const { values,fields } = this.props;
     const rows = [];
 
-    fields.forEach(({title, name}) => {
+    fields.forEach(({ title,name }) => {
       if (values[name] && title) {
         rows.push(
           <div className={s.row}>
@@ -97,8 +97,8 @@ class Product extends React.Component {
   }
 
   get finishingMaterial() {
-    const {fields} = this.props;
-    const finishingMaterial = fields.find(({name}) => name === 'finishingMaterial');
+    const { fields } = this.props;
+    const finishingMaterial = fields.find(({ name }) => name === 'finishingMaterial');
 
     if (!finishingMaterial) {
       return null;
@@ -108,7 +108,7 @@ class Product extends React.Component {
       <div className={s.materials}>
         <span> Материал отделки </span>
         <div className={s.items}> {
-          finishingMaterial.values.map(({id, name, img}) => (
+          finishingMaterial.values.map(({ id,name,img }) => (
             <div key={id}>
               <div className={s.materialImg}>
                 <img alt={name} src={img} />
@@ -123,7 +123,7 @@ class Product extends React.Component {
   }
 
   render() {
-    const {values, hierarchy} = this.props;
+    const { values,hierarchy } = this.props;
 
     return (
       <React.Fragment>
@@ -131,12 +131,12 @@ class Product extends React.Component {
           <title>{`Мастер Пола - ${values.name}`}</title>
           <meta
             name='description'
-            content={`Тюмень, коллекция ${values.collection} - ${values.name}. ${hierarchy.map(({name}) => name).join(',')}`}
+            content={`Тюмень, коллекция ${values.collection} - ${values.name}. ${hierarchy.map(({ name }) => name).join(',')}`}
           />
         </Helmet>
         <Hierarchy hierarchy={hierarchy} className={s.hierarchy} />
         <div className={s.content}>
-          <div className={classNames(s.card, {[s.door]: !!values.finishingMaterial})}>
+          <div className={classNames(s.card,{ [s.door]: !!values.finishingMaterial })}>
             <Carousel
               images={this.images}
               className={s.carousel}
@@ -171,7 +171,7 @@ class Product extends React.Component {
               </div>
               <div>
                 <Callme
-                  product={{...values, img: values?.imgs && values.imgs[0]?.src}}
+                  product={{ ...values,img: values?.imgs && values.imgs[0]?.src }}
                   className={s.call}
                   buttonText={'Оставить заявку'}
                 />
