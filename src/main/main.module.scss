@@ -12,9 +12,10 @@ li, p {
 }
 
 h2 {
-  font-family: Montserrat, sans-serif;
   margin: 8px 0;
   line-height: 1.4em;
+  font-weight: 500;
+  font-size: 1.8em;
 }
 
 h1 {
@@ -32,7 +33,7 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: #34373d;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 ::-webkit-scrollbar {
@@ -86,5 +87,9 @@ body {
   }
   .isNotHome {
     margin-top: 70px;
+  }
+
+  body {
+    font-size: 18px;
   }
 }

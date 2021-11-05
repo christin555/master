@@ -12,7 +12,6 @@ import cn from 'classnames';
   return {
     isShow: CallmeStore.isShow,
     toggleShow: CallmeStore.toggleShow,
-    product: CallmeStore.product,
     name: CallmeStore.name,
     setName: CallmeStore.setName,
     phone: CallmeStore.phone,
@@ -112,7 +111,7 @@ class Callme extends React.Component {
                 <Button
                   size={'small'}
                   className={s.call}
-                  onClick={apply}
+                  onClick={() => apply(product)}
                 >
                   Оставить заявку
                 </Button>

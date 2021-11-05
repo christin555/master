@@ -9,9 +9,9 @@ import CallmeView from './CallmeView';
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    const {RouterStore, product} = this.props;
+    const {RouterStore} = this.props;
 
-    this.CallmeStore = new CallmeStore({RouterStore, product});
+    this.CallmeStore = new CallmeStore({RouterStore});
   }
 
   render() {

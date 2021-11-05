@@ -4,63 +4,74 @@ import api from '../../api';
 import {alert} from '../Notifications';
 
 class HomeStore {
-  RouterStore
-  product;
+    RouterStore
 
-  @observable isShow;
-  @observable status = statusEnum.LOADING;
-  @observable name;
-  @observable phone;
+    @observable isShow;
+    @observable status = statusEnum.LOADING;
+    @observable name;
+    @observable phone;
 
-  constructor({RouterStore, product}) {
-    this.RouterStore = RouterStore;
-    this.product = product;
-    makeObservable(this);
-  }
+    constructor({RouterStore}) {
+      this.RouterStore = RouterStore;
 
-  @action toggleShow = () => {
-    this.isShow = !this.isShow;
-  }
-
-  @action setName = ({target: {value}}) => {
-    this.name = value;
-  }
-
-  @action setPhone = ({target: {value}}) => {
-    this.phone = value;
-  }
-
-  checkFields = () => this.phone && this.name
-
-  apply = () => {
-    const isreq = this.checkFields();
-
-    if (!isreq) {
-      alert({type: 'warning', title: 'Заполните контактную информацию!'});
-
-      return;
+      makeObservable(this);
     }
-    this.sendEmail();
-    this.toggleShow();
-    this.product = null;
-  }
 
-  sendEmail = async() => {
-    const {phone, product, name} = this;
-
-    try {
-      const body = {phone, product, name};
-
-      await api.post('send/callme ', body);
-
-      alert({
-        type: 'success',
-        title: 'Ваша заявка принята! Наш специалист свяжется с вами в ближайщее время'
-      });
-    } catch(_) {
-      alert({type: 'error', title: 'Извините, произошла ошибка при создании заявки'});
+    @action toggleShow = () => {
+      this.isShow = !this.isShow;
     }
-  }
+
+    @action setName = ({target: {value}}) => {
+      this.name = value;
+    }
+
+    @action setPhone = ({target: {value}}) => {
+      this.phone = value;
+    }
+
+    getProduct = (product) => {
+      if (!product) {
+        return null;
+      }
+
+      return {
+        id: product.id,
+        name: product.name,
+        img: product.imgs[0]?.src
+      };
+    }
+
+    checkFields = () => this.phone && this.name
+
+    apply = (product) => {
+      const isreq = this.checkFields();
+
+      if (!isreq) {
+        alert({type: 'warning', title: 'Заполните контактную информацию!'});
+
+        return;
+      }
+      this.sendEmail(product);
+      this.toggleShow();
+    }
+
+    sendEmail = async(_product) => {
+      const {phone, name} = this;
+      const product = this.getProduct(_product);
+
+      try {
+        const body = {phone, product, name};
+
+        await api.post('send/callme ', body);
+
+        alert({
+          type: 'success',
+          title: 'Ваша заявка принята! Наш специалист свяжется с вами в ближайщее время'
+        });
+      } catch(_) {
+        alert({type: 'error', title: 'Извините, произошла ошибка при создании заявки'});
+      }
+    }
 }
 
 export default HomeStore;

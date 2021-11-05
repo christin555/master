@@ -49,6 +49,7 @@ class CardView extends React.Component {
       alias,
       isDoor,
       img,
+      imgs = [],
       name,
       brand,
       price
@@ -66,7 +67,7 @@ class CardView extends React.Component {
             <Link to={pathname}>
               <img
                 className={cn(s.img, {[s.isDoor]: isDoor})}
-                src={img}
+                src={img || imgs[0]?.src}
               />
             </Link>
 

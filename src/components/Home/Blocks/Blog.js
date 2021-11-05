@@ -39,9 +39,9 @@ const Blog = () => {
     <div className={s.blog}>
       <div className={s.desc}>
         <Title title={'Блог'} />
-        <span>
+        <p>
               Наши специалисты имеют многолетний опыт в укладке напольных покрытий и всегда рады поделиться своими знаниями!
-        </span>
+        </p>
         <Button
           className={s.buttonArt}
           variant={'outlined'}

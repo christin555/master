@@ -26,9 +26,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      font-size: 16px;
       text-align: center;
       font-weight: 400;
+      font-size: 16px;
+      line-height: 23px;
 
       .buttonContainer {
         display: flex;
@@ -144,16 +145,23 @@
 
 
     .iconsblock {
-      padding: 40px;
+      padding: 40px 0 0 40px;
       display: flex;
 
-      .iconText {
-        color: $gray-200;
+      h3 {
+        font-weight: 500;
+        height: 50px;
+        margin: 20px 0;
+        font-size: 22px;
       }
 
+
       & > * {
-        max-width: 260px;
-        margin-right: 60px;
+        max-width: 300px;
+      }
+      & > * +* {
+        max-width: 300px;
+        margin-left: 60px;
       }
     }
 
@@ -195,13 +203,17 @@
   }
 
   .icontext {
+    display: flex;
     padding: 10px;
     z-index: 4;
-    text-transform: uppercase;
-    max-width: 130px;
-
+    font-size: 22px;
     margin: 20px 0 0 20px;
     background: white;
+    font-weight: 400;
+
+    & > * {
+      margin-left: 20px;
+    }
   }
 }
 
@@ -259,7 +271,12 @@
       flex-direction: column;
 
       .iconsblock {
+
         padding: 20px;
+
+        h3 {
+          height: 70px;
+        }
       }
     }
   }
@@ -269,48 +286,53 @@
     flex-direction: column;
 
     .blockArticles {
-      grid-template-rows: minmax(300px,400px);
+      grid-template-rows: minmax(300px, 400px);
       grid-template-columns: auto;
     }
+    .desc > .buttonArt {
+        margin:  0 0 20px 0;
+      }
   }
   .catalogBlock {
     flex-direction: column;
   }
 
   .charsBlock {
-    display: grid;
-    grid-template-columns:   repeat(2, auto);
-    grid-row-gap: 20px;
-    grid-column-gap: 40px;
+    display: flex;
+    flex-direction: column;
 
     & > * {
       margin: 0;
+      width: 100%;
     }
 
     .border {
-      width: 50px;
-      height: 50px;
+      width: 70px;
+      height: 70px;
 
       .borderIcon {
-        font-size: 50px;
+        font-size: 70px;
       }
     }
 
     .icontext {
       padding: 4px;
-      max-width: 120px;
       margin: 10px 0 0 10px;
-      font-size: 14px;
+      font-size: 20px;
     }
   }
 
   .iconChar {
-    font-size: 30px;
-    margin-bottom: 10px;
+    font-size: 50px;
+    margin-top: 8px;
   }
 
   .catalogContainer {
     align-items: center;
     margin-top: 20px;
+
+    .mainBlock > .buttonContainer{
+      align-content: flex-start;
+    }
   }
 }
