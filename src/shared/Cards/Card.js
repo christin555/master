@@ -67,14 +67,14 @@ class CardView extends React.Component {
             <Link to={pathname}>
               <img
                 className={cn(s.img, {[s.isDoor]: isDoor})}
-                src={img || imgs[0]?.src}
+                src={img || imgs && imgs[0]?.src}
               />
             </Link>
 
             <Buttons {...this.props} />
           </CardMedia>
 
-          <Link to={pathname} className = {s.contentContainer}>
+          <Link to={pathname} className={s.contentContainer}>
             <CardContent
               className={s.content}
             >

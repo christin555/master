@@ -6,9 +6,8 @@ import CallmeView from './CallmeView';
 class Callme extends React.Component {
   constructor(props) {
     super(props);
-    const {product} = this.props;
 
-    this.CallmeStore = new CallmeStore({product});
+    this.CallmeStore = new CallmeStore();
   }
 
   render() {

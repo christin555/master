@@ -10,6 +10,7 @@
   background: url(../../shared/img/wall.jpg) no-repeat top;
   -webkit-background-size: cover;
   background-size: cover;
+  padding: 0 !important;
 }
 
 .content {
@@ -51,7 +52,11 @@
     margin-left: 50px;
     display: flex;
     flex-direction: column;
-    padding: 10px 20px;
+
+    @include paddingStandard;
+    padding-left: 20px !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
     .additional {
       margin-top: 20px;
@@ -241,6 +246,7 @@
     .product {
       margin-left: 0;
       padding: 10px 0;
+      @include paddingStandard;
 
       .name {
         flex-direction: column;
