@@ -74,11 +74,11 @@ class CardView extends React.Component {
             <Buttons {...this.props} />
           </CardMedia>
 
-          <Link to={pathname}>
+          <Link to={pathname} className = {s.contentContainer}>
             <CardContent
               className={s.content}
             >
-              {
+              <div className={s.header}>  {
                 brand && (
                   <span className={s.brand}>
                     {brand}
@@ -90,11 +90,10 @@ class CardView extends React.Component {
               <span className={s.name}>
                 {name}
               </span>
+              </div>
               {
                 price && (
-                  <span className={s.price}> {formatPrice(price)}
-                    <span className={s.unit}> за 1 м2 </span>
-                  </span>
+                  <span className={s.price}> {formatPrice(price)}</span>
                 ) || null
               }
             </CardContent>

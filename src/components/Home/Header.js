@@ -1,9 +1,5 @@
 import React from 'react';
 import s from './Home.module.scss';
-import Blocks from './Blocks';
-import Button from '../../shared/Button';
-import {Link} from 'react-router-dom';
-import Callme from '../../shared/Callme';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import InstagramIcon from '@material-ui/icons/Instagram';
 

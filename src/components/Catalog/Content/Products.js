@@ -9,16 +9,16 @@ import classNames from 'classnames';
 
 const plural = require('plural-ru');
 
-@inject(({CatalogStore}) => {
+@inject(({CatalogStore, PageStore}) => {
   return {
     products: CatalogStore.products || [],
     productsAvailable: CatalogStore.productsAvailable,
     count: CatalogStore.count,
-    setPage: CatalogStore.setPage,
-    setLimit: CatalogStore.setLimit,
-    page: CatalogStore.page,
-    limit: CatalogStore.limit,
-    fastfilter: CatalogStore.fastfilter
+    fastfilter: CatalogStore.fastfilter,
+    setPage: PageStore.setPage,
+    setLimit: PageStore.setLimit,
+    page: PageStore.page,
+    limit: PageStore.limit
   };
 })
 class Content extends React.Component {
