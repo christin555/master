@@ -1,18 +1,24 @@
 @import '../style';
 
 .carouselItem {
-  margin: 20px;
+  margin: 20px 0;
 }
 
-.title{
+.title {
   @include paddingStandard;
 }
 
-.card{
+.cardContainer {
+  padding: 0 20px;
   height: 100%;
 }
+
+.card {
+  height: 100%;
+}
+
 @media only screen and (max-width: 780px) {
-  .carouselItem {
-    margin: 10px 0;
+  .cardContainer {
+    padding: 0 10px;
   }
 }

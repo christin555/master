@@ -25,8 +25,8 @@ class CardsView extends React.Component {
      },
      mobile: {
        breakpoint: {max: 464, min: 0},
-       items: 1,
-       slidesToSlide: 1 // optional, default to 1.
+       items: 2,
+       slidesToSlide: 2 // optional, default to 1.
      }
    };
 
@@ -34,14 +34,16 @@ class CardsView extends React.Component {
      const {popularProducts} = this.props;
 
      const Cards = popularProducts.map((item, index) => (
-       <Card
-         classNamesRoot={s.card}
-         withCategory={true}
-         withPopularLabel={false}
-         withPhone={false}
-         key={index}
-         {...item}
-       />
+       <div className={s.cardContainer}>
+         <Card
+           classNamesRoot={s.card}
+           withCategory={true}
+           withPopularLabel={false}
+           withPhone={false}
+           key={index}
+           {...item}
+         />
+       </div>
      ));
 
      return (
