@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Cards.module.scss';
-import {Card} from '@material-ui/core';
+import {Card, Tooltip} from '@material-ui/core';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -9,7 +9,8 @@ import {inject} from 'mobx-react';
 import Buttons from './Buttons';
 import {Link} from 'react-router-dom';
 import formatPrice from '../../utils/formatPrice';
-
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import classNames from 'classnames';
 const plural = require('plural-ru');
 
 @inject(({RouterStore}) => {
@@ -41,7 +42,11 @@ class CardView extends React.Component {
       'оттенков'
     );
 
-    return ` | ${finishingMaterial.length} ${finishingMateriaLabel}`;
+    return (
+      <span className={s.colors}>
+        {`${finishingMaterial.length} ${finishingMateriaLabel}`}
+      </span>
+    );
   }
 
   render() {
@@ -52,15 +57,20 @@ class CardView extends React.Component {
       imgs = [],
       name,
       brand,
-      price
+      price,
+      isPopular,
+      isBestPrice,
+      withPopularLabel = true,
+      withCategory = false,
+      category,
+      classNamesRoot
     } = this.props;
     const pathname = `/product/${alias}`;
 
     return (
-      <Card className={s.root}>
-        <CardActionArea
-          className={s.area}
-        >
+      <Card className={classNames(s.root, classNamesRoot)}>
+        <CardActionArea className={s.area}>
+          {withPopularLabel && isPopular && <div className={s.isPopular}> ПОПУЛЯРНОЕ </div>}
           <CardMedia
             className={s.media}
           >
@@ -70,7 +80,6 @@ class CardView extends React.Component {
                 src={img || imgs && imgs[0]?.src}
               />
             </Link>
-
             <Buttons {...this.props} />
           </CardMedia>
 
@@ -78,12 +87,14 @@ class CardView extends React.Component {
             <CardContent
               className={s.content}
             >
+              {
+                withCategory ? <span className={s.categoryName}> {category}</span> : null
+              }
               <div className={s.header}>  {
                 brand && (
                   <span className={s.brand}>
                     {brand}
                     {this.collectionLabel}
-                    {/* {this.colors}*/}
                   </span>
                 )
               }
@@ -93,9 +104,16 @@ class CardView extends React.Component {
               </div>
               {
                 price && (
-                  <span className={s.price}> {formatPrice(price)}</span>
+                  <span className={s.price}> {formatPrice(price)}
+                    {isBestPrice && (
+                      <Tooltip title='Лучшая цена'>
+                        <ThumbUpIcon className={s.bestPrice} />
+                      </Tooltip>
+                    )}
+                  </span>
                 ) || null
               }
+              {this.colors}
             </CardContent>
           </Link>
         </CardActionArea>

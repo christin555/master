@@ -6,7 +6,6 @@ import {inject} from 'mobx-react';
 import Hierarchy from '../../shared/Hierarchy';
 import Nophoto from 'shared/img/nophoto.png';
 import Carousel from '../../shared/Carousel';
-import 'react-image-gallery/styles/css/image-gallery.css';
 import {Divider} from '@material-ui/core';
 import classNames from 'classnames';
 import s from './Product.module.scss';

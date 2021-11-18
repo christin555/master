@@ -53,6 +53,38 @@
   }
 }
 
+.isPopular{
+  width: 220px;
+  font-size: 12px;
+  background: $red;
+  position: absolute;
+  text-align: center;
+  line-height: 30px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  overflow: hidden;
+  box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+  top:30px;
+  right: -70px;
+  left: auto;
+  transform: rotate(45deg);
+}
+.colors{
+  margin-top: 10px;
+  font-size: 14px;
+  color: $gray-200;
+}
+
+.categoryName{
+  margin-bottom: 10px;
+  color: black;
+}
+
+.bestPrice{
+  color: $main-green;
+  font-size:20px !important;
+}
+
 .actions {
   position: absolute;
   display: flex;

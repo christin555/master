@@ -8,10 +8,10 @@ import Square from '../../../shared/Icons/Square';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
 const blocks = [
-  {icon: <House className={s.iconChar} />, text: 'Уложено более 80 000 м²'},
+  {icon: <House className={s.iconChar} />, text: <span>Уложено более <nobr>80 000 м²</nobr></span>},
   {icon: <Russia className={s.iconChar} />, text: 'Работаем по всей России'},
   {icon: <VerifiedUserIcon className={s.iconChar} />, text: 'Гарантия на выполненные работы'},
-  {icon: <Present className={s.iconChar} />, text: 'Ты новосел? у нас для тебя подарок!'}
+  {icon: <Present className={s.iconChar} />, text: 'Ты новосел? У нас для тебя подарок!'}
 ];
 const Blocks = () => (
   <div className={s.charsBlock}>
