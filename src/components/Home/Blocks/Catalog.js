@@ -33,6 +33,11 @@ const items = [
     name: 'Керамогранит',
     img: 'https://modern05.ru/upload/iblock/c6e/c6e3c78be9b57ea2f7fc411c9c953f33.jpg',
     alias: 'keramogranit'
+  },
+  {
+    name: 'Паркет',
+    img: 'https://www.tarkett.ru/media/img/large/IN_TEE_Salsa_premium.jpg',
+    alias: 'parquet'
   }
 ];
 
