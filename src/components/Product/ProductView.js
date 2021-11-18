@@ -171,7 +171,7 @@ class Product extends React.Component {
               </div>
               <div>
                 <Callme
-                  product={{...values, img: values?.imgs && values.imgs[0]?.src}}
+                  product={values}
                   className={s.call}
                   buttonText={'Оставить заявку'}
                 />

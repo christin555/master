@@ -16,7 +16,7 @@
   }
 
   .overlay {
-    background: #52525299;
+    background: rgba(47, 47, 47, 0.6);
     width: inherit;
     height: inherit;
     display: flex;
@@ -39,17 +39,19 @@
   text-align: left;
 
   .name {
+    font-size: 2em;
     font-style: normal;
-    font-weight: 300;
-    letter-spacing: 0.005em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     color: $white;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin: 4px 0;
   }
 
   .slogan {
+    font-weight: 300;
     font-style: normal;
-    font-weight: normal;
+    font-size: 20px;
     line-height: 20px;
     letter-spacing: 0.15em;
     text-transform: lowercase;
@@ -58,11 +60,12 @@
   }
 
   .subs {
+    font-weight: 300;
     margin-top: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 18px;
     color: $gray-10;
 
     & > * {
@@ -141,6 +144,18 @@
 @media only screen and (max-width: 480px) {
   .txtblocks {
     max-width: initial;
+    margin: 60px 0 20px;
+
+    .name {
+      font-size: 1.6em;
+    }
+
+    .slogan {
+      font-size: 1.2em;
+    }
+    .subs {
+      font-size: 1.2em;
+    }
   }
   .buttons {
     flex-direction: column;
@@ -159,7 +174,8 @@
   .wrapper {
     height: 50vh;
     //айфоны
-    background-attachment: scroll; 
+    background-attachment: scroll;
+
     .mediaBlock {
       .text {
         letter-spacing: 1px;
